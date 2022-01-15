@@ -56,7 +56,6 @@ function Enter() {
 
         alert(not_uploaded);
     }
-    alert(message);
     var Text = '';
     for (p of part_selected) {
         var src = "DAY" + p.slice(3);
