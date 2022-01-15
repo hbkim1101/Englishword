@@ -99,15 +99,15 @@ function Build_list(Text) {
             K.push(f);
             if (pf in K_E) {
                 if (typeof (K_E[pf]) === "string") {
-                    K_E[pf] = [K_E[pf], f];
-                    D[pf] = '';
+                    K_E[f] = [K_E[f], pf];
+                    D[f] = '';
                 }
                 else {
-                    K_E[pf].push(f)
+                    K_E[f].push(pf)
                 }
             }
             else {
-                K_E[pf] = f;
+                K_E[f] = pf;
             }
             ln = 'E';
             if (lng_selected === "ENGLISH") {
