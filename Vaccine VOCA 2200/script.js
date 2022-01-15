@@ -14,7 +14,7 @@ var K_ans = {};
 var E_ans = {};
 var S = {};
 var W = [], W_a = [];
-var part_selected = []; lng_selected="KOREAN";
+var part_selected = []; lng_selected = "KOREAN";
 var flg;
 var dup = -1;
 var message = '';
@@ -62,7 +62,6 @@ function Enter() {
         var src = "#DAY" + p.slice(3);
         Text += $(src).contents().find("pre").html();
     }
-    console.log(Text);
     Build_list(Text);
     Q = K.slice();
     Q_dup = { ...D };
@@ -87,7 +86,7 @@ function Build_list(Text) {
         if (f === '') {
             break;
         }
-        if (ln === 'E'){
+        if (ln === 'E') {
             E.push(f);
             ln = 'K';
             if (lng_selected === "ENGLISH") {
@@ -95,7 +94,7 @@ function Build_list(Text) {
             }
             pf = f;
         }
-        else{
+        else {
             K.push(f);
             if (pf in K_E) {
                 if (typeof (K_E[pf]) === "string") {
@@ -180,14 +179,14 @@ function Manufact_K(Text) {
             pre[c].push(U);
             break;
         }
-        else if ((Text[a] === '[')&&(['[명]', '[형]', '[동]', '[부]'].includes(Text.slice(a,a+3)))){
-            if (U !== ''){
-                pre[c].push(U);
+        else if ((Text[a] === '[') && (['[명]', '[형]', '[동]', '[부]'].includes(Text.slice(a, a + 3)))) {
+            if (U !== '') {
+                pre[c].push(U.slice(0, U.length - 1));
                 U = '';
-                a++;
+                c += 1;
                 pre.push([]);
             }
-            c += 3;
+            a += 3;
         }
         else if (Text[a] === ';') {
             pre[c].push(U);
@@ -314,38 +313,36 @@ function Indexof(str, searchvalue) {
 }
 
 function Question() {
-    if (type_selected === "word") {
+    document.getElementById("input-answer").placeholder = '';
+    if (lng_selected === "ENGLISH") {
+        question = Q[0];
+        if (typeof (K_E[Q[0]]) === "object") {
+            var r = [];
+            for (i = 0; i < Q_dup[Q[0]].length - 1; i++) {
+                r.push(i);
+            }
+            shuffle(r);
+            dup = r[0];
+            answer = E_ans[Q_dup[Q[0]][dup]];
+            document.getElementById("input-answer").placeholder = Q_dup[Q[0]][dup].slice(0, Q_dup[Q[0]][Q_dup[Q[0]].length - 1]);
+        }
+        else {
+            dup = -1;
+            answer = E_ans[K_E[Q[0]]];
+        }
+        console.log(answer);
+        document.getElementById("question-box").innerHTML = question;
+        document.getElementById("input-answer").value = '';
+        document.getElementById("input-answer").focus();
+    }
+    else if (lng_selected === "KOREAN") {
+        question = K_E[Q[0]];
+        answer = Q[0];
+        console.log(answer);
+        document.getElementById("question-box").innerHTML = question;
+        document.getElementById("input-answer").value = '';
         document.getElementById("input-answer").placeholder = '';
-        if (lng_selected === "ENGLISH") {
-            question = Q[0];
-            if (typeof (K_E[Q[0]]) === "object") {
-                var r = [];
-                for (i = 0; i < Q_dup[Q[0]].length - 1; i++) {
-                    r.push(i);
-                }
-                shuffle(r);
-                dup = r[0];
-                answer = E_ans[Q_dup[Q[0]][dup]];
-                document.getElementById("input-answer").placeholder = Q_dup[Q[0]][dup].slice(0, Q_dup[Q[0]][Q_dup[Q[0]].length - 1]);
-            }
-            else {
-                dup = -1;
-                answer = E_ans[K_E[Q[0]]];
-            }
-            console.log(answer);
-            document.getElementById("question-box").innerHTML = question;
-            document.getElementById("input-answer").value = '';
-            document.getElementById("input-answer").focus();
-        }
-        else if (lng_selected === "KOREAN") {
-            question = K_E[Q[0]];
-            answer = Q[0];
-            console.log(answer);
-            document.getElementById("question-box").innerHTML = question;
-            document.getElementById("input-answer").value = '';
-            document.getElementById("input-answer").placeholder = '';
-            document.getElementById("input-answer").focus();
-        }
+        document.getElementById("input-answer").focus();
     }
 }
 
@@ -414,69 +411,55 @@ function Input() {
         }
         else if (lng_selected === "KOREAN") {
             ans = ans.split(/, |,/);
+            var A_T = [];
+            for (k of K_ans[answer]) {
+                A_T.push(Array(k.length).fill(0));
+            }
             var T = true;
-            var scr = 0;
             for (ans_i of ans) {
+                var i = 0;
                 var t = false;
                 for (A of K_ans[answer]) {
-                    for (a of A) {
-                        if (ans_i === a) {
+                    for (a = 0; a < A.length; a++) {
+                        if (ans_i === A[a]) {
+                            A_T[i][a] = 1;
                             t = true;
-                            scr++;
                             break;
                         }
                     }
                     if (t === true) {
                         break;
                     }
+                    i++;
                 }
                 if (t === false) {
                     T = false;
+                }
+            }
+            var scr = 0;
+            for (a_t of A_T) {
+                if (a_t.includes(1)) {
+                    scr += 1;
                 }
             }
             if (T === true && scr === K_ans[answer].length) {
                 Success()
             }
             else {
-                var F_k = true;
-                var scr_k = 0;
-                for (ans_i of ans) {
-                    var f_k = false;
-                    for (A of K_ans[answer]) {
-                        for (a of A) {
-                            if (ans_i.replace(/ /gi, '') === a.replace(/ /gi, '')) {
-                                f_k = true;
-                                scr_k++;
-                                break;
-                            }
-                        }
-                        if (f_k === true) {
-                            break;
-                        }
-                    }
-                    if (f_k === false) {
-                        F_k = false;
-                    }
-                }
-                if (F_k === true && scr_k === K_ans[answer].length) {
-                    alert("띄어쓰기를 확인해주세요.");
+                W_a.push(ans);
+                document.getElementById("input-answer").value = '';
+                oprt += 1;
+                if (oprt === 3) {
+                    alert("오답입니다.\n\n3번 모두 실패하셨습니다.");
+                    return Skip();
                 }
                 else {
-                    W_a.push(ans);
-                    document.getElementById("input-answer").value = '';
-                    oprt += 1;
-                    if (oprt === 3) {
-                        alert("오답입니다.\n\n3번 모두 실패하셨습니다.");
-                        return Skip();
+                    message = "오답입니다."
+                    if (K_ans[answer].length >= 2) {
+                        message += "\n\n전체 개수: " + K_ans[answer].length + "\n맞은 개수: " + scr;
                     }
-                    else {
-                        message = "오답입니다."
-                        if (K_ans[answer].length >= 2) {
-                            message += "\n\n전체 개수: " + K_ans[answer].length + "\n맞은 개수: " + scr_;
-                        }
-                        message += "\n\n남은 기회: " + (3 - oprt);
-                        alert(message);
-                    }
+                    message += "\n\n남은 기회: " + (3 - oprt);
+                    alert(message);
                 }
             }
         }
