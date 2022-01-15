@@ -1,12 +1,15 @@
 <!DOCTYPE html>
+
 <head>
     <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
     <style>
-        html,body{
-            height:100%;
+        html,
+        body {
+            height: 100%;
             margin: 0;
         }
-        .label{
+
+        .label {
             background-color: rgb(137, 136, 136);
             color: white;
             font-size: 1.5em;
@@ -19,230 +22,327 @@
             list-style: none;
             transition: 400ms ease all;
         }
-        .label:hover{
+
+        .label:hover {
             width: 230px;
             border-top-right-radius: 10px;
             border-bottom-right-radius: 10px;
         }
-        
-        div{
+
+        div {
             height: 0;
             width: 190px;
             transition: 250ms ease all;
         }
 
-        .part p{
-            position:absolute;
+        .part p {
+            position: absolute;
             margin: 0;
             left: 15px;
             opacity: 0;
-            transition:200ms ease all;
+            transition: 200ms ease all;
         }
 
-        .part{
+        .part {
             background-color: rgb(185, 185, 185);
             display: block;
             height: 10%;
             width: inherit;
             list-style: none;
-            position:relative;
-            outline:none;
+            position: relative;
+            outline: none;
         }
-        .part:not(.p10):after{
-            content:'';
-            position:absolute;
-            top:inherit;
+
+        .part:not(.p10):after {
+            content: '';
+            position: absolute;
+            top: inherit;
             bottom: 0;
-            left:60px;
-            height:1px;
-            width:0;
+            left: 60px;
+            height: 1px;
+            width: 0;
             background: rgb(253, 253, 253);
         }
 
-        .part.selected{
+        .part.selected {
             background-color: rgb(230, 230, 230);
         }
-        .part.selected > p{
-            color:black !important;
+
+        .part.selected>p {
+            color: black !important;
         }
 
+        @media (hover: hover) {
+            #day01-10:hover~#d01-10 {
+                height: 300px;
+                transition: 400ms ease all;
+            }
 
-        #day01-10:hover ~ #d01-10{
-            height: 300px;
-            transition: 400ms ease all;
-        }
-        #day01-10:hover ~ #d01-10>.part p{
-            color:white;
-            opacity: 1;
-            transition: 400ms ease all;
-        }
-        #day01-10:hover ~ #d01-10>.part:after{
-            width: 100%;
-            left: 0;
-            transition: 400ms ease all;
-        }
-        #d01-10:hover{
-            height: 300px;
-        }
-        #d01-10:hover #day01-10{
-            border-top-right-radius: 10px;
-            border-bottom-right-radius: 10px;
-        }
-        #d01-10:hover > .part p{
-            color:white;
-            opacity: 1;
-        }
-        #d01-10:hover > .part:after{
-            width: 100%;
-            left: 0;
-        }
+            #day01-10:hover~#d01-10>.part p {
+                color: white;
+                opacity: 1;
+                transition: 400ms ease all;
+            }
 
-        
+            #day01-10:hover~#d01-10>.part:after {
+                width: 100%;
+                left: 0;
+                transition: 400ms ease all;
+            }
 
+            #d01-10:hover {
+                height: 300px;
+            }
 
-        #day11-20:hover ~ #d11-20{
-            height: 300px;
-            transition: 400ms ease all;
-        }
-        #day11-20:hover ~ #d11-20>.part p{
-            color:white;
-            opacity: 1;
-            transition: 400ms ease all;
-        }
-        #day11-20:hover ~ #d11-20>.part:after{
-            width: 100%;
-            left: 0;
-            transition: 400ms ease all;
-        }
-        #d11-20:hover{
-            height: 300px;
-        }
-        #d11-20:hover #day11-20{
-            border-top-right-radius: 10px;
-            border-bottom-right-radius: 10px;
-        }
-        #d11-20:hover > .part p{
-            color:white;
-            opacity: 1;
-        }
-        #d11-20:hover > .part:after{
-            width: 100%;
-            left: 0;
-        }
+            #d01-10:hover #day01-10 {
+                border-top-right-radius: 10px;
+                border-bottom-right-radius: 10px;
+            }
+
+            #d01-10:hover>.part p {
+                color: white;
+                opacity: 1;
+            }
+
+            #d01-10:hover>.part:after {
+                width: 100%;
+                left: 0;
+            }
 
 
 
 
-        #day21-30:hover ~ #d21-30{
-            height: 300px;
-            transition: 400ms ease all;
+            #day11-20:hover~#d11-20 {
+                height: 300px;
+                transition: 400ms ease all;
+            }
+
+            #day11-20:hover~#d11-20>.part p {
+                color: white;
+                opacity: 1;
+                transition: 400ms ease all;
+            }
+
+            #day11-20:hover~#d11-20>.part:after {
+                width: 100%;
+                left: 0;
+                transition: 400ms ease all;
+            }
+
+            #d11-20:hover {
+                height: 300px;
+            }
+
+            #d11-20:hover #day11-20 {
+                border-top-right-radius: 10px;
+                border-bottom-right-radius: 10px;
+            }
+
+            #d11-20:hover>.part p {
+                color: white;
+                opacity: 1;
+            }
+
+            #d11-20:hover>.part:after {
+                width: 100%;
+                left: 0;
+            }
+
+
+
+
+            #day21-30:hover~#d21-30 {
+                height: 300px;
+                transition: 400ms ease all;
+            }
+
+            #day21-30:hover~#d21-30>.part p {
+                color: white;
+                opacity: 1;
+                transition: 400ms ease all;
+            }
+
+            #day21-30:hover~#d21-30>.part:after {
+                width: 100%;
+                left: 0;
+                transition: 400ms ease all
+            }
+
+            #d21-30:hover {
+                height: 300px;
+            }
+
+            #d21-30:hover #day21-30 {
+                border-top-right-radius: 10px;
+                border-bottom-right-radius: 10px;
+            }
+
+            #d21-30:hover>.part p {
+                color: white;
+                opacity: 1;
+            }
+
+            #d21-30:hover>.part:after {
+                width: 100%;
+                left: 0;
+            }
         }
-        #day21-30:hover ~ #d21-30>.part p{
-            color:white;
-            opacity: 1;
-            transition: 400ms ease all;
-        }
-        #day21-30:hover ~ #d21-30>.part:after{
-            width: 100%;
-            left: 0;
-            transition: 400ms ease all
-        }
-        #d21-30:hover{
-            height: 300px;
-        }
-        #d21-30:hover #day21-30{
-            border-top-right-radius: 10px;
-            border-bottom-right-radius: 10px;
-        }
-        #d21-30:hover > .part p{
-            color:white;
-            opacity: 1;
-        }
-        #d21-30:hover > .part:after{
-            width: 100%;
-            left: 0;
+
+        @media (hover: none){
+            #d01-10, #d11-20, #d21-30{
+                height:300px;
+            }
+            .part p{
+                color: white();
+                opacity: 1;
+            }
+            .part:after{
+                width: 100%;
+                left:0;
+            }
         }
 
 
-        #question-box{
-            position:absolute;
-            width:300;
+
+        #question-box {
+            position: absolute;
+            width: 300;
             height: auto;
-            left:50%;
-            top:30%;
+            left: 50%;
+            top: 30%;
             font-size: 2em;
             font-weight: bold;
-            transform: translate(-50%,-50%);
+            transform: translate(-50%, -50%);
         }
 
-        #input-answer{
-            position:absolute;
-            width:300px;
+        #input-answer {
+            position: absolute;
+            width: 300px;
             height: auto;
-            left:50%;
-            top:45%;
-            transform: translate(-155px,-16px);
+            left: 50%;
+            top: 45%;
+            transform: translate(-155px, -16px);
             font-size: 1.5em;
         }
-
     </style>
     <script>
-        for (var i=1;i<3;i++){
+        for (var i = 1; i < 3; i++) {
             var part;
-            if (i < 10){
+            if (i < 10) {
                 part = "DAY 0" + i;
             }
-            else{
-                part = "DAY " + i; 
+            else {
+                part = "DAY " + i;
             }
             var file_word = document.createElement("iframe");
-            file_word.id = part.replace(' ','');
+            file_word.id = part.replace(' ', '');
             file_word.src = "src/" + part + ".txt";
             document.getElementsByTagName("head")[0].append(file_word);
         }
     </script>
     <script type="text/javascript" src="./script.js"></script>
 </head>
+
 <body>
     <nav>
         <li id="day01-10" class="label">DAY 01-10</li>
         <div id="d01-10">
-            <li id="day01" class="part p01" onclick="Selected(this);"><p>DAY 01</p></li>
-            <li id="day02" class="part p02" onclick="Selected(this);"><p>DAY 02</p></li>
-            <li id="day03" class="part p03" onclick="Selected(this);"><p>DAY 03</p></li>
-            <li id="day04" class="part p04" onclick="Selected(this);"><p>DAY 04</p></li>
-            <li id="day05" class="part p05" onclick="Selected(this);"><p>DAY 05</p></li>
-            <li id="day06" class="part p06" onclick="Selected(this);"><p>DAY 06</p></li>
-            <li id="day07" class="part p07" onclick="Selected(this);"><p>DAY 07</p></li>
-            <li id="day08" class="part p08" onclick="Selected(this);"><p>DAY 08</p></li>
-            <li id="day09" class="part p09" onclick="Selected(this);"><p>DAY 09</p></li>
-            <li id="day10" class="part p10" onclick="Selected(this);"><p>DAY 10</p></li>
+            <li id="day01" class="part p01" onclick="Selected(this);">
+                <p>DAY 01</p>
+            </li>
+            <li id="day02" class="part p02" onclick="Selected(this);">
+                <p>DAY 02</p>
+            </li>
+            <li id="day03" class="part p03" onclick="Selected(this);">
+                <p>DAY 03</p>
+            </li>
+            <li id="day04" class="part p04" onclick="Selected(this);">
+                <p>DAY 04</p>
+            </li>
+            <li id="day05" class="part p05" onclick="Selected(this);">
+                <p>DAY 05</p>
+            </li>
+            <li id="day06" class="part p06" onclick="Selected(this);">
+                <p>DAY 06</p>
+            </li>
+            <li id="day07" class="part p07" onclick="Selected(this);">
+                <p>DAY 07</p>
+            </li>
+            <li id="day08" class="part p08" onclick="Selected(this);">
+                <p>DAY 08</p>
+            </li>
+            <li id="day09" class="part p09" onclick="Selected(this);">
+                <p>DAY 09</p>
+            </li>
+            <li id="day10" class="part p10" onclick="Selected(this);">
+                <p>DAY 10</p>
+            </li>
         </div>
         <li id="day11-20" class="label">DAY 11-20</li>
         <div id="d11-20">
-            <li id="day11" class="part p01" onclick="Selected(this);"><p>DAY 11</p></li>
-            <li id="day12" class="part p02" onclick="Selected(this);"><p>DAY 12</p></li>
-            <li id="day13" class="part p03" onclick="Selected(this);"><p>DAY 13</p></li>
-            <li id="day14" class="part p04" onclick="Selected(this);"><p>DAY 14</p></li>
-            <li id="day15" class="part p05" onclick="Selected(this);"><p>DAY 15</p></li>
-            <li id="day16" class="part p06" onclick="Selected(this);"><p>DAY 16</p></li>
-            <li id="day17" class="part p07" onclick="Selected(this);"><p>DAY 17</p></li>
-            <li id="day18" class="part p08" onclick="Selected(this);"><p>DAY 18</p></li>
-            <li id="day19" class="part p09" onclick="Selected(this);"><p>DAY 19</p></li>
-            <li id="day20" class="part p10" onclick="Selected(this);"><p>DAY 20</p></li>
+            <li id="day11" class="part p01" onclick="Selected(this);">
+                <p>DAY 11</p>
+            </li>
+            <li id="day12" class="part p02" onclick="Selected(this);">
+                <p>DAY 12</p>
+            </li>
+            <li id="day13" class="part p03" onclick="Selected(this);">
+                <p>DAY 13</p>
+            </li>
+            <li id="day14" class="part p04" onclick="Selected(this);">
+                <p>DAY 14</p>
+            </li>
+            <li id="day15" class="part p05" onclick="Selected(this);">
+                <p>DAY 15</p>
+            </li>
+            <li id="day16" class="part p06" onclick="Selected(this);">
+                <p>DAY 16</p>
+            </li>
+            <li id="day17" class="part p07" onclick="Selected(this);">
+                <p>DAY 17</p>
+            </li>
+            <li id="day18" class="part p08" onclick="Selected(this);">
+                <p>DAY 18</p>
+            </li>
+            <li id="day19" class="part p09" onclick="Selected(this);">
+                <p>DAY 19</p>
+            </li>
+            <li id="day20" class="part p10" onclick="Selected(this);">
+                <p>DAY 20</p>
+            </li>
         </div>
         <li id="day21-30" class="label">DAY 21-30</li>
         <div id="d21-30">
-            <li id="day21" class="part p01" onclick="Selected(this);"><p>DAY 21</p></li>
-            <li id="day22" class="part p02" onclick="Selected(this);"><p>DAY 22</p></li>
-            <li id="day23" class="part p03" onclick="Selected(this);"><p>DAY 23</p></li>
-            <li id="day24" class="part p04" onclick="Selected(this);"><p>DAY 24</p></li>
-            <li id="day25" class="part p05" onclick="Selected(this);"><p>DAY 25</p></li>
-            <li id="day26" class="part p06" onclick="Selected(this);"><p>DAY 26</p></li>
-            <li id="day27" class="part p07" onclick="Selected(this);"><p>DAY 27</p></li>
-            <li id="day28" class="part p08" onclick="Selected(this);"><p>DAY 28</p></li>
-            <li id="day29" class="part p09" onclick="Selected(this);"><p>DAY 29</p></li>
-            <li id="day30" class="part p10" onclick="Selected(this);"><p>DAY 30</p></li>
+            <li id="day21" class="part p01" onclick="Selected(this);">
+                <p>DAY 21</p>
+            </li>
+            <li id="day22" class="part p02" onclick="Selected(this);">
+                <p>DAY 22</p>
+            </li>
+            <li id="day23" class="part p03" onclick="Selected(this);">
+                <p>DAY 23</p>
+            </li>
+            <li id="day24" class="part p04" onclick="Selected(this);">
+                <p>DAY 24</p>
+            </li>
+            <li id="day25" class="part p05" onclick="Selected(this);">
+                <p>DAY 25</p>
+            </li>
+            <li id="day26" class="part p06" onclick="Selected(this);">
+                <p>DAY 26</p>
+            </li>
+            <li id="day27" class="part p07" onclick="Selected(this);">
+                <p>DAY 27</p>
+            </li>
+            <li id="day28" class="part p08" onclick="Selected(this);">
+                <p>DAY 28</p>
+            </li>
+            <li id="day29" class="part p09" onclick="Selected(this);">
+                <p>DAY 29</p>
+            </li>
+            <li id="day30" class="part p10" onclick="Selected(this);">
+                <p>DAY 30</p>
+            </li>
         </div>
         <button style="position:relative; top:50px;width: 100px; height: 30px;" onclick="Enter();">Enter</button>
     </nav>
