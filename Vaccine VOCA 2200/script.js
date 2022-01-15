@@ -180,6 +180,15 @@ function Manufact_K(Text) {
             pre[c].push(U);
             break;
         }
+        else if ((Text[a] === '[')&&(['[명]', '[형]', '[동]', '[부]'].includes(Text.slice(a,a+3)))){
+            if (U !== ''){
+                pre[c].push(U);
+                U = '';
+                a++;
+                pre.push([]);
+            }
+            c += 3;
+        }
         else if (Text[a] === ';') {
             pre[c].push(U);
             U = '';
