@@ -14,7 +14,7 @@ var K_ans = {};
 var E_ans = {};
 var S = {};
 var W = [], W_a = [];
-var part_selected = []; lng_selected="ENGLISH";
+var part_selected = []; lng_selected="KOREAN";
 var flg;
 var dup = -1;
 var message = '';
@@ -110,8 +110,8 @@ function Build_list(Text) {
                 K_E[f] = pf;
             }
             ln = 'E';
-            if (lng_selected === "ENGLISH") {
-                E_ans[f] = Manufact_E(f);
+            if (lng_selected === "KOREAN") {
+                K_ans[f] = Manufact_K(f);
             }
         }
     }
