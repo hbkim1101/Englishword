@@ -87,16 +87,16 @@ function Build_list(Text) {
         if (f === '') {
             break;
         }
-        if (ln === 'K') {
-            K.push(f);
-            ln = 'E';
-            if (lng_selected === "KOREAN") {
-                K_ans[f] = Manufact_K(f);
+        if (ln === 'E'){
+            E.push(f);
+            ln = 'K';
+            if (lng_selected === "ENGLISH") {
+                E_ans[f] = Manufact_E(f);
             }
             pf = f;
         }
-        else {
-            E.push(f);
+        else{
+            K.push(f);
             if (pf in K_E) {
                 if (typeof (K_E[pf]) === "string") {
                     K_E[pf] = [K_E[pf], f];
@@ -109,7 +109,7 @@ function Build_list(Text) {
             else {
                 K_E[pf] = f;
             }
-            ln = 'K';
+            ln = 'E';
             if (lng_selected === "ENGLISH") {
                 E_ans[f] = Manufact_E(f);
             }
