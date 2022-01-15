@@ -40,8 +40,8 @@ function Enter() {
 
     var not_Uld = [];
     for (p of part_selected) {
-        var s = "#DAY" + p.slice(3);
-        if ($(s).length === 0) {
+        var s = "DAY" + p.slice(3);
+        if (document.getElementById(s) === null) {
             not_Uld.push(p);
         }
     }
@@ -59,9 +59,9 @@ function Enter() {
     alert(message);
     var Text = '';
     for (p of part_selected) {
-        var src = "#DAY" + p.slice(3);
-        test = $(src);
-        Text += $(src).contents().find("pre").html();
+        var src = "DAY" + p.slice(3);
+        test = document.getElementById(src);
+        Text += document.getElementById(src).contents();
     }
     console.log(Text);
     Build_list(Text);
