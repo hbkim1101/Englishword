@@ -40,8 +40,8 @@ function Enter() {
 
     var not_Uld = [];
     for (p of part_selected) {
-        var s = "#DAY" + p.slice(3);
-        if ($(s).length === 0) {
+        var s = "DAY" + p.slice(3);
+        if (document.getElementById(s) === null) {
             not_Uld.push(p);
         }
     }
@@ -59,8 +59,8 @@ function Enter() {
     alert(message);
     var Text = '';
     for (p of part_selected) {
-        var src = "#DAY" + p.slice(3);
-        Text += $(src).contents().find("pre").html();
+        var src = "DAY" + p.slice(3);
+        Text += document.getElementById(src).contentDocument.getElementsByTagName("pre")[0].innerText;
     }
     Build_list(Text);
     Q = K.slice();
