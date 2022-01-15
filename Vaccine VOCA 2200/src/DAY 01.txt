@@ -1,0 +1,110 @@
+resolve
+[동] 해결하다, 다짐하다
+regularity
+[명] 정기적임, 규칙적임
+landscape
+[명] 풍경, 풍경화
+conquer
+[동] 정복하다, 극복하다, 이겨 내다
+muscle
+[명] 근육, 힘, 근력
+diminish
+[동] 줄다, 감소하다
+contemporary
+[형] 현대의, 동시대의
+marine
+[형] 바다의, 해양의
+diverse
+[형] 다양한
+abundance
+[명] 풍부, 다수, 다량, 부유함
+auction
+[명] 경매 [동] 경매로 팔다
+disobedient
+[형] 반항하는, 순종하지 않는
+citation
+[명] 표창, 인용, 인용문
+counterproductive
+[형] 역효과를 내는
+prohibition
+[명] (특히 법에 의한) 금지
+paradox
+[명] 역설, 역설적인 것
+stem
+[동] (~에서) 비롯되다, 생기다
+continuum
+[명] 연속체
+activate
+[동] 활성화하다, 작동시키다
+deceitful
+[형] 기만적인, 부정직한
+fraction
+[명] 아주 소량, 단편, 일부, 분수
+hollow
+[형] (속이) 빈, 공허한 [명] 움푹 꺼진 곳
+undermine
+[동] 약화시키다, 훼손하다
+locate
+[동] ~의 정확한 위치를 찾아내다
+demolition
+[명] 파괴, 폭파, 해체
+superiority
+[명] 우월(성), 우세
+sweep
+[동] (휩)쓸다, 청소하다 [명] 쓸기
+garbage
+[명] (음식물·휴지 등의) 쓰레기
+hysterical
+[형] 히스테리 상태의
+raid
+[명] 습격, 급습 [동] 급습하다, 습격하다
+compelling
+[형] 주목하지 않을 수 없는
+invention
+[명] 발명, 발명품
+supplement
+[명] 보충[추가](물), 보충제
+cultivate
+[동] 재배하다, (세균을) 배양하다
+misfortune
+[명] 불운, 불행
+omission
+[명] 생략, 빠짐, 누락, 하지 않음
+reliable
+[형] 신뢰할 만한
+oral
+[형] 구두의, 구전의, 입의
+continent
+[명] 대륙, 유럽 대륙
+preconception
+[명] 예상, 선입견
+sympathetic
+[형] 동정적인, 공감하는
+commuter
+[명] 통근자
+dilute
+[동] 희석하다, 묽게 하다, 약화시키다
+forefather
+[명] 조상, 선조
+illuminate
+[동] (~에 불을) 비추다, 설명하다
+asset
+[명] 자산, 재산
+objective
+[형] 객관적인 [명] 목표, 목적
+prose
+[명] 산문, 산문체
+resentment
+[명] 분함, 억울함, 분노, 분개
+reproduce
+[동] 번식하다, 재생하다, 복제하다
+manipulate
+~을 능숙하게 조작하다
+employ
+~을 유용하게 쓰다
+operate
+작동하게 하다
+steer
+진행하는 방향을 조종하다
+handle
+~을 손으로 조종하다
