@@ -7,6 +7,11 @@
         body {
             height: 100%;
             margin: 0;
+            background-image: url("./src/background.jpg");
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-position: 50% 2%;
+            background-size: 20%;
         }
 
         .label {
@@ -236,7 +241,7 @@
             }
             var file_word = document.createElement("iframe");
             file_word.id = part.replace(' ', '');
-            file_word.src = "src/" + part + ".txt";
+            file_word.src = "src/word/" + part + ".txt";
             document.getElementsByTagName("head")[0].append(file_word);
         }
     </script>
