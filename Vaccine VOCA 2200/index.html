@@ -2,234 +2,6 @@
 
 <head>
     <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
-    <style>
-        html,
-        body {
-            height: 100%;
-            margin: 0;
-            background-image: url("./src/background.jpg");
-            background-repeat: no-repeat;
-            background-attachment: fixed;
-            background-position: 50% 2%;
-            background-size: 20%;
-        }
-
-        .label {
-            background-color: rgb(137, 136, 136);
-            color: white;
-            font-size: 1.5em;
-            height: 50px;
-            width: 200px;
-            border-bottom: 1px solid;
-            border-color: antiquewhite;
-            text-align: center;
-            line-height: 50px;
-            list-style: none;
-            transition: 400ms ease all;
-        }
-
-        .label:hover {
-            width: 230px;
-            border-top-right-radius: 10px;
-            border-bottom-right-radius: 10px;
-        }
-
-        div {
-            height: 0;
-            width: 190px;
-            transition: 250ms ease all;
-        }
-
-        .part p {
-            position: absolute;
-            margin: 0;
-            left: 15px;
-            opacity: 0;
-            transition: 200ms ease all;
-        }
-
-        .part {
-            background-color: rgb(185, 185, 185);
-            display: block;
-            height: 10%;
-            width: inherit;
-            list-style: none;
-            position: relative;
-            outline: none;
-        }
-
-        .part:not(.p10):after {
-            content: '';
-            position: absolute;
-            top: inherit;
-            bottom: 0;
-            left: 60px;
-            height: 1px;
-            width: 0;
-            background: rgb(253, 253, 253);
-        }
-
-        .part.selected {
-            background-color: rgb(230, 230, 230);
-        }
-
-        .part.selected>p {
-            color: black !important;
-        }
-
-        @media (hover: hover) {
-            #day01-10:hover~#d01-10 {
-                height: 300px;
-                transition: 400ms ease all;
-            }
-
-            #day01-10:hover~#d01-10>.part p {
-                color: white;
-                opacity: 1;
-                transition: 400ms ease all;
-            }
-
-            #day01-10:hover~#d01-10>.part:after {
-                width: 100%;
-                left: 0;
-                transition: 400ms ease all;
-            }
-
-            #d01-10:hover {
-                height: 300px;
-            }
-
-            #d01-10:hover #day01-10 {
-                border-top-right-radius: 10px;
-                border-bottom-right-radius: 10px;
-            }
-
-            #d01-10:hover>.part p {
-                color: white;
-                opacity: 1;
-            }
-
-            #d01-10:hover>.part:after {
-                width: 100%;
-                left: 0;
-            }
-
-
-
-
-            #day11-20:hover~#d11-20 {
-                height: 300px;
-                transition: 400ms ease all;
-            }
-
-            #day11-20:hover~#d11-20>.part p {
-                color: white;
-                opacity: 1;
-                transition: 400ms ease all;
-            }
-
-            #day11-20:hover~#d11-20>.part:after {
-                width: 100%;
-                left: 0;
-                transition: 400ms ease all;
-            }
-
-            #d11-20:hover {
-                height: 300px;
-            }
-
-            #d11-20:hover #day11-20 {
-                border-top-right-radius: 10px;
-                border-bottom-right-radius: 10px;
-            }
-
-            #d11-20:hover>.part p {
-                color: white;
-                opacity: 1;
-            }
-
-            #d11-20:hover>.part:after {
-                width: 100%;
-                left: 0;
-            }
-
-
-
-
-            #day21-30:hover~#d21-30 {
-                height: 300px;
-                transition: 400ms ease all;
-            }
-
-            #day21-30:hover~#d21-30>.part p {
-                color: white;
-                opacity: 1;
-                transition: 400ms ease all;
-            }
-
-            #day21-30:hover~#d21-30>.part:after {
-                width: 100%;
-                left: 0;
-                transition: 400ms ease all
-            }
-
-            #d21-30:hover {
-                height: 300px;
-            }
-
-            #d21-30:hover #day21-30 {
-                border-top-right-radius: 10px;
-                border-bottom-right-radius: 10px;
-            }
-
-            #d21-30:hover>.part p {
-                color: white;
-                opacity: 1;
-            }
-
-            #d21-30:hover>.part:after {
-                width: 100%;
-                left: 0;
-            }
-        }
-
-        @media (hover: none){
-            #d01-10, #d11-20, #d21-30{
-                height:300px;
-            }
-            .part p{
-                color: white();
-                opacity: 1;
-            }
-            .part:after{
-                width: 100%;
-                left:0;
-            }
-        }
-
-
-
-        #question-box {
-            position: absolute;
-            width: 300;
-            height: auto;
-            left: 50%;
-            top: 30%;
-            font-size: 2em;
-            font-weight: bold;
-            transform: translate(-50%, -50%);
-        }
-
-        #input-answer {
-            position: absolute;
-            width: 300px;
-            height: auto;
-            left: 50%;
-            top: 45%;
-            transform: translate(-155px, -16px);
-            font-size: 1.5em;
-        }
-    </style>
     <script>
         for (var i = 1; i < 3; i++) {
             var part;
@@ -246,111 +18,325 @@
         }
     </script>
     <script type="text/javascript" src="./script.js"></script>
+    <link href="select_circle.css" rel="stylesheet">
+    <style>
+        @font-face {
+        font-family: 'HSGaeulSenggak20';
+        src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2108@1.1/HSGaeulSenggak20.woff') format('woff');
+        font-weight: normal;
+        font-style: normal;
+        }
+
+        html, body{
+            height: 100vh;
+            margin: 0;
+            background-color: #4868BC;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%25' height='100%25' viewBox='0 0 1600 800'%3E%3Cg stroke='%23320032' stroke-width='66.3' stroke-opacity='0.06' %3E%3Ccircle fill='%234868BC' cx='0' cy='0' r='1800'/%3E%3Ccircle fill='%234061b7' cx='0' cy='0' r='1700'/%3E%3Ccircle fill='%233b5cb0' cx='0' cy='0' r='1600'/%3E%3Ccircle fill='%233656a9' cx='0' cy='0' r='1500'/%3E%3Ccircle fill='%233251a2' cx='0' cy='0' r='1400'/%3E%3Ccircle fill='%232d4b9a' cx='0' cy='0' r='1300'/%3E%3Ccircle fill='%23294692' cx='0' cy='0' r='1200'/%3E%3Ccircle fill='%2325418a' cx='0' cy='0' r='1100'/%3E%3Ccircle fill='%23213c82' cx='0' cy='0' r='1000'/%3E%3Ccircle fill='%231d377a' cx='0' cy='0' r='900'/%3E%3Ccircle fill='%231a3271' cx='0' cy='0' r='800'/%3E%3Ccircle fill='%23172d68' cx='0' cy='0' r='700'/%3E%3Ccircle fill='%2314285f' cx='0' cy='0' r='600'/%3E%3Ccircle fill='%23112456' cx='0' cy='0' r='500'/%3E%3Ccircle fill='%230e1f4c' cx='0' cy='0' r='400'/%3E%3Ccircle fill='%230b1b43' cx='0' cy='0' r='300'/%3E%3Ccircle fill='%23091639' cx='0' cy='0' r='200'/%3E%3Ccircle fill='%2307122F' cx='0' cy='0' r='100'/%3E%3C/g%3E%3C/svg%3E");
+            background-attachment: fixed;
+            background-size: cover;
+
+            
+            -ms-user-select: none; 
+            -moz-user-select: -moz-none;
+            -khtml-user-select: none;
+            -webkit-user-select: none;
+            user-select: none;
+        }
+        #theme{
+            position: absolute;
+            top: 5vh;
+            left: 5vh;
+            width: 38vh;
+            height: 15vh;
+            border: 1px solid #707070;
+        }
+
+        #part01_10{
+            position: absolute;
+            top: 30vh;
+            left: 8vh;
+        }
+        #part01_10 .list{
+            background: radial-gradient( rgb(62, 121, 174) 55%, rgba(255, 255, 255, 0));
+        }
+
+        #part11_20{
+            position: absolute;
+            top: 45vh;
+            left: 27vh;
+        }
+        #part11_20 .list{
+            background: radial-gradient( rgb(17, 118, 162) 55%, rgba(255, 255, 255, 0));
+        }
+
+        #part21_30{
+            position: absolute;
+            top: 60vh;
+            left: 10vh;
+        }
+        #part21_30 .list{
+            background: radial-gradient( rgb(10, 85, 160) 55%, rgba(255, 255, 255, 0));
+        }
+
+        
+    </style>
+    <script>
+        var test;
+        function Checking_list(This) {
+            var List_part = $(This).parents(".box").find(".part_checkbox");
+            var T = 0;
+            for (lc of List_part){
+                if ($(lc).prop("checked")){
+                    T += 1;
+                }
+                else{
+                    $(lc).prop("checked", true);
+                    Selected($(lc).attr("id"), true);
+                }
+            }
+            if (T == List_part.length){
+                for (lc of List_part){
+                    $(lc).prop("checked", false);
+                    Selected($(lc).attr("id"), false);
+                }
+            }
+        }
+        $(document).ready(function(){
+            $(".p_checkbox").change(function(e){
+                if($(e.target).is(":checked")){
+                    Selected(e.target.id, true);
+                }
+                else{
+                    Selected(e.target.id, false);
+                }
+            })
+        })
+    </script>
 </head>
 
 <body>
     <nav>
-        <li id="day01-10" class="label">DAY 01-10</li>
-        <div id="d01-10">
-            <li id="day01" class="part p01" onclick="Selected(this);">
-                <p>DAY 01</p>
-            </li>
-            <li id="day02" class="part p02" onclick="Selected(this);">
-                <p>DAY 02</p>
-            </li>
-            <li id="day03" class="part p03" onclick="Selected(this);">
-                <p>DAY 03</p>
-            </li>
-            <li id="day04" class="part p04" onclick="Selected(this);">
-                <p>DAY 04</p>
-            </li>
-            <li id="day05" class="part p05" onclick="Selected(this);">
-                <p>DAY 05</p>
-            </li>
-            <li id="day06" class="part p06" onclick="Selected(this);">
-                <p>DAY 06</p>
-            </li>
-            <li id="day07" class="part p07" onclick="Selected(this);">
-                <p>DAY 07</p>
-            </li>
-            <li id="day08" class="part p08" onclick="Selected(this);">
-                <p>DAY 08</p>
-            </li>
-            <li id="day09" class="part p09" onclick="Selected(this);">
-                <p>DAY 09</p>
-            </li>
-            <li id="day10" class="part p10" onclick="Selected(this);">
-                <p>DAY 10</p>
-            </li>
+        <div id="theme">
+            <div style="position: absolute; top:2.5vh; left:1vh;">
+                <img src="./src/title.png" style="height:10vh;width:14vh;vertical-align: middle;">
+                <span style="font: normal normal bold 2vh Segoe UI; color: rgb(142, 142, 142)">&nbsp&nbsp&nbspVaccine VOCA 2200</span>
+            </div>
         </div>
-        <li id="day11-20" class="label">DAY 11-20</li>
-        <div id="d11-20">
-            <li id="day11" class="part p01" onclick="Selected(this);">
-                <p>DAY 11</p>
-            </li>
-            <li id="day12" class="part p02" onclick="Selected(this);">
-                <p>DAY 12</p>
-            </li>
-            <li id="day13" class="part p03" onclick="Selected(this);">
-                <p>DAY 13</p>
-            </li>
-            <li id="day14" class="part p04" onclick="Selected(this);">
-                <p>DAY 14</p>
-            </li>
-            <li id="day15" class="part p05" onclick="Selected(this);">
-                <p>DAY 15</p>
-            </li>
-            <li id="day16" class="part p06" onclick="Selected(this);">
-                <p>DAY 16</p>
-            </li>
-            <li id="day17" class="part p07" onclick="Selected(this);">
-                <p>DAY 17</p>
-            </li>
-            <li id="day18" class="part p08" onclick="Selected(this);">
-                <p>DAY 18</p>
-            </li>
-            <li id="day19" class="part p09" onclick="Selected(this);">
-                <p>DAY 19</p>
-            </li>
-            <li id="day20" class="part p10" onclick="Selected(this);">
-                <p>DAY 20</p>
-            </li>
+
+        <div id="part01_10" class="box">
+            <div class="list" onclick="Checking_list(this)">
+                <div>
+                    DAY<br>01-10
+                </div>
+            </div>
+
+            <input type="checkbox" style="display: none;" id="part01" class="part_checkbox">
+            <label for="part01" class="part p01">
+                <div>
+                    Day<br>01
+                </div>
+            </label>
+            <input type="checkbox" style="display: none;" id="part02" class="part_checkbox">
+            <label for="part02" class="part p02">
+                <div>
+                    Day<br>02
+                </div>
+            </label>
+            <input type="checkbox" style="display: none;" id="part03" class="part_checkbox">
+            <label for="part03" class="part p03">
+                <div>
+                    Day<br>03
+                </div>
+            </label>
+            <input type="checkbox" style="display: none;" id="part04" class="part_checkbox">
+            <label for="part04" class="part p04">
+                <div>
+                    Day<br>04
+                </div>
+            </label>
+            <input type="checkbox" style="display: none;" id="part05" class="part_checkbox">
+            <label for="part05" class="part p05">
+                <div>
+                    Day<br>05
+                </div>
+            </label>
+            <input type="checkbox" style="display: none;" id="part06" class="part_checkbox">
+            <label for="part06" class="part p06">
+                <div>
+                    Day<br>06
+                </div>
+            </label>
+            <input type="checkbox" style="display: none;" id="part07" class="part_checkbox">
+            <label for="part07" class="part p07">
+                <div>
+                    Day<br>07
+                </div>
+            </label>
+            <input type="checkbox" style="display: none;" id="part08" class="part_checkbox">
+            <label for="part08" class="part p08">
+                <div>
+                    Day<br>08
+                </div>
+            </label>
+            <input type="checkbox" style="display: none;" id="part09" class="part_checkbox">
+            <label for="part09" class="part p09">
+                <div>
+                    Day<br>09
+                </div>
+            </label>
+            <input type="checkbox" style="display: none;" id="part10" class="part_checkbox">
+            <label for="part10" class="part p10">
+                <div>
+                    Day<br>10
+                </div>
+            </label>
         </div>
-        <li id="day21-30" class="label">DAY 21-30</li>
-        <div id="d21-30">
-            <li id="day21" class="part p01" onclick="Selected(this);">
-                <p>DAY 21</p>
-            </li>
-            <li id="day22" class="part p02" onclick="Selected(this);">
-                <p>DAY 22</p>
-            </li>
-            <li id="day23" class="part p03" onclick="Selected(this);">
-                <p>DAY 23</p>
-            </li>
-            <li id="day24" class="part p04" onclick="Selected(this);">
-                <p>DAY 24</p>
-            </li>
-            <li id="day25" class="part p05" onclick="Selected(this);">
-                <p>DAY 25</p>
-            </li>
-            <li id="day26" class="part p06" onclick="Selected(this);">
-                <p>DAY 26</p>
-            </li>
-            <li id="day27" class="part p07" onclick="Selected(this);">
-                <p>DAY 27</p>
-            </li>
-            <li id="day28" class="part p08" onclick="Selected(this);">
-                <p>DAY 28</p>
-            </li>
-            <li id="day29" class="part p09" onclick="Selected(this);">
-                <p>DAY 29</p>
-            </li>
-            <li id="day30" class="part p10" onclick="Selected(this);">
-                <p>DAY 30</p>
-            </li>
+
+        <div id="part11_20" class="box">
+            <div class="list" onclick="Checking_list(this)">
+                <div>
+                    DAY<br>11-20
+                </div>
+            </div>
+
+            <input type="checkbox" style="display: none;" id="part11" class="part_checkbox">
+            <label for="part11" class="part p01">
+                <div>
+                    Day<br>11
+                </div>
+            </label>
+            <input type="checkbox" style="display: none;" id="part12" class="part_checkbox">
+            <label for="part12" class="part p02">
+                <div>
+                    Day<br>12
+                </div>
+            </label>
+            <input type="checkbox" style="display: none;" id="part13" class="part_checkbox">
+            <label for="part13" class="part p03">
+                <div>
+                    Day<br>13
+                </div>
+            </label>
+            <input type="checkbox" style="display: none;" id="part14" class="part_checkbox">
+            <label for="part14" class="part p04">
+                <div>
+                    Day<br>14
+                </div>
+            </label>
+            <input type="checkbox" style="display: none;" id="part15" class="part_checkbox">
+            <label for="part15" class="part p05">
+                <div>
+                    Day<br>15
+                </div>
+            </label>
+            <input type="checkbox" style="display: none;" id="part16" class="part_checkbox">
+            <label for="part16" class="part p06">
+                <div>
+                    Day<br>16
+                </div>
+            </label>
+            <input type="checkbox" style="display: none;" id="part17" class="part_checkbox">
+            <label for="part17" class="part p07">
+                <div>
+                    Day<br>17
+                </div>
+            </label>
+            <input type="checkbox" style="display: none;" id="part18" class="part_checkbox">
+            <label for="part18" class="part p08">
+                <div>
+                    Day<br>18
+                </div>
+            </label>
+            <input type="checkbox" style="display: none;" id="part19" class="part_checkbox">
+            <label for="part19" class="part p09">
+                <div>
+                    Day<br>19
+                </div>
+            </label>
+            <input type="checkbox" style="display: none;" id="part20" class="part_checkbox">
+            <label for="part20" class="part p10">
+                <div>
+                    Day<br>20
+                </div>
+            </label>
         </div>
-        <button style="position:relative; top:50px;width: 100px; height: 30px;" onclick="Enter();">Enter</button>
+
+        <div id="part21_30" class="box">
+            <div class="list" onclick="Checking_list(this)">
+                <div>
+                    DAY<br>21-30
+                </div>
+            </div>
+
+            <input type="checkbox" style="display: none;" id="part21" class="part_checkbox">
+            <label for="part21" class="part p01">
+                <div>
+                    Day<br>21
+                </div>
+            </label>
+            <input type="checkbox" style="display: none;" id="part22" class="part_checkbox">
+            <label for="part22" class="part p02">
+                <div>
+                    Day<br>22
+                </div>
+            </label>
+            <input type="checkbox" style="display: none;" id="part23" class="part_checkbox">
+            <label for="part23" class="part p03">
+                <div>
+                    Day<br>23
+                </div>
+            </label>
+            <input type="checkbox" style="display: none;" id="part24" class="part_checkbox">
+            <label for="part24" class="part p04">
+                <div>
+                    Day<br>24
+                </div>
+            </label>
+            <input type="checkbox" style="display: none;" id="part25" class="part_checkbox">
+            <label for="part25" class="part p05">
+                <div>
+                    Day<br>25
+                </div>
+            </label>
+            <input type="checkbox" style="display: none;" id="part26" class="part_checkbox">
+            <label for="part26" class="part p06">
+                <div>
+                    Day<br>26
+                </div>
+            </label>
+            <input type="checkbox" style="display: none;" id="part27" class="part_checkbox">
+            <label for="part27" class="part p07">
+                <div>
+                    Day<br>27
+                </div>
+            </label>
+            <input type="checkbox" style="display: none;" id="part28" class="part_checkbox">
+            <label for="part28" class="part p08">
+                <div>
+                    Day<br>28
+                </div>
+            </label>
+            <input type="checkbox" style="display: none;" id="part29" class="part_checkbox">
+            <label for="part29" class="part p09">
+                <div>
+                    Day<br>29
+                </div>
+            </label>
+            <input type="checkbox" style="display: none;" id="part30" class="part_checkbox">
+            <label for="part30" class="part p10">
+                <div>
+                    Day<br>30
+                </div>
+            </label>
+        </div>
+
+        <div style="position: absolute; bottom: 10vh; left: 8vh; height: 8vh;">
+            <img src="./src/list.png" style=" width: 4.5vh; position: relative; top: 50%; transform: translateY(-50%);">
+            <span style="font-family: HSGaeulSenggak20; font-size: 2vh; height: 2vh; color: white; position: absolute; top: 50%; left: 7vh; transform: translateY(-50%);">LIST</span>
+        </div>
+        <div style="position: absolute; bottom: 10vh; left: 30vh; height: 8vh;">
+            <img src="./src/enter.png" style="width: 4vh; position: relative; top: 50%; transform: translateY(-50%);">
+            <span style="font-family: HSGaeulSenggak20; font-size: 2vh; height: 2vh; color: white; position: absolute; top: 50%; left: 5vh; transform: translateY(-50%);">START</span>
+        </div>
     </nav>
-    <p id="question-box">아무렇게나 적어보기</p>
-    <input type="text" id="input-answer" onKeypress="javascript:if(event.keyCode==13){Input()}" autocapitalize="off">
 </body>

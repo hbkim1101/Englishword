@@ -1,3 +1,5 @@
+var part_name = "DAY";
+
 var test;
 var Flatform;
 var Q;
@@ -18,18 +20,16 @@ var part_selected = []; lng_selected = "KOREAN";
 var flg;
 var dup = -1;
 var message = '';
-function Selected(e) {
-    if (e.className.split(' ').includes("selected")) {
-        var u = e.className.split(' ');
-        u.pop();
-        e.className = u.join(' ');
-        var idx = part_selected.indexOf(e.id);
-        part_selected.splice(idx, 1);
+
+function Selected(ID, T) {
+    ID = part_name + ID.slice(4);
+    if (T == true) {
+        part_selected.push(ID);
+        part_selected.sort();
     }
     else {
-        e.className += " selected";
-        part_selected.push(e.id);
-        part_selected.sort();
+        var idx = part_selected.indexOf(ID);
+        part_selected.splice(idx, 1);
     }
 }
 
@@ -40,15 +40,14 @@ function Enter() {
 
     var not_Uld = [];
     for (p of part_selected) {
-        var s = "DAY" + p.slice(3);
-        if (document.getElementById(s) === null) {
+        if (document.getElementById(p) === null) {
             not_Uld.push(p);
         }
     }
     if (not_Uld.length !== 0) {
         var not_uploaded = '※아직 업로드되지 않았습니다.※\n\n';
         for (n of not_Uld) {
-            not_uploaded += 'DAY ' + n.slice(3) + ', ';
+            not_uploaded += part_name + ' ' + n.slice(part_name.length) + ', ';
             var idx = part_selected.indexOf(n);
             part_selected.splice(idx, 1);
         }
@@ -58,8 +57,7 @@ function Enter() {
     }
     var Text = '';
     for (p of part_selected) {
-        var src = "DAY" + p.slice(3);
-        Text += document.getElementById(src).contentDocument.getElementsByTagName("pre")[0].innerText;
+        Text += document.getElementById(p).contentDocument.getElementsByTagName("pre")[0].innerText;
     }
     Build_list(Text);
     Q = K.slice();
@@ -178,7 +176,7 @@ function Manufact_K(Text) {
             pre[c].push(U);
             break;
         }
-        else if ((Text[a] === '[') && (['[명]', '[형]', '[동]', '[부]'].includes(Text.slice(a, a + 3)))) {
+        else if ((Text[a] === '[') && (['[명]', '[형]', '[동]', '[부]', '[전]'].includes(Text.slice(a, a + 3)))) {
             if (U !== '') {
                 pre[c].push(U.slice(0, U.length - 1));
                 U = '';
@@ -192,6 +190,7 @@ function Manufact_K(Text) {
             U = '';
             a++;
             c += 1;
+
             pre.push([]);
         }
         else if (Text[a] === ',' && b === 0) {

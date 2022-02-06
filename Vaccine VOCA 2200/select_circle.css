@@ -1,0 +1,146 @@
+.box{
+    position: absolute;
+    width: 15vh;
+    height: 15vh;
+    border-radius: 100%;
+    z-index: 0;
+}
+.list{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+
+    width: 15vh;
+    height: 15vh;
+    border-radius: 100%;
+    z-index: 2;
+    background-color: rgb(255, 255, 255);
+
+    transition: 0.2s;
+}
+.list > div{
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    
+    width: 10vh;
+
+    text-align: center;
+    font-weight: 700;
+    font-size: 2.4vh;
+
+    transition: 0.2s;
+}
+
+.part{
+    position: absolute;
+    top: 5.5vh;
+    left: 5.5vh;
+    z-index:1;
+
+    width: 4vh;
+    height: 4vh;
+    border: 1px solid;
+    border-radius: 100%;
+}
+
+.part > div{
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    
+    width: 10vh;
+
+    text-align: center;
+    font-weight: 700;
+    font-size: 1.2vh;
+
+    transition: 0.2s;
+
+}
+
+
+
+.box:hover{
+    width: 23vh;
+    height: 23vh;
+
+    transform: translate(-4vh, -4vh);
+
+}
+
+.box:hover .list{
+    width: 7.5vh;
+    height: 7.5vh;
+    background-color: rgb(150, 150, 201);
+
+    transition: 0.5s;
+}
+.box:hover .list div{
+    font-weight: 600;
+    font-size: 2vh;
+
+    transition: 0.5s;
+}
+
+.box:hover .part{
+    top: 9.5vh;
+    left: 9.5vh;
+    transition-property: top, left;
+    transition-duration: 0s, 0s;
+}
+
+.box:hover .p01{
+    transition: transform 0.2s;
+    transform: translate(-7.608vh, -2.472vh);
+}
+.box:hover .p02{
+    transition: transform 0.2s 0.05s;
+    transform: translate(-4.702vh, -6.472vh);
+}
+.box:hover .p03{
+    transition: transform 0.2s 0.095s;
+    transform: translate(0, -8vh);
+}
+.box:hover .p04{
+    transition: transform 0.2s 0.135s;
+    transform: translate(4.702vh, -6.472vh);
+}
+.box:hover .p05{
+    transition: transform 0.2s 0.17s;
+    transform: translate(7.608vh ,-2.472vh);
+}
+.box:hover .p06{
+    transition: transform 0.2s 0.2s;
+    transform: translate(7.608vh, 2.472vh);
+}
+.box:hover .p07{
+    transition: transform 0.2s 0.225s;
+    transform: translate(4.702vh, 6.472vh);
+}
+.box:hover .p08{
+    transition: transform 0.2s 0.245s;
+    transform: translate(0, 8vh);
+}
+.box:hover .p09{
+    transition: transform 0.2s 0.26s;
+    transform: translate(-4.702vh, 6.472vh);
+}
+.box:hover .p10{
+    transition: transform 0.2s 0.27s;
+    transform: translate(-7.608vh, 2.472vh);
+}
+
+.part:hover{
+    background-color: blueviolet;
+}
+
+.part_checkbox:checked + .part{
+    background-color: rgb(125, 68, 68);
+}
+.part_checkbox:checked + .part:hover{
+    background-color: rgb(217, 191, 241);
+}

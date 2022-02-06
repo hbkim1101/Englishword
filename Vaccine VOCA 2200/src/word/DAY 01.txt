@@ -11,7 +11,7 @@ muscle
 diminish
 [동] 줄다, 감소하다
 contemporary
-[형] 현대의, 동시대의
+[형] 현대의, 동시대의 [명] 동시대 사람
 marine
 [형] 바다의, 해양의
 diverse
@@ -21,7 +21,7 @@ abundance
 auction
 [명] 경매 [동] 경매로 팔다
 disobedient
-[형] 반항하는, 순종하지 않는
+[형] 반항하는, 거역하는, 순종하지 않는
 citation
 [명] 표창, 인용, 인용문
 counterproductive
@@ -31,7 +31,7 @@ prohibition
 paradox
 [명] 역설, 역설적인 것
 stem
-[동] (~에서) 비롯되다, 생기다
+[동] (~에서) 비롯되다, 생기다, 유래하다 [명] (식물의) 줄기, (말의) 어간
 continuum
 [명] 연속체
 activate
@@ -43,9 +43,9 @@ fraction
 hollow
 [형] (속이) 빈, 공허한 [명] 움푹 꺼진 곳
 undermine
-[동] 약화시키다, 훼손하다
+[동] 약화시키다, ~의 밑을 파다, 훼손하다
 locate
-[동] ~의 정확한 위치를 찾아내다
+[동] (특정 위치에) 두다, ~의 정확한 위치를 찾아내다[알아내다]
 demolition
 [명] 파괴, 폭파, 해체
 superiority
@@ -63,9 +63,9 @@ compelling
 invention
 [명] 발명, 발명품
 supplement
-[명] 보충[추가](물), 보충제
+[명] 보충[추가](물), 보충제, 부록 [동] 부가하다, 보완하다
 cultivate
-[동] 재배하다, (세균을) 배양하다
+[동] 기르다, 경작하다, 재배하다, (세균을) 배양하다
 misfortune
 [명] 불운, 불행
 omission
@@ -87,7 +87,7 @@ dilute
 forefather
 [명] 조상, 선조
 illuminate
-[동] (~에 불을) 비추다, 설명하다
+[동] (~에 불을) 비추다, (이해하기 쉽게) 밝히다, 설명하다
 asset
 [명] 자산, 재산
 objective
