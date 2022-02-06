@@ -81,6 +81,7 @@
         
     </style>
     <script>
+<<<<<<< HEAD
         var test;
         function Checking_list(This) {
             var List_part = $(This).parents(".box").find(".part_checkbox");
@@ -93,6 +94,12 @@
                     $(lc).prop("checked", true);
                     Selected($(lc).attr("id"), true);
                 }
+=======
+        for (var i = 1; i < 12; i++) {
+            var part;
+            if (i < 10) {
+                part = "DAY 0" + i;
+>>>>>>> 649f1dd71943e57b143c40b584b2d9cb5219f861
             }
             if (T == List_part.length){
                 for (lc of List_part){
@@ -339,4 +346,10 @@
             <span style="font-family: HSGaeulSenggak20; font-size: 2vh; height: 2vh; color: white; position: absolute; top: 50%; left: 5vh; transform: translateY(-50%);">START</span>
         </div>
     </nav>
+<<<<<<< HEAD
 </body>
+=======
+    <p id="question-box">아무렇게나 적어보기</p>
+    <input type="text" id="input-answer" onKeypress="javascript:if(event.keyCode==13){Input()}" autocapitalize="off">
+</body>
+>>>>>>> 649f1dd71943e57b143c40b584b2d9cb5219f861
