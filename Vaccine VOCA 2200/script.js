@@ -23,6 +23,20 @@ var flg;
 var dup = -1;
 var message = '';
 
+var tst = 0;
+function test(){
+    if (tst == 0){
+        $('#test').css("top","40vh");
+        $('#test').css("transform", "scale(1)");
+        tst = 1;
+    }
+    else{
+        $('#test').css("top",'');
+        $('#test').css("transform", '');
+        tst = 0;
+    }
+}
+
 function Selected(ID, T) {
     ID = ID.slice(0,4) +'_' + ID.slice(4);
     if (T == true) {
@@ -53,7 +67,7 @@ function START() {
             var idx = part_selected.indexOf(n);
             part_selected.splice(idx, 1);
             $('#'+n.replace('_', '')).prop("checked", false);
-            $('#'+n.replace('_', '')).next().css("background-color","rgb(255,255,255,0)");
+            $('#'+n.replace('_', '')).next().css("background",'');
         }
         not_uploaded = not_uploaded.slice(0, not_uploaded.length - 2)
 
