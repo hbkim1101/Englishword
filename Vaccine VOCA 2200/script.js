@@ -8,6 +8,8 @@ var R = [];
 var R_dup = {};
 var question, answer, answer_T
 var score = 0, init_score, skip_count;
+var level;
+var opportunity;
 var K = [];
 var E = [];
 var A = {};
@@ -24,15 +26,29 @@ var dup = -1;
 var message = '';
 
 var tst = 0;
-function test(){
+function Option(){
     if (tst == 0){
-        $('#test').css("top","40vh");
-        $('#test').css("transform", "scale(1)");
+        $('#option_window').css("top","40vh");
+        $('#option_window').css("transform", "scale(1)");
+        $('#option_window').css("transition", "0.5s");
+        $('#option_window').children('table').css("opacity", "1");
+        $('#option_window').children('table').css("transition", "0.2s");
+        $('#option').css("opacity", 0);
+        $('#option').css("transition", "0.2s");
+        $('#close').css("opacity", 1);
+        $('#close').css("transition", "1s");
         tst = 1;
     }
     else{
-        $('#test').css("top",'');
-        $('#test').css("transform", '');
+        $('#option_window').css("top",'');
+        $('#option_window').css("transform", '');
+        $('#option_window').css("transition", '');
+        $('#option_window').children('table').css("opacity", '');
+        $('#option_window').children('table').css("transition", '');
+        $('#option').css("opacity", '');
+        $('#option').css("transition", '');
+        $('#close').css("opacity", '');
+        $('#close').css("transition", '');
         tst = 0;
     }
 }
@@ -501,13 +517,13 @@ function Input() {
                         T = false;
                     }
                 }
-                if ((T == true) && (false)){
+                if ((T == true) && (level <= 1)){
                     Success();
                 }
 
                 document.getElementById("input-answer").value = '';
                 oprt += 1;
-                if (oprt === 3) {
+                if (oprt == opportunity) {
                     message += "\n\n3번 모두 실패하셨습니다.";
                     alert(message);
                     return Skip();

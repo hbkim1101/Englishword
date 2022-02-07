@@ -47,14 +47,6 @@
     border-radius: 100%;
 }
 
-#part01_10 .p01, .p03, .p05, .p07, .p09{
-    background: radial-gradient( rgba(131, 177, 223, 0.782) 55%, rgba(255, 255, 255, 0));
-}
-
-#part01_10 .p02, .p04, .p06, .p08, .p10{
-    background: radial-gradient( rgba(184, 184, 184, 0.782) 55%, rgba(255, 255, 255, 0));
-}
-
 .part > div{
     position: absolute;
     top: 50%;
@@ -78,8 +70,8 @@ div.range{
     left: 50%;
     transform: translate(-50%, -50%);
 
-    width: 3vh;
-    height: 3vh;
+    width: 4vh;
+    height: 4vh;
     z-index: 3;
 
     cursor: pointer;
@@ -115,6 +107,15 @@ div.range{
     transition-duration: 0s, 0s;
 }
 
+#part01_10 .part{
+    color: rgb(206, 202, 255);
+}
+#part11_20 .part{
+    color: rgb(148, 143, 193);
+}
+#part21_30 .part{
+    color: rgb(130, 124, 174);
+}
 
 .box:hover .p01{
     transition: transform 0.2s;
