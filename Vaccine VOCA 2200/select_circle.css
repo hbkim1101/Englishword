@@ -16,6 +16,8 @@
     border-radius: 100%;
     z-index: 2;
     background-color: rgb(255, 255, 255);
+    
+    cursor: pointer;
 
     transition: 0.2s;
 }
@@ -47,12 +49,13 @@
 }
 
 .part > div{
-    position: relative;
+    position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%,-50%);
     
     width: 10vh;
+    z-index: 2;
 
     text-align: center;
     font-weight: 700;
@@ -62,6 +65,18 @@
 
 }
 
+div.range{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    width: 3vh;
+    height: 3vh;
+    z-index: 3;
+
+    cursor: pointer;
+}
 
 
 .box:hover{
@@ -132,15 +147,4 @@
 .box:hover .p10{
     transition: transform 0.2s 0.27s;
     transform: translate(-7.608vh, 2.472vh);
-}
-
-.part:hover{
-    background-color: blueviolet;
-}
-
-.part_checkbox:checked + .part{
-    background-color: rgb(125, 68, 68);
-}
-.part_checkbox:checked + .part:hover{
-    background-color: rgb(217, 191, 241);
 }

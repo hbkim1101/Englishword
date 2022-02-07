@@ -6,12 +6,14 @@ var Q;
 var Q_dup;
 var R = [];
 var R_dup = {};
-var question, answer, answer_stn
+var question, answer, answer_T
 var score = 0, init_score, skip_count;
 var K = [];
 var E = [];
+var A = {};
 var D = {};
 var K_E = {};
+var E_K = {};
 var K_ans = {};
 var E_ans = {};
 var S = {};
@@ -22,7 +24,7 @@ var dup = -1;
 var message = '';
 
 function Selected(ID, T) {
-    ID = part_name + ID.slice(4);
+    ID = ID.slice(0,4) +'_' + ID.slice(4);
     if (T == true) {
         part_selected.push(ID);
         part_selected.sort();
@@ -33,7 +35,7 @@ function Selected(ID, T) {
     }
 }
 
-function Enter() {
+function START() {
     document.getElementById("question-box").innerHTML = '';
     document.getElementById("input-answer").value = '';
     document.getElementById("input-answer").placeholder = '';
@@ -47,9 +49,11 @@ function Enter() {
     if (not_Uld.length !== 0) {
         var not_uploaded = '※아직 업로드되지 않았습니다.※\n\n';
         for (n of not_Uld) {
-            not_uploaded += part_name + ' ' + n.slice(part_name.length) + ', ';
+            not_uploaded += part_name + ' ' + n.slice(5) + ', ';
             var idx = part_selected.indexOf(n);
             part_selected.splice(idx, 1);
+            $('#'+n.replace('_', '')).prop("checked", false);
+            $('#'+n.replace('_', '')).next().css("background-color","rgb(255,255,255,0)");
         }
         not_uploaded = not_uploaded.slice(0, not_uploaded.length - 2)
 
@@ -60,10 +64,13 @@ function Enter() {
         Text += document.getElementById(p).contentDocument.getElementsByTagName("pre")[0].innerText;
     }
     Build_list(Text);
-    Q = K.slice();
+    if (lng_selected=="KOREAN"){
+        Q = Object.keys(A).slice();
+    }
+    /*
     Q_dup = { ...D };
     R = [];
-    R_dup = {};
+    R_dup = {};*/
     score = 0;
     init_score = Q.length;
     skip_count = 0;
@@ -105,12 +112,21 @@ function Build_list(Text) {
             else {
                 K_E[f] = pf;
             }
+
+            if (pf in E_K) {
+                E_K[pf] = E_K[pf] + ' ' +f;
+                console.log(pf);
+            }
+            else{
+                E_K[pf] =f;
+            }
             ln = 'E';
             if (lng_selected === "KOREAN") {
-                K_ans[f] = Manufact_K(f);
+                /*K_ans[f] = Manufact_K(f);*/
+                Manufact1(pf, E_K[pf]);
             }
         }
-    }
+    }/*
     var a = 0;
     while (true) {
         if (a >= Object.keys(D).length) {
@@ -161,96 +177,105 @@ function Build_list(Text) {
         }
         D[d] = K_E[d];
         a++;
+    }*/
+}
+
+function Manufact1(eng, kor){
+    A[eng]={};
+    var i = 0;
+    var j = 0;
+    var lbl = '';
+    var sts = 0;
+    var text = '';
+    var U = [[]];
+
+    while (true){
+        if (i >= kor.length){
+            U[j].push(text);
+            Manufact2(U);
+            A[eng][lbl] = U;
+            break
+        }
+        else if ((kor[i] == '[') && (['[명]', '[동]', '[형]', '[부]', '[전]', '[구]'].includes(kor.slice(i, i + 3)))){
+            if (lbl.length != 0){
+                U[j].push(text.slice(0,text.length-1));
+                text = '';
+                Manufact2(U);
+                A[eng][lbl] = U;
+                U=[[]];
+            }
+
+            lbl = kor.slice(i, i + 3);
+            i += 3;
+        }
+        else if (kor[1] == ';') {
+            U[j].push(text);
+            text = '';
+            i++;
+
+            U.push([]);
+            j++;
+        }
+        else if ((kor[i] == ',') && (sts == 0)) {
+            U[j].push(text);
+            text = '';
+            i++;
+        }
+        else {
+            text += kor[i];
+            if ((kor[i] == '(') || (kor[i] == '[')) {
+                sts = 1;
+            }
+            else if ((kor[i] == ')') || (kor[i] == ']')) {
+                sts = 0;
+            }
+        }
+        i++;
     }
 }
 
-function Manufact_K(Text) {
-    var pre = [[]];
-    var result;
-    var U = '';
-    var a = 0;
-    var b = 0;
-    var c = 0;
-    while (true) {
-        if (a >= Text.length) {
-            pre[c].push(U);
-            break;
-        }
-        else if ((Text[a] === '[') && (['[명]', '[형]', '[동]', '[부]', '[전]'].includes(Text.slice(a, a + 3)))) {
-            if (U !== '') {
-                pre[c].push(U.slice(0, U.length - 1));
-                U = '';
-                c += 1;
-                pre.push([]);
-            }
-            a += 3;
-        }
-        else if (Text[a] === ';') {
-            pre[c].push(U);
-            U = '';
-            a++;
-            c += 1;
-
-            pre.push([]);
-        }
-        else if (Text[a] === ',' && b === 0) {
-            pre[c].push(U);
-            U = '';
-            a++;
-        }
-        else {
-            if (Text[a] === '(' || Text[a] === '[') {
-                b = 1;
-            }
-            else if (Text[a] === ')' || Text[a] === ']') {
-                b = 0;
-            }
-            U += Text[a];
-        }
-        a++;
-    }
-    result = pre;
-    for (k = 0; k < result.length; k++) {
+function Manufact2(L){
+    for (k = 0; k < L.length; k++) {
         var t = 0;
-        while (t !== result[k].length) {
-            var T = result[k][t]
+        while (t !== L[k].length) {
+            var T = L[k][t]
             var con = { '()': [], '[]': [] };
             var r1, r2, r3, r4;
 
             var i = 0;
             var f;
             for (f of T) {
-                if (f === '(' || f === ')') {
+                if (f == '(' || f == ')') {
                     con['()'].push(i);
                 }
-                else if (f === '[' || f === ']') {
+                else if (f == '[' || f == ']') {
                     con['[]'].push(i);
                 }
                 i++;
             }
-            if (con['()'].length !== 0) {
+            if (con['()'].length != 0) {
                 r1 = T.substring(0, con['()'][0]);
                 r2 = T.substring(con['()'][1] + 1);
                 r3 = r1 + T.substring(con['()'][0] + 1, con['()'][1]) + r2;
-                if (con['()'][0] - 1 >= 0 && T[con['()'][0] - 1] === ' ') {
+                if (con['()'][0] - 1 >= 0 && T[con['()'][0] - 1] == ' ') {
                     r1 = r1.substring(0, r1.length - 1);
                 }
-                else if (con['()'][1] + 1 < T.length && T[con['()'][1] + 1] === ' ') {
+                else if (con['()'][1] + 1 < T.length && T[con['()'][1] + 1] == ' ') {
                     r2 = r2.substring(1);
                 }
                 r4 = r1 + r2;
-                result[k].push(r3);
-                result[k].push(r4);
-                result[k].shift();
+                L[k].push(r3);
+                L[k].push(r4);
+                L[k].shift();
                 continue;
             }
 
-            if (con['[]'].length !== 0) {
+            if (con['[]'].length != 0) {
                 var j = con['[]'][0];
                 while (true) {
                     j--;
-                    if (T[j] === ' ' || j === 0) {
-                        if (j === 0) {
+                    if (T[j] == ' ' || j == 0) {
+                        if (j == 0) {
                             j--;
                         }
                         break;
@@ -260,40 +285,13 @@ function Manufact_K(Text) {
                 r2 = T.substring(con['[]'][1] + 1);
                 r3 = r1 + T.substring(j + 1, con['[]'][0]) + r2;
                 r4 = r1 + T.substring(con['[]'][0] + 1, con['[]'][1]) + r2;
-                result[k].push(r3);
-                result[k].push(r4);
-                result[k].shift();
+                L[k].push(r3);
+                L[k].push(r4);
+                L[k].shift();
                 t--;
             }
             t++;
         }
-    }
-    return result;
-}
-
-function Manufact_E(Text) {
-    var U = '';
-    var con = [];
-    var i = 0;
-    for (f of Text) {
-        if (f === "~") {
-            con.push([i, 1]);
-        }
-        else if (f === "." && Text.substring(i, i + 3) === "...") {
-            con.push([i, 3]);
-        }
-        i++;
-    }
-    if (con.length !== 0) {
-        var j = 0;
-        for (c of con) {
-            U += Text.substring(j, c[0] - 1);
-            j = c[0] + c[1];
-        }
-        return [Text, U];
-    }
-    else {
-        return [Text];
     }
 }
 
@@ -308,6 +306,15 @@ function Indexof(str, searchvalue) {
         i++;
     }
     return result;
+}
+function list_Count(list,value){
+    var count = 0;
+    for(var i=0; i < list.length; i++) {
+        if(list[i] === value){
+          count++;
+        }
+    }
+    return count;
 }
 
 function Question() {
@@ -334,8 +341,20 @@ function Question() {
         document.getElementById("input-answer").focus();
     }
     else if (lng_selected === "KOREAN") {
-        question = K_E[Q[0]];
-        answer = Q[0];
+        question = Q[0];
+        answer = A[Q[0]];
+        answer_T = {};
+        for (a of Object.keys(answer)){
+            var u = [];
+            for (a_i of answer[a]){
+                var u_i = [];
+                for (i of a_i){
+                    u_i.push(0);
+                }
+                u.push(u_i)
+            }
+            answer_T[a]=u;
+        }
         console.log(answer);
         document.getElementById("question-box").innerHTML = question;
         document.getElementById("input-answer").value = '';
@@ -409,53 +428,77 @@ function Input() {
         }
         else if (lng_selected === "KOREAN") {
             ans = ans.split(/, |,/);
-            var A_T = [];
-            for (k of K_ans[answer]) {
-                A_T.push(Array(k.length).fill(0));
-            }
-            var T = true;
+            T = true;
             for (ans_i of ans) {
-                var i = 0;
                 var t = false;
-                for (A of K_ans[answer]) {
-                    for (a = 0; a < A.length; a++) {
-                        if (ans_i === A[a]) {
-                            A_T[i][a] = 1;
-                            t = true;
+                for (a of Object.keys(answer)) {
+                    for (a_i = 0; a_i < answer[a].length; a_i++) {
+                        for (j = 0; j < answer[a][a_i].length; j++){
+                            if (ans_i === answer[a][a_i][j]) {
+                                answer_T[a][a_i][j] = 1;
+                                t = true;
+                                break;
+                            }
+                        }
+                        if (t === true) {
                             break;
                         }
                     }
                     if (t === true) {
                         break;
                     }
-                    i++;
                 }
                 if (t === false) {
                     T = false;
                 }
             }
-            var scr = 0;
-            for (a_t of A_T) {
-                if (a_t.includes(1)) {
-                    scr += 1;
+            var scr = true;
+            var T_list = {};
+            for (a_T of Object.keys(answer_T)) {
+                var u = [];
+                for (a_t of answer_T[a_T]){
+                    if (a_t.includes(1) == 0){
+                        scr = false;
+                        u.push(false);
+                    }
+                    else{
+                        u.push(true);
+                    }
                 }
+                T_list[a_T]=u;
             }
-            if (T === true && scr === K_ans[answer].length) {
+            console.log(T, scr);
+            console.log(T_list);
+            if (T === true && scr === true) {
                 Success()
             }
             else {
                 W_a.push(ans);
+                var T = true;
+
+                message = "오답입니다.\n\n 맞은 개수 / 전체 개수"
+                for (t of Object.keys(T_list)){
+                    var n_max = 0;
+                    for (a  of answer[t]){
+                        n_max += a.length;
+                    }
+                    message += '\n' + t + ":  " + list_Count(T_list[t], true) + " / " + T_list[t].length + '(' + n_max + ')';
+                    if (T_list[t].includes(true) == 0){
+                        T = false;
+                    }
+                }
+                if ((T == true) && (false)){
+                    Success();
+                }
+
                 document.getElementById("input-answer").value = '';
                 oprt += 1;
                 if (oprt === 3) {
-                    alert("오답입니다.\n\n3번 모두 실패하셨습니다.");
+                    message += "\n\n3번 모두 실패하셨습니다.";
+                    alert(message);
                     return Skip();
                 }
                 else {
-                    message = "오답입니다."
-                    if (K_ans[answer].length >= 2) {
-                        message += "\n\n전체 개수: " + K_ans[answer].length + "\n맞은 개수: " + scr;
-                    }
                     message += "\n\n남은 기회: " + (3 - oprt);
                     alert(message);
                 }
@@ -470,7 +513,7 @@ function Success() {
         message += answer[0];
     }
     else if (lng_selected === "KOREAN") {
-        message += answer;
+        message += E_K[Q[0]];
     }
     message += "\n\n정답입니다!";
     alert(message);
@@ -529,7 +572,7 @@ function Skip() {
         alert("정답: " + answer[0]);
     }
     else if (lng_selected === "KOREAN") {
-        alert("정답: " + answer);
+        alert("정답: " + E_K[Q[0]]);
     }
     oprt = 0;
     hint = 0;

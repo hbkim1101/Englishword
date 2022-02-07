@@ -2,22 +2,25 @@
 
 <head>
     <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="./script.js"></script>
     <script>
         for (var i = 1; i < 3; i++) {
+            var id;
             var part;
             if (i < 10) {
-                part = "DAY 0" + i;
+                id = "part_0" + i;
+                part = part_name + " 0" + i;
             }
             else {
-                part = "DAY " + i;
+                id = "part_" + i;
+                part = part_name + " " + i;
             }
             var file_word = document.createElement("iframe");
-            file_word.id = part.replace(' ', '');
+            file_word.id = id;
             file_word.src = "src/word/" + part + ".txt";
             document.getElementsByTagName("head")[0].append(file_word);
         }
     </script>
-    <script type="text/javascript" src="./script.js"></script>
     <link href="select_circle.css" rel="stylesheet">
     <style>
         @font-face {
@@ -54,7 +57,7 @@
         #part01_10{
             position: absolute;
             top: 30vh;
-            left: 8vh;
+            left: 6vh;
         }
         #part01_10 .list{
             background: radial-gradient( rgb(62, 121, 174) 55%, rgba(255, 255, 255, 0));
@@ -62,7 +65,7 @@
 
         #part11_20{
             position: absolute;
-            top: 45vh;
+            top: 44vh;
             left: 27vh;
         }
         #part11_20 .list{
@@ -78,6 +81,35 @@
             background: radial-gradient( rgb(10, 85, 160) 55%, rgba(255, 255, 255, 0));
         }
 
+
+
+        #question-box{
+            position:fixed;
+            top: 35%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+
+            width: 60vh;
+            min-height: 6vh;
+            border: 1px solid white;
+            
+            color: white;
+            font-size: 4vh;
+            text-align: center;
+        }
+
+        #input-answer{
+            position:fixed;
+            top: 55%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+
+            width: 50vh;
+            height: 5vh;
+
+            font-size: 3vh;
+            text-align: center;
+        }
         
     </style>
     <script>
@@ -91,31 +123,64 @@
                 }
                 else{
                     $(lc).prop("checked", true);
+                    $(lc).next().css("background-color","rgb(125, 68, 68)");
                     Selected($(lc).attr("id"), true);
                 }
             }
             if (T == List_part.length){
                 for (lc of List_part){
                     $(lc).prop("checked", false);
+                    $(lc).next().css("background-color","rgb(255,255,255,0)");
                     Selected($(lc).attr("id"), false);
                 }
             }
         }
         $(document).ready(function(){
-            $(".p_checkbox").change(function(e){
-                if($(e.target).is(":checked")){
-                    Selected(e.target.id, true);
+            
+            $(".range").hover(function(e){
+                var id = '#' + $(e.target).parents(".part").attr("for");
+                var label = $(e.target).parents(".part");
+                console.log($(id).prop("checked"));
+                if ($(id).prop("checked")){
+                    label.css("background-color", "rgb(217, 191, 241)");
                 }
                 else{
-                    Selected(e.target.id, false);
+                    console.log('babo');
+                    label.css("background-color","blueviolet");
+                }
+            }, function(e){
+                var id = '#' + $(e.target).parents(".part").attr("for");
+                var label = $(e.target).parents(".part");
+                if ($(id).prop("checked")){
+                    label.css("background-color","rgb(125, 68, 68)");
+                }
+                else{
+                    label.css("background-color","rgb(255,255,255,0)");
+                }
+            });
+            
+            $(".range").click(function(e){
+                var id = '#' + $(e.target).parents(".part").attr("for");
+                console.log($(id));
+                console.log($(id).prop("checked"));
+                if ($(id).prop("checked")){
+                    $(id).prop("checked", false);
+                    $(e.target).parents(".part").css("background-color","blueviolet");
+                    Selected($(id).attr("id"), false);
+                }
+                else{
+                    console.log(false);
+                    $(id).prop("checked", true);
+                    $(e.target).parents(".part").css("background-color","rgb(217, 191, 241)");
+                    Selected($(id).attr("id"), true);
                 }
             })
-        })
+        });
     </script>
 </head>
 
 <body>
-    <nav>
+    <nav style="width: 48vh; height: inherit;">
         <div id="theme">
             <div style="position: absolute; top:2.5vh; left:1vh;">
                 <img src="./src/title.png" style="height:10vh;width:14vh;vertical-align: middle;">
@@ -130,62 +195,72 @@
                 </div>
             </div>
 
-            <input type="checkbox" style="display: none;" id="part01" class="part_checkbox">
+            <input type="checkbox" style="display: none;" id="part01" class="part_checkbox" disabled="disabled">
             <label for="part01" class="part p01">
+                <div class="range"></div>
                 <div>
                     Day<br>01
                 </div>
             </label>
-            <input type="checkbox" style="display: none;" id="part02" class="part_checkbox">
+            <input type="checkbox" style="display: none;" id="part02" class="part_checkbox" disabled="disabled">
             <label for="part02" class="part p02">
+                <div class="range"></div>
                 <div>
                     Day<br>02
                 </div>
             </label>
-            <input type="checkbox" style="display: none;" id="part03" class="part_checkbox">
+            <input type="checkbox" style="display: none;" id="part03" class="part_checkbox" disabled="disabled">
             <label for="part03" class="part p03">
+                <div class="range"></div>
                 <div>
                     Day<br>03
                 </div>
             </label>
-            <input type="checkbox" style="display: none;" id="part04" class="part_checkbox">
+            <input type="checkbox" style="display: none;" id="part04" class="part_checkbox" disabled="disabled">
             <label for="part04" class="part p04">
+                <div class="range"></div>
                 <div>
                     Day<br>04
                 </div>
             </label>
-            <input type="checkbox" style="display: none;" id="part05" class="part_checkbox">
+            <input type="checkbox" style="display: none;" id="part05" class="part_checkbox" disabled="disabled">
             <label for="part05" class="part p05">
+                <div class="range"></div>
                 <div>
                     Day<br>05
                 </div>
             </label>
-            <input type="checkbox" style="display: none;" id="part06" class="part_checkbox">
+            <input type="checkbox" style="display: none;" id="part06" class="part_checkbox" disabled="disabled">
             <label for="part06" class="part p06">
+                <div class="range"></div>
                 <div>
                     Day<br>06
                 </div>
             </label>
-            <input type="checkbox" style="display: none;" id="part07" class="part_checkbox">
+            <input type="checkbox" style="display: none;" id="part07" class="part_checkbox" disabled="disabled">
             <label for="part07" class="part p07">
+                <div class="range"></div>
                 <div>
                     Day<br>07
                 </div>
             </label>
-            <input type="checkbox" style="display: none;" id="part08" class="part_checkbox">
+            <input type="checkbox" style="display: none;" id="part08" class="part_checkbox" disabled="disabled">
             <label for="part08" class="part p08">
+                <div class="range"></div>
                 <div>
                     Day<br>08
                 </div>
             </label>
-            <input type="checkbox" style="display: none;" id="part09" class="part_checkbox">
+            <input type="checkbox" style="display: none;" id="part09" class="part_checkbox" disabled="disabled">
             <label for="part09" class="part p09">
+                <div class="range"></div>
                 <div>
                     Day<br>09
                 </div>
             </label>
-            <input type="checkbox" style="display: none;" id="part10" class="part_checkbox">
+            <input type="checkbox" style="display: none;" id="part10" class="part_checkbox" disabled="disabled">
             <label for="part10" class="part p10">
+                <div class="range"></div>
                 <div>
                     Day<br>10
                 </div>
@@ -199,62 +274,72 @@
                 </div>
             </div>
 
-            <input type="checkbox" style="display: none;" id="part11" class="part_checkbox">
+            <input type="checkbox" style="display: none;" id="part11" class="part_checkbox" disabled="disabled">
             <label for="part11" class="part p01">
+                <div class="range"></div>
                 <div>
                     Day<br>11
                 </div>
             </label>
-            <input type="checkbox" style="display: none;" id="part12" class="part_checkbox">
+            <input type="checkbox" style="display: none;" id="part12" class="part_checkbox" disabled="disabled">
             <label for="part12" class="part p02">
+                <div class="range"></div>
                 <div>
                     Day<br>12
                 </div>
             </label>
-            <input type="checkbox" style="display: none;" id="part13" class="part_checkbox">
+            <input type="checkbox" style="display: none;" id="part13" class="part_checkbox" disabled="disabled">
             <label for="part13" class="part p03">
+                <div class="range"></div>
                 <div>
                     Day<br>13
                 </div>
             </label>
-            <input type="checkbox" style="display: none;" id="part14" class="part_checkbox">
+            <input type="checkbox" style="display: none;" id="part14" class="part_checkbox" disabled="disabled">
             <label for="part14" class="part p04">
+                <div class="range"></div>
                 <div>
                     Day<br>14
                 </div>
             </label>
-            <input type="checkbox" style="display: none;" id="part15" class="part_checkbox">
+            <input type="checkbox" style="display: none;" id="part15" class="part_checkbox" disabled="disabled">
             <label for="part15" class="part p05">
+                <div class="range"></div>
                 <div>
                     Day<br>15
                 </div>
             </label>
-            <input type="checkbox" style="display: none;" id="part16" class="part_checkbox">
+            <input type="checkbox" style="display: none;" id="part16" class="part_checkbox" disabled="disabled">
             <label for="part16" class="part p06">
+                <div class="range"></div>
                 <div>
                     Day<br>16
                 </div>
             </label>
-            <input type="checkbox" style="display: none;" id="part17" class="part_checkbox">
+            <input type="checkbox" style="display: none;" id="part17" class="part_checkbox" disabled="disabled">
             <label for="part17" class="part p07">
+                <div class="range"></div>
                 <div>
                     Day<br>17
                 </div>
             </label>
-            <input type="checkbox" style="display: none;" id="part18" class="part_checkbox">
+            <input type="checkbox" style="display: none;" id="part18" class="part_checkbox" disabled="disabled">
             <label for="part18" class="part p08">
+                <div class="range"></div>
                 <div>
                     Day<br>18
                 </div>
             </label>
-            <input type="checkbox" style="display: none;" id="part19" class="part_checkbox">
+            <input type="checkbox" style="display: none;" id="part19" class="part_checkbox" disabled="disabled">
             <label for="part19" class="part p09">
+                <div class="range"></div>
                 <div>
                     Day<br>19
                 </div>
             </label>
-            <input type="checkbox" style="display: none;" id="part20" class="part_checkbox">
+            <input type="checkbox" style="display: none;" id="part20" class="part_checkbox" disabled="disabled">
             <label for="part20" class="part p10">
+                <div class="range"></div>
                 <div>
                     Day<br>20
                 </div>
@@ -268,75 +353,91 @@
                 </div>
             </div>
 
-            <input type="checkbox" style="display: none;" id="part21" class="part_checkbox">
+            <input type="checkbox" style="display: none;" id="part21" class="part_checkbox" disabled="disabled">
             <label for="part21" class="part p01">
+                <div class="range"></div>
                 <div>
                     Day<br>21
                 </div>
             </label>
-            <input type="checkbox" style="display: none;" id="part22" class="part_checkbox">
+            <input type="checkbox" style="display: none;" id="part22" class="part_checkbox" disabled="disabled">
             <label for="part22" class="part p02">
+                <div class="range"></div>
                 <div>
                     Day<br>22
                 </div>
             </label>
-            <input type="checkbox" style="display: none;" id="part23" class="part_checkbox">
+            <input type="checkbox" style="display: none;" id="part23" class="part_checkbox" disabled="disabled">
             <label for="part23" class="part p03">
+                <div class="range"></div>
                 <div>
                     Day<br>23
                 </div>
             </label>
-            <input type="checkbox" style="display: none;" id="part24" class="part_checkbox">
+            <input type="checkbox" style="display: none;" id="part24" class="part_checkbox" disabled="disabled">
             <label for="part24" class="part p04">
+                <div class="range"></div>
                 <div>
                     Day<br>24
                 </div>
             </label>
-            <input type="checkbox" style="display: none;" id="part25" class="part_checkbox">
+            <input type="checkbox" style="display: none;" id="part25" class="part_checkbox" disabled="disabled">
             <label for="part25" class="part p05">
+                <div class="range"></div>
                 <div>
                     Day<br>25
                 </div>
             </label>
-            <input type="checkbox" style="display: none;" id="part26" class="part_checkbox">
+            <input type="checkbox" style="display: none;" id="part26" class="part_checkbox" disabled="disabled">
             <label for="part26" class="part p06">
+                <div class="range"></div>
                 <div>
                     Day<br>26
                 </div>
             </label>
-            <input type="checkbox" style="display: none;" id="part27" class="part_checkbox">
+            <input type="checkbox" style="display: none;" id="part27" class="part_checkbox" disabled="disabled">
             <label for="part27" class="part p07">
+                <div class="range"></div>
                 <div>
                     Day<br>27
                 </div>
             </label>
-            <input type="checkbox" style="display: none;" id="part28" class="part_checkbox">
+            <input type="checkbox" style="display: none;" id="part28" class="part_checkbox" disabled="disabled">
             <label for="part28" class="part p08">
+                <div class="range"></div>
                 <div>
                     Day<br>28
                 </div>
             </label>
-            <input type="checkbox" style="display: none;" id="part29" class="part_checkbox">
+            <input type="checkbox" style="display: none;" id="part29" class="part_checkbox" disabled="disabled">
             <label for="part29" class="part p09">
+                <div class="range"></div>
                 <div>
                     Day<br>29
                 </div>
             </label>
-            <input type="checkbox" style="display: none;" id="part30" class="part_checkbox">
+            <input type="checkbox" style="display: none;" id="part30" class="part_checkbox" disabled="disabled">
             <label for="part30" class="part p10">
+                <div class="range"></div>
                 <div>
                     Day<br>30
                 </div>
             </label>
         </div>
 
-        <div style="position: absolute; bottom: 10vh; left: 8vh; height: 8vh;">
+        <div style="position: absolute; bottom: 7vh; left: 7vh; width: 12vh; height: 8vh; cursor: pointer">
             <img src="./src/list.png" style=" width: 4.5vh; position: relative; top: 50%; transform: translateY(-50%);">
             <span style="font-family: HSGaeulSenggak20; font-size: 2vh; height: 2vh; color: white; position: absolute; top: 50%; left: 7vh; transform: translateY(-50%);">LIST</span>
         </div>
-        <div style="position: absolute; bottom: 10vh; left: 30vh; height: 8vh;">
+        <div id="START"; onclick="START()"; style="position: absolute; bottom: 7vh; left: 29vh; width: 12vh; height: 8vh; cursor: pointer">
             <img src="./src/enter.png" style="width: 4vh; position: relative; top: 50%; transform: translateY(-50%);">
             <span style="font-family: HSGaeulSenggak20; font-size: 2vh; height: 2vh; color: white; position: absolute; top: 50%; left: 5vh; transform: translateY(-50%);">START</span>
         </div>
     </nav>
+    <section style="position: absolute; top: 0; left: 48vh; width: calc(100vw - 48vh); height: inherit">
+        <div id="question-box">
+        </div>
+        <input id="input-answer" onKeypress="javascript:if(event.keyCode==13){Input();}">
+        </input>
+    </section>
 </body>
