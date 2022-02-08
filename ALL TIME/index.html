@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+
+<head>
+    <title>Englishword / ALL TIME</title>
+    <link href="./src/title_ALLTIME.png" rel="shortcut icon" type="image/x-icon">
+    <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="./script.js"></script>
+    <script>
+        for (var i = 1; i < 2; i++) {
+            var id;
+            var part;
+            if (i < 27) {
+                id = "part1_" + i;
+                part = part_name + "1 " + i;
+            }
+            else {
+                id = "part2_" + i;
+                part = part_name + "2 " + i;
+            }
+            var file_word = document.createElement("iframe");
+            file_word.id = id;
+            file_word.src = "src/word/" + part + ".txt";
+            document.getElementsByTagName("head")[0].append(file_word);
+        }
+    </script>
+    <style>
+        @font-face {
+        font-family: 'HSGaeulSenggak20';
+        src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2108@1.1/HSGaeulSenggak20.woff') format('woff');
+        font-weight: normal;
+        font-style: normal;
+        }
+
+        html, body{
+            height: 100vh;
+            margin: 0;
+
+            
+            -ms-user-select: none; 
+            -moz-user-select: -moz-none;
+            -khtml-user-select: none;
+            -webkit-user-select: none;
+            user-select: none;
+        }
+        #theme{
+            position: relative;
+            top: 5vh;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 38vh;
+            height: 15vh;
+            border: 1px solid #707070;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        #move{
+
+            position: absolute;
+            top: 0;
+            left: -100%;
+            display:block;
+
+            width: 100%;
+            height: 100%;
+            background-color: #707070;
+            z-index: 2;
+            border-top-right-radius: 2vh;
+            border-bottom-right-radius: 2vh;
+
+            transition-property: left, border-radius;
+            transition-duration: 0.5s, 0.3s;
+            transition-timing-function: cubic-bezier(0, 0, 0.09, 1.03);
+            transition-delay: 0s, 0.4s;
+        }
+        
+        #theme:hover #move{
+            left: 0;
+            border-radius: 0;
+        }
+
+        table{
+            position: relative;
+            top: 20vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            
+            border-collapse: collapse;
+        }
+        tr, td{
+            width: 4.5vh;
+            height: 4.5vh;
+            padding: 0;
+            border: 1px solid;
+        }
+
+
+
+
+        #question-box{
+            position:fixed;
+            top: 35%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+
+            width: 60vh;
+            min-height: 6vh;
+            border: 1px solid white;
+            
+            color: black;
+            font-size: 4vh;
+            text-align: center;
+        }
+
+        #input-answer{
+            position:fixed;
+            top: 55%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+
+            width: 50vh;
+            height: 5vh;
+
+            font-size: 3vh;
+            text-align: center;
+        }
+
+        #option{
+            opacity: 1;
+            transition: 1s;
+        }
+        #close{
+            opacity: 0;
+            transition: 0.2s;
+        }
+
+        #option_window{
+            position: fixed;
+            top: 100vh;
+            left: 4vh;
+            
+            width: 30vh;
+            height: 35vh;
+            background-color: white;
+            border-radius: 7%;
+            transform: scale(0.5);
+
+            transition: 0.3s;
+        }
+
+        #OPTION:hover ~ #option_window{
+            position: fixed;
+            top: 97vh;
+            transform: scale(1);
+        }
+
+        #option_window table{
+            opacity: 0;
+            width: 100%;
+            text-align: center;
+
+            transition: 0.1s;
+        }
+
+        #option_window table td{
+            border-bottom: 1px solid #444444;
+            height: 6vh;
+        }
+    </style>
+    <script>
+        var test;
+        function Checking_list(This) {
+            var List_part = $(This).parents(".box").find(".part_checkbox");
+            var T = 0;
+            for (lc of List_part){
+                if ($(lc).prop("checked")){
+                    T += 1;
+                }
+                else{
+                    $(lc).prop("checked", true);
+                    $(lc).next().css("color","rgb(125, 68, 68)");
+                    Selected($(lc).attr("id"), true);
+                }
+            }
+            if (T == List_part.length){
+                for (lc of List_part){
+                    $(lc).prop("checked", false);
+                    $(lc).next().css("color",'');
+                    Selected($(lc).attr("id"), false);
+                }
+            }
+        }
+        $(document).ready(function(){
+            
+            $(".range").hover(function(e){
+                var id = '#' + $(e.target).parents(".part").attr("for");
+                var label = $(e.target).parents(".part");
+                console.log($(id).prop("checked"));
+                if ($(id).prop("checked")){
+                    label.css("color", "rgb(199, 133, 94)");
+                }
+                else{
+                    console.log('babo');
+                    label.css("color","blueviolet");
+                }
+            }, function(e){
+                var id = '#' + $(e.target).parents(".part").attr("for");
+                var label = $(e.target).parents(".part");
+                if ($(id).prop("checked")){
+                    label.css("color","rgb(125, 68, 68)");
+                }
+                else{
+                    label.css("color",'');
+                }
+            });
+            
+            $(".range").click(function(e){
+                var id = '#' + $(e.target).parents(".part").attr("for");
+                console.log($(id));
+                console.log($(id).prop("checked"));
+                if ($(id).prop("checked")){
+                    $(id).prop("checked", false);
+                    $(e.target).parents(".part").css("color","blueviolet");
+                    Selected($(id).attr("id"), false);
+                }
+                else{
+                    console.log(false);
+                    $(id).prop("checked", true);
+                    $(e.target).parents(".part").css("color","rgb(199, 133, 94)");
+                    Selected($(id).attr("id"), true);
+                }
+            })
+        });
+    </script>
+</head>
+
+<body>
+    <nav style="position: absolute; width: 48vh; height: inherit;">
+        <div id="theme">
+            <div style="position: absolute; left:1vh; width: inherit; height: inherit;">
+                <img src="./src/title_ALLTIME.png" style="width:12vh; position: absolute; top: 50%;  left: 1.5vh; transform: translateY(-50%); display: inline-block;">
+                <span style="font: normal normal bold 2vh Segoe UI; color: rgb(142, 142, 142); position: absolute; top: 50%; left: 20vh; transform: translateY(-50%); word-spacing: 1vh;">ALL TIME</span>
+            </div>
+            <div id="move">
+                <a href="..">
+                    <img src="../src/home.png" style="position: absolute; top: 9vh; left: 32vh; width:4vh">
+                </a>
+            </div>
+        </div>
+        <!--
+        <div id="LIST" style="position: absolute; top: 20vh; left: 30vh; width: 12vh; height: 8vh; cursor: pointer; z-index: 1;" onclick="test();">
+            <img src="./src/list.png" style=" width: 4.5vh; position: relative; top: 50%; transform: translateY(-50%);">
+            <span style="font-family: HSGaeulSenggak20; font-size: 2vh; height: 2vh; color: white; position: absolute; top: 50%; left: 6vh; transform: translateY(-50%);">LIST</span>
+        </div>
+        -->
+
+        <table>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </table>
+
+        <div id="OPTION" style="position: absolute; bottom: 7vh; left: 7vh; width: 12vh; height: 8vh; cursor: pointer; z-index: 1;" onclick="Option();">
+            <img id="option" src="../src/option.png" style="width: 5.25vh; position: absolute; top: 50%; transform: translateY(-50%);">
+            <img id="close" src="../src/close.png" style="width: 4.5vh; position: absolute; top: 50%; left: 0.2vh; transform: translateY(-50%);">
+            <span style="font-family: HSGaeulSenggak20; font-size: 2vh; height: 2vh; color: black; position: absolute; top: 50%; left: 6vh; transform: translateY(-50%);">OPTION</span>
+        </div>
+        <div id="option_window">
+            <table>
+                <tr>
+                    <td>
+                        <div style="display: inline-block; width: 15vh;">난이도</div> <input id="level" type="range" max="2" step="1" style="width: 10vh; transform: translateX(-2vh);" onchange="level=Number(this.value); console.log(this.value)">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div style="display: inline-block; width: 15vh;">기회</div> <input id="opportunity" type="range" max="4" step="1" style="width: 10vh; transform: translateX(-2vh);" onchange="opportunity=Number(this.value)+1; console.log(this.value)">
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div id="START"; onclick="START()"; style="position: absolute; bottom: 7vh; left: 29vh; width: 12vh; height: 8vh; cursor: pointer">
+            <img src="../src/enter.png" style="width: 4vh; position: relative; top: 50%; transform: translateY(-50%);">
+            <span style="font-family: HSGaeulSenggak20; font-size: 2vh; height: 2vh; color: black; position: absolute; top: 50%; left: 5vh; transform: translateY(-50%);">START</span>
+        </div>
+    </nav>
+
+
+
+    <section style="position: absolute; top: 0; left: 48vh; width: calc(100vw - 48vh); height: inherit">
+        <div id="question-box">
+        </div>
+        <input id="input-answer" onKeypress="javascript:if(event.keyCode==13){Input();}">
+        </input>
+    </section>
+</body>

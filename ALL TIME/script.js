@@ -1,4 +1,4 @@
-var part_name = "DAY";
+var part_name = "Step";
 
 var test;
 var Flatform;
@@ -62,7 +62,9 @@ function Option(){
 }
 
 function Selected(ID, T) {
-    ID = ID.slice(0,4) +'_' + ID.slice(4);
+    console.log(ID);
+    ID = ID.slice(0,5) +'_' + ID.slice(5);
+    console.log(ID);
     if (T == true) {
         part_selected.push(ID);
         part_selected.sort();
@@ -87,7 +89,7 @@ function START() {
     if (not_Uld.length !== 0) {
         var not_uploaded = '※아직 업로드되지 않았습니다.※\n\n';
         for (n of not_Uld) {
-            not_uploaded += part_name + ' ' + n.slice(5) + ', ';
+            not_uploaded += part_name + n.slice(4).replace('_',' ') + ', ';
             var idx = part_selected.indexOf(n);
             part_selected.splice(idx, 1);
             $('#'+n.replace('_', '')).prop("checked", false);

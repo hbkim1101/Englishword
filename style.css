@@ -5,39 +5,63 @@ body{
     text-align:center;
 }
 
-#select_VV2200{
-    background:rgb(79,86,130);
-    color:#fff;
+.button{
     border:none;
     position:relative;
-    height:60px;
+    margin: 1vh;
+    width: 50vh;
+    height:9vh;
     font-size:1.6em;
     padding:0 2em;
     cursor:pointer;
     transition:800ms ease all;
     outline:none;
 }
+#select_VV2200{
+    background:rgb(79,86,130);
+    color:#fff;
+}
+
+#select_ALLTIME{
+    background:rgb(145,170,128);
+    color:#fff;
+}
+
+
 #select_VV2200:hover{
     background:#fff;
     color:rgb(79,86,130);
 }
-#select_VV2200:before,#select_VV2200:after{
+#select_ALLTIME:hover{
+    background:#fff;
+    color:rgb(145,170,128);
+}
+
+
+.button:before,.button:after{
     content:'';
     position:absolute;
     top:0;
     right:0;
     height:2px;
     width:0;
-    background: rgb(79,86,130);
     transition:400ms ease all;
 }
-#select_VV2200:after{
+
+#select_VV2200:before,#select_VV2200:after{
+    background: rgb(79,86,130);
+}
+#select_ALLTIME:before,#select_ALLTIME:after{
+    background: rgb(145,170,128)
+}
+
+.button:after{
     right:inherit;
     top:inherit;
     left:0;
     bottom:0;
 }
-#select_VV2200:hover:before,#select_VV2200:hover:after{
+.button:hover:before,.button:hover:after{
     width:100%;
     transition:800ms ease all;
 }
