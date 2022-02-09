@@ -30,7 +30,7 @@ var tst = 0;
 
 window.onload = function(){
     level = Number($("#level").val());
-    opportunity = Number($("#level").val()) + 1;
+    opportunity = Number($("#opportunity").val()) + 1;
 }
 
 
@@ -61,6 +61,17 @@ function Option(){
     }
 }
 
+function Practice(e){
+    if ($(e).prop("checked") == true){
+        $("#practice_length").prop("disabled", false);
+        $(e).next().css("color", "black");
+    }
+    else{
+        $("#practice_length").prop("disabled", true);
+        $(e).next().css("color", "gray");
+    }
+}
+
 function Selected(ID, T) {
     ID = ID.slice(0,4) +'_' + ID.slice(4);
     if (T == true) {
@@ -79,6 +90,10 @@ function START() {
     document.getElementById("input-answer").placeholder = '';
 
     var not_Uld = [];
+    if (Object(part_selected).length == 0){
+        alert("선택된 항목이 없습니다.")
+        return
+    }
     for (p of part_selected) {
         if (document.getElementById(p) === null) {
             not_Uld.push(p);
@@ -119,7 +134,7 @@ function START() {
 }
 
 function Build_list(Text) {
-    K = []; E = []; K_E = {}; K_ans = {}; S = {};
+    K = []; E = []; K_E = {}; E_K = {}; A = {}; K_ans = {}; S = {};
     var i = 0;
     Text = Text.split(/\n|\r/);
     var ln = 'E';
@@ -241,12 +256,13 @@ function Manufact1(eng, kor){
                 Manufact2(U);
                 A[eng][lbl] = U;
                 U=[[]];
+                j = 0;
             }
 
             lbl = kor.slice(i, i + 3);
             i += 3;
         }
-        else if (kor[1] == ';') {
+        else if (kor[i] == ';') {
             U[j].push(text);
             text = '';
             i++;

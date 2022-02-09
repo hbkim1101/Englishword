@@ -2,7 +2,7 @@
 
 <head>
     <title>Englishword / Vaccine VOCA 2200</title>
-    <link href="./src/title_VV2200.png" rel="shortcut icon" type="image/x-icon">
+    <link href="./src/img/title_VV2200.png" rel="shortcut icon" type="image/x-icon">
     <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
     <script type="text/javascript" src="./script.js"></script>
     <script>
@@ -134,6 +134,7 @@
 
             width: 50vh;
             height: 5vh;
+            z-index: 2;
 
             font-size: 3vh;
             text-align: center;
@@ -158,6 +159,7 @@
             background-color: white;
             border-radius: 7%;
             transform: scale(0.5);
+            z-index: 3;
 
             transition: 0.3s;
         }
@@ -206,9 +208,9 @@
         }
         $(document).ready(function(){
             
-            $(".range").hover(function(e){
-                var id = '#' + $(e.target).parents(".part").attr("for");
-                var label = $(e.target).parents(".part");
+            $(".range").hover(function(){
+                var id = '#' + $(this).parents(".part").attr("for");
+                var label = $(this).parents(".part");
                 console.log($(id).prop("checked"));
                 if ($(id).prop("checked")){
                     label.css("color", "rgb(199, 133, 94)");
@@ -217,9 +219,9 @@
                     console.log('babo');
                     label.css("color","blueviolet");
                 }
-            }, function(e){
-                var id = '#' + $(e.target).parents(".part").attr("for");
-                var label = $(e.target).parents(".part");
+            }, function(){
+                var id = '#' + $(this).parents(".part").attr("for");
+                var label = $(this).parents(".part");
                 if ($(id).prop("checked")){
                     label.css("color","rgb(125, 68, 68)");
                 }
@@ -228,19 +230,19 @@
                 }
             });
             
-            $(".range").click(function(e){
-                var id = '#' + $(e.target).parents(".part").attr("for");
+            $(".range").click(function(){
+                var id = '#' + $(this).parents(".part").attr("for");
                 console.log($(id));
                 console.log($(id).prop("checked"));
                 if ($(id).prop("checked")){
                     $(id).prop("checked", false);
-                    $(e.target).parents(".part").css("color","blueviolet");
+                    $(this).parents(".part").css("color","blueviolet");
                     Selected($(id).attr("id"), false);
                 }
                 else{
                     console.log(false);
                     $(id).prop("checked", true);
-                    $(e.target).parents(".part").css("color","rgb(199, 133, 94)");
+                    $(this).parents(".part").css("color","rgb(199, 133, 94)");
                     Selected($(id).attr("id"), true);
                 }
             })
@@ -252,7 +254,7 @@
     <nav style="position: absolute; width: 48vh; height: inherit;">
         <div id="theme">
             <div style="position: absolute; left:1vh; width: inherit; height: inherit;">
-                <img src="./src/title_VV2200.png" style="width:12vh; position: absolute; top: 50%;  left: 1.5vh; transform: translateY(-50%); display: inline-block;">
+                <img src="./src/img/title_VV2200.png" style="width:12vh; position: absolute; top: 50%;  left: 1.5vh; transform: translateY(-50%); display: inline-block;">
                 <span style="font: normal normal bold 2vh Segoe UI; color: rgb(142, 142, 142); position: absolute; top: 50%; left: 16vh; transform: translateY(-50%);">Vaccine VOCA 2200</span>
             </div>
             <div id="move">
@@ -520,6 +522,11 @@
                 <tr>
                     <td>
                         <div style="display: inline-block; width: 15vh;">기회</div> <input id="opportunity" type="range" max="4" step="1" style="width: 10vh; transform: translateX(-2vh);" onchange="opportunity=Number(this.value)+1; console.log(this.value)">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input id="practice" type="checkbox" style="position:relative; transform: translateX(1.2vh); z-index: 3;" onchange="Practice(this);"><div style="display: inline-block; width: 15vh; transform: translateX(-1.4vh); color: gray;">연습모드</div> <input id="practice_length" type="range" max="30" step="10" style="width: 10vh; transform: translateX(-3.4vh);" onchange="" disabled>
                     </td>
                 </tr>
             </table>

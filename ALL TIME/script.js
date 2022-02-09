@@ -27,10 +27,21 @@ var message = '';
 
 var tst = 0;
 
-
 window.onload = function(){
     level = Number($("#level").val());
-    opportunity = Number($("#level").val()) + 1;
+    opportunity = Number($("#opportunity").val()) + 1;
+
+    Move("pawn_w", "e8", 0);
+    Move("bishop_w", "e4", 0);
+    Move("knight_w", "b8", 0);
+    Move("queen_w", "a2", 0);
+    Move("king_w", "h5", 0);
+
+    Move("pawn_b", "f6", 0);
+    Move("bishop_b", "d1", 0);
+    Move("knight_b", "h3", 0);
+    Move("queen_b", "c5", 0);
+    Move("king_b", "a6", 0);
 }
 
 
@@ -62,9 +73,7 @@ function Option(){
 }
 
 function Selected(ID, T) {
-    console.log(ID);
     ID = ID.slice(0,5) +'_' + ID.slice(5);
-    console.log(ID);
     if (T == true) {
         part_selected.push(ID);
         part_selected.sort();
@@ -81,6 +90,10 @@ function START() {
     document.getElementById("input-answer").placeholder = '';
 
     var not_Uld = [];
+    if (Object(part_selected).length == 0){
+        alert("선택된 항목이 없습니다.")
+        return
+    }
     for (p of part_selected) {
         if (document.getElementById(p) === null) {
             not_Uld.push(p);
@@ -88,12 +101,28 @@ function START() {
     }
     if (not_Uld.length !== 0) {
         var not_uploaded = '※아직 업로드되지 않았습니다.※\n\n';
+        var step1_T = false;
+        var step2_T = false;
         for (n of not_Uld) {
+            if (n[4] == '1'){
+                step1_T = true;
+            }
+            else{
+                step2_T = true;
+            }
             not_uploaded += part_name + n.slice(4).replace('_',' ') + ', ';
             var idx = part_selected.indexOf(n);
             part_selected.splice(idx, 1);
             $('#'+n.replace('_', '')).prop("checked", false);
-            $('#'+n.replace('_', '')).next().css("color",'');
+            $('#'+n.replace('_', '')).next().css("background-color",'');
+        }
+        if (step1_T == true){
+            $("#step1").prop("checked", false);
+            $("#a6").children("label").css("background-color", '');
+        }
+        if (step2_T == true){
+            $("#step2").prop("checked", false);
+            $("#h5").children("label").css("background-color", '');
         }
         not_uploaded = not_uploaded.slice(0, not_uploaded.length - 2)
 
@@ -121,7 +150,7 @@ function START() {
 }
 
 function Build_list(Text) {
-    K = []; E = []; K_E = {}; K_ans = {}; S = {};
+    K = []; E = []; K_E = {}; E_K = {}; A = {}; K_ans = {}; S = {};
     var i = 0;
     Text = Text.split(/\n|\r/);
     var ln = 'E';
@@ -158,7 +187,7 @@ function Build_list(Text) {
                 console.log(pf);
             }
             else{
-                E_K[pf] =f;
+                E_K[pf] = f;
             }
             ln = 'E';
             if (lng_selected === "KOREAN") {
@@ -243,12 +272,13 @@ function Manufact1(eng, kor){
                 Manufact2(U);
                 A[eng][lbl] = U;
                 U=[[]];
+                j = 0;
             }
 
             lbl = kor.slice(i, i + 3);
             i += 3;
         }
-        else if (kor[1] == ';') {
+        else if (kor[i] == ';') {
             U[j].push(text);
             text = '';
             i++;
