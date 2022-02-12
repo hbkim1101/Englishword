@@ -1,23 +1,29 @@
 var part_name = "DAY";
 
+function Part_name(p){
+    p = "DAY " + p.slice(5);
+    return p
+}
+
 var test;
 var Flatform;
 var Q;
-var Q_dup;
 var R = [];
-var R_dup = {};
+
 var question, answer, answer_T
 var score = 0, init_score, skip_count;
 var level;
 var opportunity;
+var section_start=[];
+var section_length;
+
+
 var K = [];
-var E = [];
+var E = []; /*중복 X*/
+var E_D = []; /*중복 O*/
 var A = {};
-var D = {};
-var K_E = {};
-var E_K = {};
-var K_ans = {};
-var E_ans = {};
+var E_I = {};
+
 var S = {};
 var W = [], W_a = [];
 var part_selected = []; lng_selected = "KOREAN";
@@ -32,7 +38,6 @@ window.onload = function(){
     level = Number($("#level").val());
     opportunity = Number($("#opportunity").val()) + 1;
 }
-
 
 function Option(){
     if (tst == 0){
@@ -57,22 +62,93 @@ function Option(){
         $('#option').css("transition", '');
         $('#close').css("opacity", '');
         $('#close').css("transition", '');
+        $(".search_result").detach();
+        $("#section_start_search_window").css("display", '');
+        $("#section_start_search_window").find("input").val('');
         tst = 0;
     }
 }
 
-function Practice(e){
+function Checking(e){
     if ($(e).prop("checked") == true){
-        $("#practice_length").prop("disabled", false);
+        for (t of $(e).parent().children().slice(2)){
+            $(t).prop("disabled", false);
+        }
         $(e).next().css("color", "black");
     }
     else{
-        $("#practice_length").prop("disabled", true);
+        for (t of $(e).parent().children().slice(2)){
+            $(t).prop("disabled", true);
+        }
         $(e).next().css("color", "gray");
+        if (e.id == "section"){
+            $("#section_start").html("시작");
+            $("#section_start").css("background-color", '');
+            $("#section_start").css("border-color", '');
+            $("#section_length").val('');
+            $("#section_length").prop("placeholder", "길이");
+            section_start=[];
+        }
     }
 }
 
+function Section_start_search(){
+    if (Object(part_selected).length == 0){
+        alert("선택된 항목이 없습니다.")
+        return
+    }
+    if ($("#section_start_search_window").css("display") == "none"){
+        $("#section_start_search_window").css("display", "block");
+        $("#section_start_search_window").find("input").focus();
+        for (p of part_selected) {
+            if (document.getElementById(p) != null) {
+                Build_list(p, 0);
+            }
+        }
+    }
+    else{
+        $(".search_result").detach();
+        $("#section_start_search_window").css("display", '');
+        $("#section_start_search_window").find("input").val('');
+    }
+}
+
+function Search(text){
+    $(".search_result").detach();
+    if (isNaN(text) == false){
+        var num = Number(text)-1;
+        if ((num < E_D.length)&&(num >= 0)){
+            var Re = $("<tr class='search_result'><td id=search_" + E_D[num] + '|' + E_I[E_D[num]][num] + " onclick='Search_select(this)'>" + E_D[num] + ' ' + Part_name(E_I[E_D[num]][num]) + "</td></tr>");
+            $("#section_start_search_window").children("table").append(Re);
+        }
+    }
+    if (E.includes(text)){
+        for (p of Object.values(E_I[text])){
+            var Re = $("<tr class='search_result'><td id=search_" + text + '|' + p + " onclick='Search_select(this)'>" + text + ' ' + Part_name(p) + "</td></tr>");
+            $("#section_start_search_window").children("table").append(Re);
+        }
+    }
+}
+function Search_select(e){
+    section_start=e.id.slice(7).split('|');
+    section_start_int=Number(Object.keys(E_I[section_start[0]])[Object.values(E_I[section_start[0]]).indexOf(section_start[1])]);
+    var tag = section_start_int+1;
+    $("#section_start").html(tag);
+    $("#section_start").css("background-color", "rgb(232 240 254)");
+    $("#section_start").css("border-color", "rgb(201 218 248)");
+    
+    Section_start_search();
+}
+
 function Selected(ID, T) {
+    if ($("#section_start").html() != "시작"){
+        $("#section_start").html("시작");
+        $("#section_start").css("background-color", '');
+        $("#section_start").css("border-color", '');
+        $("#section_length").val('');
+        $("#section_length").prop("placeholder", "길이");
+        section_start=[];
+    }
     ID = ID.slice(0,4) +'_' + ID.slice(4);
     if (T == true) {
         part_selected.push(ID);
@@ -85,14 +161,21 @@ function Selected(ID, T) {
 }
 
 function START() {
+    K=[]; E=[]; E_D=[]; A=[];
     document.getElementById("question-box").innerHTML = '';
     document.getElementById("input-answer").value = '';
     document.getElementById("input-answer").placeholder = '';
-
+    
     var not_Uld = [];
     if (Object(part_selected).length == 0){
         alert("선택된 항목이 없습니다.")
         return
+    }
+    if ($("#section").prop("checked") == true){
+        if (section_start.length == 0){
+            alert("구간을 입력해 주세요.");
+            return;
+        }
     }
     for (p of part_selected) {
         if (document.getElementById(p) === null) {
@@ -102,7 +185,7 @@ function START() {
     if (not_Uld.length !== 0) {
         var not_uploaded = '※아직 업로드되지 않았습니다.※\n\n';
         for (n of not_Uld) {
-            not_uploaded += part_name + ' ' + n.slice(5) + ', ';
+            not_uploaded += Part_name(n) + ', ';
             var idx = part_selected.indexOf(n);
             part_selected.splice(idx, 1);
             $('#'+n.replace('_', '')).prop("checked", false);
@@ -112,18 +195,23 @@ function START() {
 
         alert(not_uploaded);
     }
-    var Text = '';
+    if (Object(part_selected).length == 0){
+        return
+    }
+    
+    bsi = 0;
     for (p of part_selected) {
-        Text += document.getElementById(p).contentDocument.getElementsByTagName("pre")[0].innerText;
+        Build_list(p, 1);
     }
-    Build_list(Text);
     if (lng_selected=="KOREAN"){
-        Q = Object.keys(A).slice();
+        if ($("#section").prop("checked") == true){
+            Q = E_D.slice(section_start_int,section_start_int+section_length);
+        }
+        else{
+            Q = E_D.slice();
+        }
     }
-    /*
-    Q_dup = { ...D };
-    R = [];
-    R_dup = {};*/
+
     score = 0;
     init_score = Q.length;
     skip_count = 0;
@@ -133,108 +221,50 @@ function START() {
     Question();
 }
 
-function Build_list(Text) {
-    K = []; E = []; K_E = {}; E_K = {}; A = {}; K_ans = {}; S = {};
+function Build_list(part, type) {
     var i = 0;
+    var Text = document.getElementById(part).contentDocument.getElementsByTagName("pre")[0].innerText;
     Text = Text.split(/\n|\r/);
     var ln = 'E';
-    var pf;
+    var e, k;
     for (f of Text) {
         if (f === '') {
             break;
         }
         if (ln === 'E') {
-            E.push(f);
             ln = 'K';
-            if (lng_selected === "ENGLISH") {
-                E_ans[f] = Manufact_E(f);
-            }
-            pf = f;
+            e = f;
         }
         else {
-            K.push(f);
-            if (pf in K_E) {
-                if (typeof (K_E[pf]) === "string") {
-                    K_E[f] = [K_E[f], pf];
-                    D[f] = '';
+            ln = 'E';
+            k = f;
+            E_D.push(e);
+            if (E.includes(e)){
+                if (Object.values(E_I[e]).includes(part)){
+                    break
                 }
-                else {
-                    K_E[f].push(pf)
+                
+                E_I[e][E_D.length-1] = part;
+                if (K[E.indexOf(e)] != k){
+                    K[E.indexOf(e)] += ' ' + K;
                 }
-            }
-            else {
-                K_E[f] = pf;
-            }
-
-            if (pf in E_K) {
-                E_K[pf] = E_K[pf] + ' ' +f;
-                console.log(pf);
             }
             else{
-                E_K[pf] =f;
-            }
-            ln = 'E';
-            if (lng_selected === "KOREAN") {
-                /*K_ans[f] = Manufact_K(f);*/
-                Manufact1(pf, E_K[pf]);
+                E.push(e);
+                K.push(k);
+                E_I[e] = {};
+                E_I[e][E_D.length-1] = part;
             }
         }
-    }/*
-    var a = 0;
-    while (true) {
-        if (a >= Object.keys(D).length) {
-            break;
+    }
+    if (type >= 1){
+        for (i=0;i<E.length;i++){
+            Manufact1(E[i], K[i]);
         }
-        var d = Object.keys(D)[a];
-        var dl = K_E[d].length;
-        K_E[d] = new Set(K_E[d]);
-        K_E[d] = [...K_E[d]];
-        dl -= K_E[d].length;
-        var c = 0;
-        var b = 0;
-        while (true) {
-            if (c === dl) {
-                break;
-            }
-            if (K[b] === d) {
-                K.splice(b, 1);
-                c++;
-                continue;
-            }
-            b++;
-        }
-        if (K_E[d].length === 1) {
-            K_E[d] = K_E[d][0];
-            delete D[d];
-            continue;
-        }
-        var l = 0;
-        while (true) {
-            var f = true;
-            for (i = 0; i < K_E[d].length; i++) {
-                var com = K_E[d][i].slice(0, l);
-                var C = K_E[d].slice(0, i).concat(K_E[d].slice(i + 1));
-                for (k of C) {
-                    if (k.slice(0, l) === com) {
-                        f = false;
-                    }
-                }
-            }
-            if (f === true) {
-                K_E[d].push(l);
-                break;
-            }
-            else {
-                l++;
-            }
-        }
-        D[d] = K_E[d];
-        a++;
-    }*/
+    }
 }
 
 function Manufact1(eng, kor){
-    A[eng]={};
     var i = 0;
     var j = 0;
     var lbl = '';
@@ -246,7 +276,18 @@ function Manufact1(eng, kor){
         if (i >= kor.length){
             U[j].push(text);
             Manufact2(U);
-            A[eng][lbl] = U;
+            if (eng in A){
+                if (lbl in A[eng]){
+                    A[eng][lbl].concat(U);
+                }
+                else{
+                    A[eng][lbl] = U;
+                }
+            }
+            else{
+                A[eng]={};
+                A[eng][lbl] = U;
+            }
             break
         }
         else if ((kor[i] == '[') && (['[명]', '[동]', '[형]', '[부]', '[전]', '[구]'].includes(kor.slice(i, i + 3)))){
@@ -254,7 +295,18 @@ function Manufact1(eng, kor){
                 U[j].push(text.slice(0,text.length-1));
                 text = '';
                 Manufact2(U);
-                A[eng][lbl] = U;
+                if (eng in A){
+                    if (lbl in A[eng]){
+                        A[eng][lbl].concat(U);
+                    }
+                    else{
+                        A[eng][lbl] = U;
+                    }
+                }
+                else{
+                    A[eng]={};
+                    A[eng][lbl] = U;
+                }
                 U=[[]];
                 j = 0;
             }
@@ -373,28 +425,7 @@ function list_Count(list,value){
 
 function Question() {
     document.getElementById("input-answer").placeholder = '';
-    if (lng_selected === "ENGLISH") {
-        question = Q[0];
-        if (typeof (K_E[Q[0]]) === "object") {
-            var r = [];
-            for (i = 0; i < Q_dup[Q[0]].length - 1; i++) {
-                r.push(i);
-            }
-            shuffle(r);
-            dup = r[0];
-            answer = E_ans[Q_dup[Q[0]][dup]];
-            document.getElementById("input-answer").placeholder = Q_dup[Q[0]][dup].slice(0, Q_dup[Q[0]][Q_dup[Q[0]].length - 1]);
-        }
-        else {
-            dup = -1;
-            answer = E_ans[K_E[Q[0]]];
-        }
-        console.log(answer);
-        document.getElementById("question-box").innerHTML = question;
-        document.getElementById("input-answer").value = '';
-        document.getElementById("input-answer").focus();
-    }
-    else if (lng_selected === "KOREAN") {
+    if (lng_selected === "KOREAN") {
         question = Q[0];
         answer = A[Q[0]];
         answer_T = {};
@@ -446,41 +477,7 @@ function Input() {
         return Hint();
     }
     else {
-        if (lng_selected === "ENGLISH") {
-            if (answer.includes(ans)) {
-                Success()
-            }
-            else {
-                var F_e = true;
-                var f_e = false;
-                for (a of E_ans[answer[0]]) {
-                    if (ans.replace(/ /gi, '') === a.replace(/ /gi, '')) {
-                        f_e = true;
-                        break;
-                    }
-                }
-                console.log(f_e);
-                if (f_e === false) {
-                    F_e = false;
-                }
-                if (F_e === true) {
-                    alert("띄어쓰기를 확인해주세요.");
-                }
-                else {
-                    W_a.push(ans);
-                    document.getElementById("input-answer").value = '';
-                    oprt += 1;
-                    if (oprt === 3) {
-                        alert("오답입니다.\n\n3번 모두 실패하셨습니다.");
-                        return Skip();
-                    } else {
-                        message = "오답입니다.\n\n남은 기회: " + (3 - oprt);
-                        alert(message);
-                    }
-                }
-            }
-        }
-        else if (lng_selected === "KOREAN") {
+        if (lng_selected === "KOREAN") {
             ans = ans.split(/, |,/);
             T = true;
             for (ans_i of ans) {
@@ -521,8 +518,6 @@ function Input() {
                 }
                 T_list[a_T]=u;
             }
-            console.log(T, scr);
-            console.log(T_list);
             if (T === true && scr === true) {
                 Success()
             }
@@ -576,7 +571,7 @@ function Success() {
         message += answer[0];
     }
     else if (lng_selected === "KOREAN") {
-        message += E_K[Q[0]];
+        message += K[E.indexOf(Q[0])];
     }
     message += "\n\n정답입니다!";
     alert(message);
@@ -603,6 +598,18 @@ function Complete() {
     if (score === init_score) {
         message += "\n\n모두 맞혔습니다!";
         alert(message);
+        if ($("#section").prop("checked") == true){
+            message = Part_name(E_I[E_D[section_start_int+section_length]][section_start_int+section_length]);
+            message += ' ' + E_D[section_start_int+section_length];
+            if (confirm(message)){
+                section_start_int += section_length;
+                Q = E_D.slice(section_start_int, section_start_int+section_length);score = 0;
+                init_score = Q.length;
+                skip_count = 0;
+                R = [];
+                Question();
+            }
+        }
     }
     else {
         if (skip_count !== 0) {
@@ -623,9 +630,7 @@ function Complete() {
         init_score = R.length;
         skip_count = 0;
         Q = R.slice();
-        Q_dup = { ...R_dup };
         R = [];
-        R_dup = {};
         Question();
     }
 }
@@ -635,7 +640,7 @@ function Skip() {
         alert("정답: " + answer[0]);
     }
     else if (lng_selected === "KOREAN") {
-        alert("정답: " + E_K[Q[0]]);
+        alert("정답: " + K[E.indexOf(question)]);
     }
     oprt = 0;
     hint = 0;
@@ -653,7 +658,7 @@ function Skip() {
         W.push([question, answer[0], W_a]);
     }
     else if (lng_selected === "KOREAN") {
-        W.push([question, answer, W_a]);
+        W.push([question, K[E.indexOf(question)], W_a]);
     }
     Q.shift();
     W_a = [];
@@ -672,7 +677,7 @@ function Hint() {
     }
     else if (lng_selected === "KOREAN") {
         document.getElementById("input-answer").placeholder =
-            answer.substring(0, document.getElementById("input-answer").placeholder.length + 1);
+        K[E.indexOf(question)].substring(0, document.getElementById("input-answer").placeholder.length + 1);
     }
     document.getElementById("input-answer").focus();
 }
