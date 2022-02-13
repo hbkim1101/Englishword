@@ -1,7 +1,6 @@
-var part_name = "DAY";
-
+/*공통인 거 묶기*/
 function Part_name(p){
-    p = "DAY " + p.slice(5);
+    p = part_name + ' ' + p.slice(5);
     return p
 }
 
@@ -92,6 +91,26 @@ function Checking(e){
     }
 }
 
+function Selected(ID, T) {
+    if ($("#section_start").html() != "시작"){
+        $("#section_start").html("시작");
+        $("#section_start").css("background-color", '');
+        $("#section_start").css("border-color", '');
+        $("#section_length").val('');
+        $("#section_length").prop("placeholder", "길이");
+        section_start=[];
+    }
+    ID = ID.slice(0,part_name.length+1) +'_' + ID.slice(part_name.length+1);
+    if (T == true) {
+        part_selected.push(ID);
+        part_selected.sort();
+    }
+    else {
+        var idx = part_selected.indexOf(ID);
+        part_selected.splice(idx, 1);
+    }
+}
+
 function Section_start_search(){
     if (Object(part_selected).length == 0){
         alert("선택된 항목이 없습니다.")
@@ -140,26 +159,6 @@ function Search_select(e){
     Section_start_search();
 }
 
-function Selected(ID, T) {
-    if ($("#section_start").html() != "시작"){
-        $("#section_start").html("시작");
-        $("#section_start").css("background-color", '');
-        $("#section_start").css("border-color", '');
-        $("#section_length").val('');
-        $("#section_length").prop("placeholder", "길이");
-        section_start=[];
-    }
-    ID = ID.slice(0,4) +'_' + ID.slice(4);
-    if (T == true) {
-        part_selected.push(ID);
-        part_selected.sort();
-    }
-    else {
-        var idx = part_selected.indexOf(ID);
-        part_selected.splice(idx, 1);
-    }
-}
-
 function START() {
     K=[]; E=[]; E_D=[]; A=[];
     document.getElementById("question-box").innerHTML = '';
@@ -184,15 +183,42 @@ function START() {
     }
     if (not_Uld.length !== 0) {
         var not_uploaded = '※아직 업로드되지 않았습니다.※\n\n';
-        for (n of not_Uld) {
-            not_uploaded += Part_name(n) + ', ';
-            var idx = part_selected.indexOf(n);
-            part_selected.splice(idx, 1);
-            $('#'+n.replace('_', '')).prop("checked", false);
-            $('#'+n.replace('_', '')).next().css("color",'');
+        if (book_name == "VV2200"){
+            for (n of not_Uld) {
+                not_uploaded += Part_name(n) + ', ';
+                var idx = part_selected.indexOf(n);
+                $('#'+n.replace('_', '')).prop("checked", false);
+                part_selected.splice(idx, 1);
+                $('#'+n.replace('_', '')).next().css("color",'');
+            }
         }
-        not_uploaded = not_uploaded.slice(0, not_uploaded.length - 2)
+        else if (book_name == "ALLTIME"){
+            var step1_T = false;
+            var step2_T = false;
+            for (n of not_Uld) {
+                if (n[4] == '1'){
+                    step1_T = true;
+                }
+                else{
+                    step2_T = true;
+                }
+                not_uploaded += part_name + n.slice(4).replace('_',' ') + ', ';
+                var idx = part_selected.indexOf(n);
+                part_selected.splice(idx, 1);
+                $('#'+n.replace('_', '')).prop("checked", false);
+                $('#'+n.replace('_', '')).next().css("background-color",'');
+            }
+            if (step1_T == true){
+                $("#step1").prop("checked", false);
+                $("#a6").children("label").css("background-color", '');
+            }
+            if (step2_T == true){
+                $("#step2").prop("checked", false);
+                $("#h5").children("label").css("background-color", '');
+            }
+        }
 
+        not_uploaded = not_uploaded.slice(0, not_uploaded.length - 2)
         alert(not_uploaded);
     }
     if (Object(part_selected).length == 0){

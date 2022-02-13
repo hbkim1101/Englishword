@@ -1,5 +1,22 @@
 init_position={};
 
+window.onload = function(){
+    level = Number($("#level").val());
+    opportunity = Number($("#opportunity").val()) + 1;
+
+    Move("pawn_w", "e8", 0);
+    Move("bishop_w", "e4", 0);
+    Move("knight_w", "b8", 0);
+    Move("queen_w", "a2", 0);
+    Move("king_w", "h5", 0);
+
+    Move("pawn_b", "f6", 0);
+    Move("bishop_b", "d1", 0);
+    Move("knight_b", "h3", 0);
+    Move("queen_b", "c5", 0);
+    Move("king_b", "a6", 0);
+}
+
 function Click(e){
 
     if (["d8"].includes(e.id)){

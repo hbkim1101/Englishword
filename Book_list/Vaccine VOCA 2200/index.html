@@ -4,8 +4,9 @@
     <title>Englishword / Vaccine VOCA 2200</title>
     <link href="./src/img/title_VV2200.png" rel="shortcut icon" type="image/x-icon">
     <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
-    <script type="text/javascript" src="./script.js"></script>
     <script>
+        var book_name = "VV2200"
+        var part_name = "DAY";
         for (var i = 1; i < 3; i++) {
             var id;
             var part;
@@ -23,209 +24,24 @@
             document.getElementsByTagName("head")[0].append(file_word);
         }
     </script>
-    <link href="select_circle.css" rel="stylesheet">
-    <style>
-        @font-face {
-        font-family: 'HSGaeulSenggak20';
-        src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2108@1.1/HSGaeulSenggak20.woff') format('woff');
-        font-weight: normal;
-        font-style: normal;
-        }
+    <script type="text/javascript" src="../code/script.js"></script>
 
+    <link href="../code/style.css" rel="stylesheet">
+    <style>
         html, body{
-            height: 100vh;
-            margin: 0;
             background-color: #4868BC;
             background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%25' height='100%25' viewBox='0 0 1600 800'%3E%3Cg stroke='%23320032' stroke-width='66.3' stroke-opacity='0.06' %3E%3Ccircle fill='%234868BC' cx='0' cy='0' r='1800'/%3E%3Ccircle fill='%234061b7' cx='0' cy='0' r='1700'/%3E%3Ccircle fill='%233b5cb0' cx='0' cy='0' r='1600'/%3E%3Ccircle fill='%233656a9' cx='0' cy='0' r='1500'/%3E%3Ccircle fill='%233251a2' cx='0' cy='0' r='1400'/%3E%3Ccircle fill='%232d4b9a' cx='0' cy='0' r='1300'/%3E%3Ccircle fill='%23294692' cx='0' cy='0' r='1200'/%3E%3Ccircle fill='%2325418a' cx='0' cy='0' r='1100'/%3E%3Ccircle fill='%23213c82' cx='0' cy='0' r='1000'/%3E%3Ccircle fill='%231d377a' cx='0' cy='0' r='900'/%3E%3Ccircle fill='%231a3271' cx='0' cy='0' r='800'/%3E%3Ccircle fill='%23172d68' cx='0' cy='0' r='700'/%3E%3Ccircle fill='%2314285f' cx='0' cy='0' r='600'/%3E%3Ccircle fill='%23112456' cx='0' cy='0' r='500'/%3E%3Ccircle fill='%230e1f4c' cx='0' cy='0' r='400'/%3E%3Ccircle fill='%230b1b43' cx='0' cy='0' r='300'/%3E%3Ccircle fill='%23091639' cx='0' cy='0' r='200'/%3E%3Ccircle fill='%2307122F' cx='0' cy='0' r='100'/%3E%3C/g%3E%3C/svg%3E");
             background-attachment: fixed;
             background-size: cover;
-
-            
-            -ms-user-select: none; 
-            -moz-user-select: -moz-none;
-            -khtml-user-select: none;
-            -webkit-user-select: none;
-            user-select: none;
-        }
-        #theme{
-            position: relative;
-            top: 5vh;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 38vh;
-            height: 15vh;
-            border: 1px solid #707070;
-            z-index: 1;
-            overflow: hidden;
-        }
-
-        #move{
-
-            position: absolute;
-            top: 0;
-            left: -100%;
-            display:block;
-
-            width: 100%;
-            height: 100%;
-            background-color: #707070;
-            z-index: 2;
-            border-top-right-radius: 2vh;
-            border-bottom-right-radius: 2vh;
-
-            transition-property: left, border-radius;
-            transition-duration: 0.5s, 0.3s;
-            transition-timing-function: cubic-bezier(0, 0, 0.09, 1.03);
-            transition-delay: 0s, 0.4s;
-        }
-        
-        #theme:hover #move{
-            left: 0;
-            border-radius: 0;
-        }
-
-        #part01_10{
-            position: absolute;
-            top: 30vh;
-            left: 6vh;
-        }
-        #part01_10 .list{
-            background: radial-gradient( rgb(62, 121, 174) 55%, rgba(255, 255, 255, 0));
-        }
-
-        #part11_20{
-            position: absolute;
-            top: 44vh;
-            left: 28vh;
-        }
-        #part11_20 .list{
-            background: radial-gradient( rgb(17, 118, 162) 55%, rgba(255, 255, 255, 0));
-        }
-
-        #part21_30{
-            position: absolute;
-            top: 60vh;
-            left: 10vh;
-        }
-        #part21_30 .list{
-            background: radial-gradient( rgb(10, 85, 160) 55%, rgba(255, 255, 255, 0));
         }
 
         #question-box{
-            position:fixed;
-            top: 35%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-
-            width: 60vh;
-            min-height: 6vh;
             border: 1px solid white;
-            
             color: white;
-            font-size: 4vh;
-            text-align: center;
-        }
-
-        #input-answer{
-            position:fixed;
-            top: 55%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-
-            width: 50vh;
-            height: 5vh;
-            z-index: 2;
-
-            font-size: 3vh;
-            text-align: center;
-        }
-
-        #option{
-            opacity: 1;
-            transition: 1s;
-        }
-        #close{
-            opacity: 0;
-            transition: 0.2s;
-        }
-
-        #option_window{
-            position: fixed;
-            top: 100vh;
-            left: 4vh;
-            
-            width: 30vh;
-            height: 35vh;
-            background-color: white;
-            border-radius: 7%;
-            transform: scale(0.5);
-            z-index: 3;
-
-            transition: 0.3s;
-        }
-
-        #OPTION:hover ~ #option_window{
-            position: fixed;
-            top: 97vh;
-            transform: scale(1);
-        }
-
-        #option_window table{
-            opacity: 0;
-            width: 100%;
-            text-align: center;
-
-            transition: 0.1s;
-        }
-
-        #option_window table td{
-            border-bottom: 1px solid #444444;
-            height: 6vh;
-        }
-
-        #section_start_search_window{
-            display: none;
-
-            position: relative;
-            top: 32vh;
-            left: 35vh;
-
-            width: 28vh;
-            height: 32vh;
-            background-color: #ededed;
-            border-radius: 7%;
-            overflow: overlay;
-            z-index: 3; 
-        }
-        #section_start_search_window::-webkit-scrollbar {
-            width: 6px;
-        }
-        #section_start_search_window::-webkit-scrollbar-track {
-            background-color: transparent;
-        }
-        #section_start_search_window::-webkit-scrollbar-thumb {
-            border-radius: 3px;
-            background-color: gray;
-        }
-        #section_start_search_window::-webkit-scrollbar-button {
-            width: 0;
-            height: 1.5vh;
-        }
-
-        
-        #section_start_search_window table{
-            opacity: 1;
-            width: 100%;
-            text-align: center;
-        }
-
-        #section_start_search_window table td{
-            border-bottom: 1px solid #d8d8d8;
-            height: 4vh;
         }
     </style>
+    <link href="select_circle.css" rel="stylesheet">
     <script>
-        var test;
         function Checking_list(This) {
             var List_part = $(This).parents(".box").find(".part_checkbox");
             var T = 0;
@@ -294,7 +110,7 @@
                 <span style="font: normal normal bold 2vh Segoe UI; color: rgb(142, 142, 142); position: absolute; top: 50%; left: 16vh; transform: translateY(-50%);">Vaccine VOCA 2200</span>
             </div>
             <div id="move">
-                <a href="..">
+                <a href="/index.html">
                     <img src="../src/home.png" style="position: absolute; top: 9vh; left: 32vh; width:4vh">
                 </a>
             </div>

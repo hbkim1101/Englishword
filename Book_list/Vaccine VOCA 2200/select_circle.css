@@ -107,6 +107,34 @@ div.range{
     transition-duration: 0s, 0s;
 }
 
+#part01_10{
+    position: absolute;
+    top: 30vh;
+    left: 6vh;
+}
+#part01_10 .list{
+    background: radial-gradient( rgb(62, 121, 174) 55%, rgba(255, 255, 255, 0));
+}
+
+#part11_20{
+    position: absolute;
+    top: 44vh;
+    left: 28vh;
+}
+#part11_20 .list{
+    background: radial-gradient( rgb(17, 118, 162) 55%, rgba(255, 255, 255, 0));
+}
+
+#part21_30{
+    position: absolute;
+    top: 60vh;
+    left: 10vh;
+}
+#part21_30 .list{
+    background: radial-gradient( rgb(10, 85, 160) 55%, rgba(255, 255, 255, 0));
+}
+
+
 #part01_10 .part{
     color: rgb(206, 202, 255);
 }
