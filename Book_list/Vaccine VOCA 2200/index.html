@@ -369,28 +369,35 @@
                 <tr>
                     <td>
                         <div style="position:relative; width:inherit; height: inherit">
-                            <div id="level_title" style="position: absolute; top:46%; left: 5%; transform: translateY(-50%); display: inline-block; width: 15vh;">난이도</div> <input id="level" type="range" max="2" step="1" style="position:absolute; top: 45%; left: 53%; transform: translateY(-50%); width: 10vh;" onchange="level=Number(this.value);">
+                            <div id="level_title" style="position: absolute; top:46%; left: 5%; transform: translateY(-50%); display: inline-block; width: 15vh;">난이도</div>
+                            <input id="level" type="range" max="2" step="1" style="position:absolute; top: 45%; left: 53%; transform: translateY(-50%); width: 10vh;" onchange="level=Number(this.value);">
                         </div>
                     </td>
                 </tr>
                 <tr>
                     <td>
                         <div style="position:relative; width:inherit; height: inherit;">
-                            <div id="opportunity_title" style="position: absolute; top:46%; left: 5%; transform: translateY(-50%); display: inline-block; width: 15vh;">기회</div> <input id="opportunity" type="range" max="4" step="1" style="position:absolute; top: 45%; left: 53%; transform: translateY(-50%); width: 10vh;" onchange="opportunity=Number(this.value)+1;">
+                            <div id="opportunity_title" style="position: absolute; top:46%; left: 5%; transform: translateY(-50%); display: inline-block; width: 15vh;">기회</div>
+                            <input id="opportunity" type="range" max="4" step="1" style="position:absolute; top: 45%; left: 53%; transform: translateY(-50%); width: 10vh;" onchange="opportunity=Number(this.value)+1;">
                         </div>
                     </td>
                 </tr>
                 <tr>
                     <td>
                         <div style="position:relative; width:inherit; height: inherit;">
-                            <input id="practice" type="checkbox" style="position: absolute; top:44%; left: 4.5%; transform: translateY(-50%); z-index: 3;" onchange="Checking(this);" disabled><div id="practice_title" style="position: absolute; top:46%; left: 5%; transform: translateY(-50%); width: 15vh; color: gray;">연습모드</div> <input id="practice_length" type="range" max="30" step="10" style="position:absolute; top: 45%; left: 53%; transform: translateY(-50%); width: 10vh;" onchange="" disabled>
+                            <input id="practice" type="checkbox" style="position: absolute; top:44%; left: 4.5%; transform: translateY(-50%); z-index: 3;" onchange="Checking(this);" disabled>
+                            <div id="practice_title" style="position: absolute; top:46%; left: 5%; transform: translateY(-50%); width: 15vh; color: gray;">연습모드</div>
+                            <input id="practice_length" type="range" max="30" step="10" style="position:absolute; top: 45%; left: 53%; transform: translateY(-50%); width: 10vh;" onchange="" disabled>
                         </div>
                     </td>
                 </tr>
                 <tr>
                     <td>
                         <div style="position:relative; width:inherit; height: inherit;">
-                            <input id="section" type="checkbox" style="position: absolute; top:44%; left: 4.5%; transform: translateY(-50%); z-index: 3;" onchange="Checking(this);"><div id="section_title" style="position: absolute; top:46%; left: 5%; transform: translateY(-50%); width: 15vh; color: gray;">구간</div> <button id="section_start" style="position:absolute; top: 48%; left: 54%; transform: translateY(-50%); width: 4.6vh; padding: 0" onclick="Section_start_search();" disabled>시작</button><input id="section_length" type="text" maxlength='3' placeholder="길이" style="position:absolute; top: 48%; left: 73%; transform: translateY(-50%); width: 3.5vh;" onfocus="this.placeholder=''" onblur="if(this.value.length == 0){this.placeholder='길이'}"  oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" onchange="section_length=Number(this.value)" disabled>
+                            <input id="section" type="checkbox" style="position: absolute; top:44%; left: 4.5%; transform: translateY(-50%); z-index: 3;" onchange="Checking(this);">
+                            <div id="section_title" style="position: absolute; top:46%; left: 5%; transform: translateY(-50%); width: 15vh; color: gray;">구간</div>
+                            <button id="section_start" style="position:absolute; top: 48%; left: 54%; transform: translateY(-50%); width: 4.6vh; padding: 0" onclick="Section_start_search();" disabled>시작</button>
+                            <input id="section_length" type="text" maxlength='3' placeholder="길이" style="position:absolute; top: 48%; left: 73%; transform: translateY(-50%); width: 3.5vh;" onfocus="this.placeholder=''" onblur="if(this.value.length == 0){this.placeholder='길이'}"  oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" onchange="section_length=Number(this.value)" disabled>
                         </div>
                     </td>
                 </tr>
@@ -410,8 +417,6 @@
             <span style="font-family: HSGaeulSenggak20; font-size: 2vh; height: 2vh; color: white; position: absolute; top: 50%; left: 5vh; transform: translateY(-50%);">START</span>
         </div>
     </nav>
-
-
 
     <section style="position: absolute; top: 0; left: 48vh; width: calc(100vw - 48vh); height: inherit">
         <div id="question-box">

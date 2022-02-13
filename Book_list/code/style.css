@@ -161,3 +161,11 @@ html, body{
     border-bottom: 1px solid #d8d8d8;
     height: 4vh;
 }
+
+#section_repeat_td::before{
+    content: "";
+    display: block;
+    width: 26.5vh;
+    border-top: 1px solid #bcbcbc;
+    margin: 0 0.5vh 0 auto;
+}
