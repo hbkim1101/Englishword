@@ -546,6 +546,7 @@ function Input() {
                 }
                 if (t === false) {
                     T = false;
+                    break;
                 }
             }
             var scr = true;
@@ -563,8 +564,13 @@ function Input() {
                 }
                 T_list[a_T]=u;
             }
-            if (T === true && scr === true) {
-                Success()
+            if (scr === true) {
+                if (T === true){
+                    Success()
+                }
+                else{
+                    alert("잘못된 답안이 포함되어 있습니다.")
+                }
             }
             else {
                 W_a.push(ans);
@@ -659,6 +665,7 @@ function Complete() {
                 $("#section_start").css("background-color", "rgb(232 240 254)");
                 $("#section_start").css("border-color", "rgb(201 218 248)");
                 
+                score = 0;
                 init_score = Q.length;
                 skip_count = 0;
                 R = [];
