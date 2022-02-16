@@ -128,6 +128,15 @@ function Selected(ID, T) {
         var idx = part_selected.indexOf(ID);
         part_selected.splice(idx, 1);
     }
+    if ($("#section_start_search_window").css("display") == "block"){
+        K=[]; E=[]; E_D=[]; E_I=[];
+        for (p of part_selected) {
+            if (document.getElementById(p) != null) {
+                Build_list(p, 0);
+            }
+        }
+        Search($("#section_start_search_window").find("input").val());
+    }
 }
 
 function Section_start_search(){
@@ -138,6 +147,7 @@ function Section_start_search(){
     if ($("#section_start_search_window").css("display") == "none"){
         $("#section_start_search_window").css("display", "block");
         $("#section_start_search_window").find("input").focus();
+        K=[]; E=[]; E_D=[]; E_I=[];
         for (p of part_selected) {
             if (document.getElementById(p) != null) {
                 Build_list(p, 0);
@@ -179,7 +189,7 @@ function Search_select(e){
 }
 
 function START() {
-    K=[]; E=[]; E_D=[]; A=[];
+    K=[]; E=[]; E_D=[]; E_I=[]; A=[];
     document.getElementById("question-box").innerHTML = '';
     document.getElementById("input-answer").value = '';
     document.getElementById("input-answer").placeholder = '';
@@ -250,6 +260,10 @@ function START() {
     }
     if (lng_selected=="KOREAN"){
         if ($("#section").prop("checked") == true){
+            if (section_start_int+section_length > E_D.length){
+                section_length = E_D.length - section_start_int;
+                $("#section_length").val(section_length);
+            }
             Q = E_D.slice(section_start_int,section_start_int+section_length);
         }
         else{
@@ -417,7 +431,7 @@ function Manufact2(L){
                 r4 = r1 + r2;
                 L[k].push(r3);
                 L[k].push(r4);
-                L[k].shift();
+                L[k].splice(t, 1);
                 continue;
             }
 
@@ -438,7 +452,7 @@ function Manufact2(L){
                 r4 = r1 + T.substring(con['[]'][0] + 1, con['[]'][1]) + r2;
                 L[k].push(r3);
                 L[k].push(r4);
-                L[k].shift();
+                L[k].splice(t, 1);
                 t--;
             }
             t++;
@@ -647,20 +661,29 @@ function Complete() {
     if (score === init_score) {
         message += "\n\n모두 맞혔습니다!";
         alert(message);
-        if ($("#section").prop("checked") == true){
+        if ($("#section").prop("checked") == true && section_start_int+section_length < E_D.length){
             message = Part_name(E_I[E_D[section_start_int+section_length]][section_start_int+section_length]);
             message += ' ' + E_D[section_start_int+section_length];
             if (confirm(message)){
+                var pre_start = section_start_int;
+                var pre_length = section_length;
                 section_start_int += section_length;
                 section_repeat++;
                 if (section_repeat_t == true){
+                    if (section_start_int+section_length > E_D.length){
+                        section_length = E_D.length - section_start_int;
+                    }
                     Q = E_D.slice(section_start_int-section_length, section_start_int+section_length);
-                    $("#section_start").html(section_start_int-section_length+1);
-                    $("#section_length").val(section_length*2);
+                    $("#section_start").html(pre_start+1);
+                    $("#section_length").val(pre_length+section_length);
                 }   
                 else{
+                    if (section_start_int+section_length > E_D.length){
+                        section_length = E_D.length - section_start_int;
+                    }
                     Q = E_D.slice(section_start_int, section_start_int+section_length);
                     $("#section_start").html(section_start_int+1);
+                    $("#section_length").val(section_length);
                 }
                 $("#section_start").css("background-color", "rgb(232 240 254)");
                 $("#section_start").css("border-color", "rgb(201 218 248)");
