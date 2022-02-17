@@ -170,16 +170,33 @@ function Search(text){
             $("#section_start_search_window").children("table").append(Re);
         }
     }
-    if (E.includes(text)){
+    if (text != ''){
+        var U = [];
+        for (e_d of E_D){
+            if (e_d.includes(text)){
+                if (U.includes(e_d) == false){
+                    U.push(e_d)
+                }
+            }
+        }
+        U.sort();
+        for (u of U){
+            for (p of Object.values(E_I[u])){
+                var Re = $("<tr class='search_result'><td id=search_" + u.replaceAll(' ', '_') + '|' + p + " onclick='Search_select(this)'>" + u + ' ' + Part_name(p) + "</td></tr>");
+                $("#section_start_search_window").children("table").append(Re);
+            }
+        }
+    }
+    /*if (E.includes(text)){
         for (p of Object.values(E_I[text])){
             var Re = $("<tr class='search_result'><td id=search_" + text + '|' + p + " onclick='Search_select(this)'>" + text + ' ' + Part_name(p) + "</td></tr>");
             $("#section_start_search_window").children("table").append(Re);
         }
-    }
+    }*/
 }
 function Search_select(e){
     section_start=e.id.slice(7).split('|');
-    section_start_int=Number(Object.keys(E_I[section_start[0]])[Object.values(E_I[section_start[0]]).indexOf(section_start[1])]);
+    section_start_int=Number(Object.keys(E_I[section_start[0].replaceAll('_', ' ')])[Object.values(E_I[section_start[0].replaceAll('_', ' ')]).indexOf(section_start[1])]);
     var tag = section_start_int+1;
     $("#section_start").html(tag);
     $("#section_start").css("background-color", "rgb(232 240 254)");
@@ -560,7 +577,6 @@ function Input() {
                 }
                 if (t === false) {
                     T = false;
-                    break;
                 }
             }
             var scr = true;

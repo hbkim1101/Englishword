@@ -7,7 +7,7 @@
     <script>
         var book_name = "VV2200"
         var part_name = "DAY";
-        for (var i = 1; i < 3; i++) {
+        for (var i = 1; i < 5; i++) {
             var id;
             var part;
             if (i < 10) {
@@ -405,9 +405,9 @@
         </div>
         <div id="section_start_search_window">
             <table>
-                <tr>
+                <tr style="position: sticky; top: 0; background-color: #ededed;">
                     <td style="height: 6vh;">
-                        <input type="text" style="width: 20.8vh; transform: translateY(-0.2vh);" oninput="Search(this.value)">
+                        <input type="text" style="position: relative; width: 20.8vh; transform: translateY(-0.2vh);" oninput="Search(this.value)">
                     </td>
                 </tr>
             </table>
