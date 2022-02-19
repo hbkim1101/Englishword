@@ -104,6 +104,7 @@ function Checking(e){
             $("#section_length").val('');
             $("#section_length").prop("placeholder", "길이");
             section_start=[];
+            $("#section_start_search_window").css("display", '');
             $(e).parent().parent().parent().next().detach();
             $(e).parent().parent().css("border-bottom", '');
         }
