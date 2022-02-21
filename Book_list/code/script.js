@@ -211,6 +211,9 @@ function START() {
     document.getElementById("question-box").innerHTML = '';
     document.getElementById("input-answer").value = '';
     document.getElementById("input-answer").placeholder = '';
+
+    
+    $("#section_start_search_window").css("display", '');
     
     var not_Uld = [];
     if (Object(part_selected).length == 0){
@@ -437,16 +440,17 @@ function Manufact2(L){
                 i++;
             }
             if (con['()'].length != 0) {
-                r1 = T.substring(0, con['()'][0]);
-                r2 = T.substring(con['()'][1] + 1);
-                r3 = r1 + T.substring(con['()'][0] + 1, con['()'][1]) + r2;
-                if (con['()'][0] - 1 >= 0 && T[con['()'][0] - 1] == ' ') {
-                    r1 = r1.substring(0, r1.length - 1);
-                }
-                else if (con['()'][1] + 1 < T.length && T[con['()'][1] + 1] == ' ') {
-                    r2 = r2.substring(1);
-                }
+                r1 = T.slice(0, con['()'][0]);
+                r2 = T.slice(con['()'][1] + 1);
+                r3 = r1 + T.slice(con['()'][0] + 1, con['()'][1]) + r2;
                 r4 = r1 + r2;
+                r4.replace('  ', ' ');
+                if (r4[0] == ' '){
+                    r4 = r4.slice(1);
+                }
+                if (r4[r4.length-1] == ' '){
+                    r4 = r4.slice(0, -1)
+                }
                 L[k].push(r3);
                 L[k].push(r4);
                 L[k].splice(t, 1);
@@ -464,10 +468,10 @@ function Manufact2(L){
                         break;
                     }
                 }
-                r1 = T.substring(0, j + 1);
-                r2 = T.substring(con['[]'][1] + 1);
-                r3 = r1 + T.substring(j + 1, con['[]'][0]) + r2;
-                r4 = r1 + T.substring(con['[]'][0] + 1, con['[]'][1]) + r2;
+                r1 = T.slice(0, j + 1);
+                r2 = T.slice(con['[]'][1] + 1);
+                r3 = r1 + T.slice(j + 1, con['[]'][0]) + r2;
+                r4 = r1 + T.slice(con['[]'][0] + 1, con['[]'][1]) + r2;
                 L[k].push(r3);
                 L[k].push(r4);
                 L[k].splice(t, 1);
@@ -733,10 +737,17 @@ function Complete() {
         init_score = R.length;
         skip_count = 0;
         Q = R.slice();
+        if (Q.length > 1){
+            while (true) {
+                shuffle(Q);
+                if (Q[0] != R[R.length-1]){
+                    break
+                }
+            }
+        }
         R = [];
         W = [];
         W_a = [];
-        shuffle(Q);
         Question();
     }
 }
@@ -770,11 +781,11 @@ function Hint() {
     document.getElementById("input-answer").value = '';
     if (lng_selected === "ENGLISH") {
         document.getElementById("input-answer").placeholder =
-            answer[0].substring(0, document.getElementById("input-answer").placeholder.length + 1);
+            answer[0].slice(0, document.getElementById("input-answer").placeholder.length + 1);
     }
     else if (lng_selected === "KOREAN") {
         document.getElementById("input-answer").placeholder =
-        K[E.indexOf(question)].substring(0, document.getElementById("input-answer").placeholder.length + 1);
+        K[E.indexOf(question)].slice(0, document.getElementById("input-answer").placeholder.length + 1);
     }
     document.getElementById("input-answer").focus();
 }

@@ -15,6 +15,15 @@ html, body{
     -webkit-user-select: none;
     user-select: none;
 }
+
+
+/*=====section=====*/
+nav{
+    position: absolute;
+    width: 48vh;
+    height: inherit;
+}
+
 #theme{
     position: relative;
     top: 5vh;
@@ -25,6 +34,27 @@ html, body{
     border: 1px solid #707070;
     z-index: 1;
     overflow: hidden;
+}
+#theme > img{
+    width: 12vh;
+    position: absolute;
+    top: 50%;
+    left: 2.5vh;
+    transform: translateY(-50%);
+    display: inline-block;
+}
+
+#title{
+    position: absolute;
+    top: 49.5%;
+    right: 0;
+    transform: translateY(-50%);
+    width: 22vh;
+    text-align: center;
+}
+#title span{
+    font: normal normal bold 2vh Segoe UI;
+    color: rgb(142, 142, 142);
 }
 #move{
 
@@ -45,46 +75,56 @@ html, body{
     transition-timing-function: cubic-bezier(0, 0, 0.09, 1.03);
     transition-delay: 0s, 0.4s;
 }
+#move img{
+    position: absolute;
+    top: 9vh;
+    left: 32vh;
+    width: 4vh;
+}
 
 #theme:hover #move{
     left: 0;
     border-radius: 0;
 }
 
-#question-box{
-    position:fixed;
-    top: 35%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-
-    width: 60vh;
-    min-height: 6vh;
-
-    font-size: 4vh;
-    text-align: center;
-}
-
-#input-answer{
-    position:fixed;
-    top: 55%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-
-    width: 50vh;
-    height: 5vh;
-    z-index: 2;
-
-    font-size: 3vh;
-    text-align: center;
+#OPTION{
+    position: absolute;
+    bottom: 7vh;
+    left: 7vh;
+    width: 12vh;
+    height: 8vh;
+    cursor: pointer;
+    z-index: 1;
 }
 
 #option{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    
+    width: 5.25vh; 
     opacity: 1;
     transition: 1s;
 }
 #close{
+    position: absolute;
+    top: 50%;
+    left: 0.2vh;
+    transform: translateY(-50%);
+    width: 4.5vh;
     opacity: 0;
     transition: 0.2s;
+}
+
+#OPTION > span{
+    font-family: HSGaeulSenggak20;
+    font-size: 2vh;
+    height: 2vh; 
+    color: white;
+    position: absolute;
+    top: 50%;
+    left: 6vh; 
+    transform: translateY(-50%);
 }
 
 #option_window{
@@ -119,6 +159,98 @@ html, body{
 #option_window table td{
     border-bottom: 1px solid #444444;
     height: 6vh;
+}
+
+#option_window table tr td > div{
+    position: relative;
+    width: inherit;
+    height: inherit;
+}
+
+#level_title{
+    position: absolute;
+    top: 46%; 
+    left: 5%;
+    transform: translateY(-50%);
+    display: inline-block;
+    width: 15vh;
+}
+#level{
+    position: absolute;
+    top: 45%;
+    left: 53%;
+    transform: translateY(-50%);
+    width: 10vh;
+}
+
+#opportunity_title{
+    position: absolute;
+    top: 46%;
+    left: 5%;
+    transform: translateY(-50%);
+    display: inline-block;
+    width: 15vh;
+}
+#opportunity{
+    position: absolute;
+    top: 45%;
+    left: 53%;
+    transform: translateY(-50%);
+    width: 10vh;
+}
+
+#practice{
+    position: absolute;
+    top: 44%;
+    left: 4.5%;
+    transform: translateY(-50%);
+    z-index: 3;
+}
+#practice_title{
+    position: absolute;
+    top: 46%;
+    left: 5%;
+    transform: translateY(-50%);
+    width: 15vh;
+    color: gray;
+}
+#practice_length{
+    position: absolute;
+    top: 45%;
+    left: 53%;
+    transform: translateY(-50%);
+    width: 10vh;
+}
+
+#section{
+    position: absolute;
+    top:44%;
+    left: 4.5%;
+    transform: translateY(-50%);
+    z-index: 3;
+}
+#section_title{
+    position: absolute;
+    top: 46%;
+    left: 5%;
+    transform: translateY(-50%);
+    width: 15vh;
+    color: gray;
+}
+#section_start{
+    position: absolute;
+    top: 48%;
+    left: 54%;
+    transform: translateY(-50%);
+    width: 4.6vh;
+    padding: 0;
+}
+#section_length{
+    position: absolute;
+    top: 48%;
+    left: 73%;
+    transform: translateY(-50%);
+    width: 3.5vh;
 }
 
 #section_start_search_window{
@@ -157,6 +289,20 @@ html, body{
     text-align: center;
 }
 
+#section_start_search_input{
+    position: sticky;
+    top: 0;
+    background-color: #ededed;
+}
+#section_start_search_input td{
+    height: 6vh;
+}
+#section_start_search_input input{
+    position: relative;
+    transform: translateY(-0.2vh);
+    width: 20.8vh;
+}
+
 #section_start_search_window table td{
     border-bottom: 1px solid #d8d8d8;
     height: 4vh;
@@ -168,4 +314,68 @@ html, body{
     width: 26.5vh;
     border-top: 1px solid #bcbcbc;
     margin: 0 0.5vh 0 auto;
+}
+
+#START{
+    position: absolute;
+    bottom: 7vh;
+    left: 29vh;
+    width: 12vh;
+    height: 8vh;
+    cursor: pointer;
+}
+#START img{
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 4vh; 
+}
+#START span{
+    font-family: HSGaeulSenggak20;
+    font-size: 2vh;
+    height: 2vh;
+    color: white;
+    position: absolute;
+    top: 50%;
+    left: 5vh;
+    transform: translateY(-50%);
+}
+
+
+/*=====section=====*/
+
+
+section{
+    position: absolute;
+    top: 0;
+    left: 48vh;
+    width: calc(100vw - 48vh);
+    height: inherit;
+}
+
+#question-box{
+    position:fixed;
+    top: 35%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    width: 60vh;
+    min-height: 6vh;
+
+    font-size: 4vh;
+    text-align: center;
+}
+
+#input-answer{
+    position:fixed;
+    top: 55%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    width: 50vh;
+    height: 5vh;
+    z-index: 2;
+
+    font-size: 3vh;
+    text-align: center;
 }
