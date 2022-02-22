@@ -485,7 +485,7 @@ function Manufact2(L){
                 r2 = T.slice(con['()'][1] + 1);
                 r3 = r1 + T.slice(con['()'][0] + 1, con['()'][1]) + r2;
                 r4 = r1 + r2;
-                r4.replace('  ', ' ');
+                r4 = r4.replace('  ', ' ');
                 if (r4[0] == ' '){
                     r4 = r4.slice(1);
                 }
