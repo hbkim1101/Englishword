@@ -41,6 +41,42 @@ var message = '';
 var tst = 0;
 
 
+
+function shuffle(array) { array.sort(() => Math.random() - 0.5); }
+function Indexof(str, searchvalue) {
+    var result = [];
+    var i = 0;
+    while (i + searchvalue.length <= str.length) {
+        if (str.substr(i, searchvalue.length) === searchvalue) {
+            result.push(i);
+        }
+        i++;
+    }
+    return result;
+}
+function list_Count(list,value){
+    var count = 0;
+    for(var i=0; i < list.length; i++) {
+        if(list[i] === value){
+          count++;
+        }
+    }
+    return count;
+}
+function deepCopy(obj) {
+    if (obj === null || typeof obj !== "object") {
+      return obj;
+    }
+  
+    let copy = {};
+    for (let key in obj) {
+      copy[key] = deepCopy(obj[key]);
+    }
+    return copy;
+  }
+
+
+
 window.onload = function(){
     level = Number($("#level").val());
     opportunity = Number($("#opportunity").val()) + 1;
@@ -164,6 +200,9 @@ function Section_start_search(){
 
 function Search(text){
     $(".search_result").detach();
+    if (text == ''){
+        return
+    }
     if (isNaN(text) == false){
         var num = Number(text)-1;
         if ((num < E_D.length)&&(num >= 0)){
@@ -171,21 +210,19 @@ function Search(text){
             $("#section_start_search_window").children("table").append(Re);
         }
     }
-    if (text != ''){
-        var U = [];
-        for (e_d of E_D){
-            if (e_d.includes(text)){
-                if (U.includes(e_d) == false){
-                    U.push(e_d)
-                }
+    var U = [];
+    for (e_d of E_D){
+        if (e_d.includes(text)){
+            if (U.includes(e_d) == false){
+                U.push(e_d)
             }
         }
-        U.sort();
-        for (u of U){
-            for (p of Object.values(E_I[u])){
-                var Re = $("<tr class='search_result'><td id=search_" + u.replaceAll(' ', '_') + '|' + p + " onclick='Search_select(this)'>" + u + ' ' + Part_name(p) + "</td></tr>");
-                $("#section_start_search_window").children("table").append(Re);
-            }
+    }
+    U.sort();
+    for (u of U){
+        for (p of Object.values(E_I[u])){
+            var Re = $("<tr class='search_result'><td id=search_" + u.replaceAll(' ', '_') + '|' + p + " onclick='Search_select(this)'>" + u + ' ' + Part_name(p) + "</td></tr>");
+            $("#section_start_search_window").children("table").append(Re);
         }
     }
     /*if (E.includes(text)){
@@ -196,6 +233,9 @@ function Search(text){
     }*/
 }
 function Search_select(e){
+    if (e == undefined){
+        return
+    }
     section_start=e.id.slice(7).split('|');
     section_start_int=Number(Object.keys(E_I[section_start[0].replaceAll('_', ' ')])[Object.values(E_I[section_start[0].replaceAll('_', ' ')]).indexOf(section_start[1])]);
     var tag = section_start_int+1;
@@ -204,6 +244,7 @@ function Search_select(e){
     $("#section_start").css("border-color", "rgb(201 218 248)");
     
     Section_start_search();
+    $("#section_length").focus();
 }
 
 function START() {
@@ -482,28 +523,6 @@ function Manufact2(L){
     }
 }
 
-function shuffle(array) { array.sort(() => Math.random() - 0.5); }
-function Indexof(str, searchvalue) {
-    var result = [];
-    var i = 0;
-    while (i + searchvalue.length <= str.length) {
-        if (str.substr(i, searchvalue.length) === searchvalue) {
-            result.push(i);
-        }
-        i++;
-    }
-    return result;
-}
-function list_Count(list,value){
-    var count = 0;
-    for(var i=0; i < list.length; i++) {
-        if(list[i] === value){
-          count++;
-        }
-    }
-    return count;
-}
-
 function Question() {
     document.getElementById("input-answer").placeholder = '';
     if (lng_selected === "KOREAN") {
@@ -561,25 +580,39 @@ function Input() {
         if (lng_selected === "KOREAN") {
             ans = ans.split(/, |,/);
             T = true;
+            var U_T = {};
+            var i = 0;
             for (ans_i of ans) {
                 var t = false;
                 for (a of Object.keys(answer)) {
+                    if (i == 0){
+                        U_T[a] = [];
+                    }
                     for (a_i = 0; a_i < answer[a].length; a_i++) {
+                        if (i == 0){
+                            U_T[a].push([]);
+                        }
                         for (j = 0; j < answer[a][a_i].length; j++){
+                            if (i == 0){
+                                U_T[a][a_i].push(Number(answer_T[a][a_i][j]));
+                            }
                             if (ans_i === answer[a][a_i][j]) {
                                 answer_T[a][a_i][j] = 1;
                                 t = true;
-                                break;
+                                if (i != 0){
+                                    break;
+                                }
                             }
                         }
-                        if (t === true) {
+                        if (t === true && i != 0) {
                             break;
                         }
                     }
-                    if (t === true) {
+                    if (t === true && i != 0) {
                         break;
                     }
                 }
+                i++;
                 if (t === false) {
                     T = false;
                 }
@@ -605,6 +638,7 @@ function Input() {
                 }
                 else{
                     alert("잘못된 답안이 포함되어 있습니다.")
+                    answer_T = U_T;
                 }
             }
             else {

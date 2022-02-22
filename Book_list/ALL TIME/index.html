@@ -556,7 +556,7 @@
             <table>
                 <tr id="section_start_search_input">
                     <td>
-                        <input type="text" oninput="Search(this.value)">
+                        <input type="text" oninput="Search(this.value)" onKeypress="javascript:if(event.keyCode==13){Search_select($('.search_result').children()[0])}">
                     </td>
                 </tr>
             </table>

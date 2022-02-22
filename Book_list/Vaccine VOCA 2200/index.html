@@ -8,7 +8,7 @@
         var Test;
         var book_name = "VV2200"
         var part_name = "DAY";
-        for (var i = 1; i < 8; i++) {
+        for (var i = 1; i < 9; i++) {
             var id;
             var part;
             if (i < 10) {
@@ -408,7 +408,7 @@
             <table>
                 <tr id="section_start_search_input">
                     <td>
-                        <input type="text" oninput="Search(this.value)">
+                        <input type="text" oninput="Search(this.value)" onKeypress="javascript:if(event.keyCode==13){Search_select($('.search_result').children()[0])}">
                     </td>
                 </tr>
             </table>
