@@ -169,7 +169,7 @@ function Selected(ID, T) {
         K=[]; E=[]; E_D=[]; E_I=[];
         for (p of part_selected) {
             if (document.getElementById(p) != null) {
-                Build_list(p, 0);
+                Build_list(p);
             }
         }
         Search($("#section_start_search_window").find("input").val());
@@ -187,7 +187,7 @@ function Section_start_search(){
         K=[]; E=[]; E_D=[]; E_I=[];
         for (p of part_selected) {
             if (document.getElementById(p) != null) {
-                Build_list(p, 0);
+                Build_list(p);
             }
         }
     }
@@ -315,11 +315,15 @@ function START() {
     if (Object(part_selected).length == 0){
         return
     }
-    
     bsi = 0;
     for (p of part_selected) {
-        Build_list(p, 1);
+        Build_list(p);
     }
+    for (i=0;i<E.length;i++){
+        Manufact1(E[i], K[i]);
+        K[i] = K[i].replaceAll('|', '');
+    }
+
     if (lng_selected=="KOREAN"){
         if ($("#section").prop("checked") == true){
             if (section_start_int+section_length > E_D.length){
@@ -342,7 +346,7 @@ function START() {
     Question();
 }
 
-function Build_list(part, type) {
+function Build_list(part) {
     var i = 0;
     var Text = document.getElementById(part).contentDocument.getElementsByTagName("pre")[0].innerText;
     Text = Text.split(/\n|\r/);
@@ -376,11 +380,6 @@ function Build_list(part, type) {
                 E_I[e] = {};
                 E_I[e][E_D.length-1] = part;
             }
-        }
-    }
-    if (type >= 1){
-        for (i=0;i<E.length;i++){
-            Manufact1(E[i], K[i]);
         }
     }
 }
@@ -502,21 +501,19 @@ function Manufact2(L){
                 var j = con['[]'][0];
                 while (true) {
                     j--;
-                    if (T[j] == ' ' || j == 0) {
-                        if (j == 0) {
-                            j--;
-                        }
+                    if (T[j] == '|') {
                         break;
                     }
                 }
-                r1 = T.slice(0, j + 1);
+                r1 = T.slice(0, j);
                 r2 = T.slice(con['[]'][1] + 1);
                 r3 = r1 + T.slice(j + 1, con['[]'][0]) + r2;
-                r4 = r1 + T.slice(con['[]'][0] + 1, con['[]'][1]) + r2;
                 L[k].push(r3);
-                L[k].push(r4);
+                for (r of T.slice(con['[]'][0] + 1, con['[]'][1]).split('/')){
+                    L[k].push(r1 + r + r2);
+                }
                 L[k].splice(t, 1);
-                t--;
+                continue;
             }
             t++;
         }

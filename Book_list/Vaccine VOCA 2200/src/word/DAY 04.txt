@@ -7,7 +7,7 @@ common
 count
 [동] 세다, 중요하다, 간주하다
 depend
-[동] 의존하다, 신뢰하다, ~에 달려 있다(~ on[upon])
+[동] 의존하다, 신뢰하다, ~에 달려 있다(~ |on[upon])
 extend
 [동] 뻗다, 연장하다, 확장하다
 innovate
