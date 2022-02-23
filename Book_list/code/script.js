@@ -63,16 +63,15 @@ function list_Count(list,value){
     }
     return count;
 }
-function deepCopy(obj) {
-    if (obj === null || typeof obj !== "object") {
-      return obj;
-    }
-  
-    let copy = {};
-    for (let key in obj) {
-      copy[key] = deepCopy(obj[key]);
-    }
-    return copy;
+function checkEnding(word) {
+    if (typeof word !== 'string') return null;
+   
+    var lastLetter = word[word.length - 1];
+    var uni = lastLetter.charCodeAt(0);
+   
+    if (uni < 44032 || uni > 55203) return null;
+   
+    return (uni - 44032) % 28 != 0;
   }
 
 
@@ -510,6 +509,22 @@ function Manufact2(L){
                 r3 = r1 + T.slice(j + 1, con['[]'][0]) + r2;
                 L[k].push(r3);
                 for (r of T.slice(con['[]'][0] + 1, con['[]'][1]).split('/')){
+                    if (T[con['[]'][1]+1] == '을'){
+                        if (checkEnding(T[con['[]'][0]-1]) == true){
+                            if (checkEnding(T[con['[]'][1]-1]) == false){
+                                L[k].push(r1 + r + '를' + r2.slice(1));
+                                continue;
+                            }
+                        }
+                    }
+                    else if (T[con['[]'][1]+1] == '를'){
+                        if (checkEnding(T[con['[]'][0]-1]) == false){
+                            if (checkEnding(T[con['[]'][1]-1]) == true){
+                                L[k].push(r1 + r + '를' + r2.slice(1));
+                                continue;
+                            }
+                        }
+                    }
                     L[k].push(r1 + r + r2);
                 }
                 L[k].splice(t, 1);
