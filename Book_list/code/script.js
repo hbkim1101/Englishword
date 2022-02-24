@@ -14,6 +14,7 @@ var Flatform;
 var Q_list;
 var Q;
 var R = [];
+var last_q = '';
 
 var question, answer, answer_T
 var score = 0, init_score, skip_count;
@@ -342,6 +343,7 @@ function START() {
     W = [];
     W_a = [];
     shuffle(Q);
+    last_q = Q[Q.length-1];
     Question();
 }
 
@@ -758,8 +760,17 @@ function Complete() {
                 score = 0;
                 init_score = Q.length;
                 skip_count = 0;
+                shuffle(Q);
+                if (Q.length > 1){
+                    while (true) {
+                        shuffle(Q);
+                        if (Q[0] != last_q){
+                            break
+                        }
+                    }
+                }
+                last_q = Q[Q.length-1];
                 R = [];
-                shuffle(Q)
                 Question();
             }
         }
@@ -786,11 +797,12 @@ function Complete() {
         if (Q.length > 1){
             while (true) {
                 shuffle(Q);
-                if (Q[0] != R[R.length-1]){
+                if (Q[0] != last_q){
                     break
                 }
             }
         }
+        last_q = Q[Q.length-1];
         R = [];
         W = [];
         W_a = [];
