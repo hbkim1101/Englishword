@@ -2,7 +2,6 @@
 
 <head>
     <title>Englishword / Vaccine VOCA 2200</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1 user-scalable=0">
     <link href="./src/img/title_VV2200.png" rel="shortcut icon" type="image/x-icon">
     <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
     <script>
@@ -82,6 +81,7 @@
 </head>
 
 <body>
+    <div class="fix"></div>
     <div id="theme">
         <img src="./src/img/title_VV2200.png">
         <div id="title">
@@ -333,3 +333,8 @@
         </input>
     </section>
 </body>
+<script>
+    $(function(){
+        $(".fix").css("height",window.innerHeight);
+    })
+</script>
