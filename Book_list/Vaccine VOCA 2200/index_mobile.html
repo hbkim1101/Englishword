@@ -2,6 +2,7 @@
 
 <head>
     <title>Englishword / Vaccine VOCA 2200</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1 user-scalable=0">
     <link href="./src/img/title_VV2200.png" rel="shortcut icon" type="image/x-icon">
     <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
     <script>
@@ -51,12 +52,14 @@
             if ($(id).prop("checked")){
                 $(id).prop("checked", false);
                 $(this).css("background-color", '');
+                $(this).children("label").css("color", '');
                 $(this).children("img").css("display", '');
                 Selected($(id).attr("id"), false);
             }
             else{
                 $(id).prop("checked", true);
                 $(this).css("background-color", "rgb(94, 115, 135)");
+                $(this).children("label").css("color", "white");
                 $(this).children("img").css("display", "block");
                 Selected($(id).attr("id"), true);
             }
