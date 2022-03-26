@@ -4,15 +4,9 @@
     font-weight: normal;
     font-style: normal;
 }
-.fix{
-    position: fixed;
-    top: 0px;
-    left: 0px;
-    width: 100%;
-    height: 100%;
-}
 html, body{
-    height: 100vh;
+    width: 100vw;
+    height: 100%;
     margin: 0;
 
             
@@ -28,8 +22,8 @@ html, body{
 nav{
     position: absolute;
     top: 0;
-    left: -48vh;
-    width: 48vh;
+    left: -85.3vw;
+    width: 85.3vw;
     height: inherit;
     background-color: aliceblue;
     z-index: 1;
@@ -40,20 +34,20 @@ nav{
 
 #theme{
     position: relative;
-    top: 5vh;
+    top: 8.8vw;
     left: 50%;
     transform: translateX(-50%);
-    width: 38vh;
-    height: 15vh;
+    width: 67.6vw;
+    height: 26.7vw;
     border: 1px solid #707070;
     z-index: 1;
     overflow: hidden;
 }
 #theme > img{
-    width: 12vh;
+    width: 21.3vw;
     position: absolute;
     top: 50%;
-    left: 2.5vh;
+    left: 4.4vw;
     transform: translateY(-50%);
     display: inline-block;
 }
@@ -63,17 +57,17 @@ nav{
     top: 49.5%;
     right: 0;
     transform: translateY(-50%);
-    width: 22vh;
+    width: 39.1vw;
     text-align: center;
 }
 #title span{
-    font: normal normal bold 2vh Segoe UI;
+    font: normal normal bold 3.6vw Segoe UI;
     color: rgb(142, 142, 142);
 }
 
 #list{
     position: absolute;
-    top: 15vh;
+    top: 26.7vw;
     width: inherit;
 }
 
@@ -90,43 +84,43 @@ nav{
 }
 .box{
     width: inherit;
-    height: 6vh;
-    font-size: 2.3vh;
+    height: 10.7vw;
+    font-size: 4.1vw;
     font-weight: 600;
-    line-height: 6vh;
+    line-height: 10.7vw;
 
     background-color: rgb(233, 240, 247);
 }
 
 .box span{
     position: relative;
-    left: 4vh;
+    left: 7.1vw;
 }
 
 #list li{
     list-style: none;
     position: relative;
-    height: 3.5vh;
+    height: 6.2vw;
     width: inherit;
-    font-size: 1.3vh;
+    font-size: 2.3vw;
     font-weight: 600;
-    line-height: 3.5vh;
+    line-height: 6.2vw;
 
     background-color: rgb(226, 233, 240);
 }
 
 #list li label{
     position: absolute;
-    left: 5vh;
+    left: 8.9vw;
 }
 
 #list li img{
     display: none;
     position: absolute;
     top: 50%;
-    right: 3vh;
+    right: 5.3vw;
     transform: translateY(-50%);
-    height: 2.3vh;
+    height: 4.1vw;
 }
 
 
@@ -142,8 +136,8 @@ nav{
     height: 100%;
     background-color: #707070;
     z-index: 2;
-    border-top-right-radius: 2vh;
-    border-bottom-right-radius: 2vh;
+    border-top-right-radius: 3.6vw;
+    border-bottom-right-radius: 3.6vw;
 
     transition-property: left, border-radius;
     transition-duration: 0.5s, 0.3s;
@@ -152,9 +146,9 @@ nav{
 }
 #move img{
     position: absolute;
-    top: 9vh;
-    left: 32vh;
-    width: 4vh;
+    top: 16vw;
+    left: 56.9vw;
+    width: 7.1vw;
 }
 
 #theme:hover #move{
@@ -164,10 +158,10 @@ nav{
 
 #OPTION{
     position: absolute;
-    bottom: 7vh;
-    left: 7vh;
-    width: 12vh;
-    height: 8vh;
+    bottom: 12.4vw;
+    left: 12.4vw;
+    width: 21.3vw;
+    height: 14.2vw;
     cursor: pointer;
     z-index: 1;
 }
@@ -177,37 +171,37 @@ nav{
     top: 50%;
     transform: translateY(-50%);
     
-    width: 5.25vh; 
+    width: 9.33vw; 
     opacity: 1;
     transition: 1s;
 }
 #close{
     position: absolute;
     top: 50%;
-    left: 0.2vh;
+    left: 0.4vw;
     transform: translateY(-50%);
-    width: 4.5vh;
+    width: 8vw;
     opacity: 0;
     transition: 0.2s;
 }
 
 #OPTION > span{
     font-family: HSGaeulSenggak20;
-    font-size: 2vh;
-    height: 2vh;
+    font-size: 3.6vw;
+    height: 3.6vw;
     position: absolute;
     top: 50%;
-    left: 6vh; 
+    left: 10.7vw; 
     transform: translateY(-50%);
 }
 
 #option_window{
     position: fixed;
-    top: 100vh;
-    left: 4vh;
+    top: 177.8vw;
+    left: 7.1vw;
     
-    width: 30vh;
-    height: 35vh;
+    width: 53.3vw;
+    height: 62.2vw;
     background-color: white;
     border-radius: 7%;
     transform: scale(0.5);
@@ -218,7 +212,7 @@ nav{
 
 #OPTION:hover ~ #option_window{
     position: fixed;
-    top: 97vh;
+    top: 172.44vw;
     transform: scale(1);
 }
 
@@ -232,7 +226,7 @@ nav{
 
 #option_window table td{
     border-bottom: 1px solid #444444;
-    height: 6vh;
+    height: 10.62vw;
 }
 
 #option_window table tr td > div{
@@ -247,14 +241,14 @@ nav{
     left: 5%;
     transform: translateY(-50%);
     display: inline-block;
-    width: 15vh;
+    width: 26.55vw;
 }
 #level{
     position: absolute;
     top: 45%;
     left: 53%;
     transform: translateY(-50%);
-    width: 10vh;
+    width: 17.7vw;
 }
 
 #opportunity_title{
@@ -263,14 +257,14 @@ nav{
     left: 5%;
     transform: translateY(-50%);
     display: inline-block;
-    width: 15vh;
+    width: 26.55vw;
 }
 #opportunity{
     position: absolute;
     top: 45%;
     left: 53%;
     transform: translateY(-50%);
-    width: 10vh;
+    width: 17.7vw;
 }
 
 #practice{
@@ -285,7 +279,7 @@ nav{
     top: 46%;
     left: 5%;
     transform: translateY(-50%);
-    width: 15vh;
+    width: 26.55vw;
     color: gray;
 }
 #practice_length{
@@ -293,7 +287,7 @@ nav{
     top: 45%;
     left: 53%;
     transform: translateY(-50%);
-    width: 10vh;
+    width: 17.7vw;
 }
 
 #section{
@@ -308,7 +302,7 @@ nav{
     top: 46%;
     left: 5%;
     transform: translateY(-50%);
-    width: 15vh;
+    width: 26.55vw;
     color: gray;
 }
 #section_start{
@@ -316,7 +310,7 @@ nav{
     top: 48%;
     left: 54%;
     transform: translateY(-50%);
-    width: 4.6vh;
+    width: 8.14vw;
     padding: 0;
 }
 #section_length{
@@ -324,18 +318,18 @@ nav{
     top: 48%;
     left: 73%;
     transform: translateY(-50%);
-    width: 3.5vh;
+    width: 6.2vw;
 }
 
 #section_start_search_window{
     display: none;
 
     position: absolute;
-    top: 48vh;
-    left: 35vh;
+    top: 84.96vw;
+    left: 61.95vw;
 
-    width: 28vh;
-    height: 32vh;
+    width: 49.56vw;
+    height: 56.64vw;
     background-color: #ededed;
     border-radius: 7%;
     overflow: overlay;
@@ -353,7 +347,7 @@ nav{
 }
 #section_start_search_window::-webkit-scrollbar-button {
     width: 0;
-    height: 1.5vh;
+    height: 2.66vw;
 }
 
 
@@ -369,50 +363,50 @@ nav{
     background-color: #ededed;
 }
 #section_start_search_input td{
-    height: 6vh;
+    height: 10.62vw;
     border-bottom: 1px solid #c2c2c2;
 }
 #section_start_search_input input{
     position: relative;
     transform: translateY(-10%);
-    width: 20.8vh;
+    width: 36.82vw;
 }
 
 #section_start_search_window table td:not(#section_start_search_input td){
     border-bottom: 1px solid #d8d8d8;
-    height: 4vh;
+    height: 7.08vw;
 }
 
 #section_repeat_td::before{
     content: "";
     display: block;
-    width: 26.5vh;
+    width: 46.91vw;
     border-top: 1px solid #bcbcbc;
-    margin: 0 0.5vh 0 auto;
+    margin: 0 0.85vw 0 auto;
     transform: translateY(-3px);
 }
 
 #START{
     position: absolute;
-    bottom: 7vh;
-    left: 29vh;
-    width: 12vh;
-    height: 8vh;
+    bottom: 12.39vw;
+    left: 51.33vw;
+    width: 21.24vw;
+    height: 14.16vw;
     cursor: pointer;
 }
 #START img{
     position: relative;
     top: 50%;
     transform: translateY(-50%);
-    width: 4vh; 
+    width: 7.08vw; 
 }
 #START span{
     font-family: HSGaeulSenggak20;
-    font-size: 2vh;
-    height: 2vh;
+    font-size: 3.54vw;
+    height: 3.54vw;
     position: absolute;
     top: 50%;
-    left: 5vh;
+    left: 8.85vw;
     transform: translateY(-50%);
 }
 
@@ -423,8 +417,8 @@ nav{
 section{
     position: absolute;
     top: 0;
-    left: 48vh;
-    width: calc(100vw - 48vh);
+    left: 84.96vw;
+    width: calc(177.7vw - 85vw);
     height: inherit;
 }
 
@@ -434,10 +428,10 @@ section{
     left: 50%;
     transform: translate(-50%, -50%);
 
-    width: 60vh;
-    min-height: 6vh;
+    width: 106.2vw;
+    min-height: 10.62vw;
 
-    font-size: 4vh;
+    font-size: 7.08vw;
     text-align: center;
 }
 
@@ -447,9 +441,9 @@ section{
     left: 50%;
     transform: translate(-50%, -50%);
 
-    width: 50vh;
-    height: 5vh;
+    width: 88.5vw;
+    height: 8.85vw;
 
-    font-size: 3vh;
+    font-size: 5.31vw;
     text-align: center;
 }
