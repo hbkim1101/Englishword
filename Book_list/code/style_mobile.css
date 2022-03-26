@@ -20,9 +20,16 @@ html, body{
 /*=====section=====*/
 nav{
     position: absolute;
+    top: 0;
+    left: -48vh;
     width: 48vh;
     height: inherit;
+    background-color: aliceblue;
+    z-index: 1;
+
+    transition: 0.2s;
 }
+
 
 #theme{
     position: relative;
@@ -56,6 +63,67 @@ nav{
     font: normal normal bold 2vh Segoe UI;
     color: rgb(142, 142, 142);
 }
+
+#list{
+    position: absolute;
+    top: 15vh;
+    width: inherit;
+}
+
+#list ul{
+    border: 0;
+    padding: 0;
+    margin: 0;
+}
+
+.part_list{
+    display: none;
+    top: 0;
+    left: 0;
+}
+.box{
+    width: inherit;
+    height: 6vh;
+    font-size: 2.3vh;
+    font-weight: 600;
+    line-height: 6vh;
+
+    background-color: rgb(233, 240, 247);
+}
+
+.box span{
+    position: relative;
+    left: 4vh;
+}
+
+#list li{
+    list-style: none;
+    position: relative;
+    height: 3.5vh;
+    width: inherit;
+    font-size: 1.3vh;
+    font-weight: 600;
+    line-height: 3.5vh;
+
+    background-color: rgb(226, 233, 240);
+}
+
+#list li label{
+    position: absolute;
+    left: 5vh;
+}
+
+#list li img{
+    display: none;
+    position: absolute;
+    top: 50%;
+    right: 3vh;
+    transform: translateY(-50%);
+    height: 2.3vh;
+}
+
+
+
 #move{
 
     position: absolute;
@@ -119,8 +187,7 @@ nav{
 #OPTION > span{
     font-family: HSGaeulSenggak20;
     font-size: 2vh;
-    height: 2vh; 
-    color: white;
+    height: 2vh;
     position: absolute;
     top: 50%;
     left: 6vh; 
@@ -336,7 +403,6 @@ nav{
     font-family: HSGaeulSenggak20;
     font-size: 2vh;
     height: 2vh;
-    color: white;
     position: absolute;
     top: 50%;
     left: 5vh;
@@ -376,7 +442,6 @@ section{
 
     width: 50vh;
     height: 5vh;
-    z-index: 2;
 
     font-size: 3vh;
     text-align: center;

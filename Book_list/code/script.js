@@ -8,7 +8,21 @@ function Part_name(p){
     }
     return p
 }
-
+var pf;
+function deviceCheck() {
+    // 디바이스 종류 설정
+    var pcDevice = "win16|win32|win64|mac|macintel";
+ 
+    // 접속한 디바이스 환경
+    if ( navigator.platform ) {
+        if ( pcDevice.indexOf(navigator.platform.toLowerCase()) < 0 ) {
+            pf = "MOBILE";
+        } else {
+            pf = "PC";
+        }
+    }
+}
+deviceCheck();
 var test;
 var Flatform;
 var Q_list;
@@ -80,6 +94,19 @@ function checkEnding(word) {
 window.onload = function(){
     level = Number($("#level").val());
     opportunity = Number($("#opportunity").val()) + 1;
+}
+
+function List(){
+    if ($('nav').css("left") == "0px"){
+        $('nav').css("left","-48vh");
+        $('#LIST').children('img').attr("src", "../src/list_white.png");
+        $('#LIST').children('span').css("color", "white");
+    }
+    else{
+        $('nav').css("left", '0px');
+        $('#LIST').children('img').attr("src", "../src/list_black.png");
+        $('#LIST').children('span').css("color", "black");
+    }
 }
 
 function Option(){
@@ -248,6 +275,11 @@ function Search_select(e){
 }
 
 function START() {
+    if (pf == "MOBILE"){
+        $('nav').css("left","-48vh");
+        $('#LIST').children('img').attr("src", "../src/list_white.png");
+        $('#LIST').children('span').css("color", "white");
+    }
     K=[]; E=[]; E_D=[]; E_I=[]; A=[];
     document.getElementById("question-box").innerHTML = '';
     document.getElementById("input-answer").value = '';

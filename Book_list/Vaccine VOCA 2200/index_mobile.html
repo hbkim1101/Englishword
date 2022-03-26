@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+
+<head>
+    <title>Englishword / Vaccine VOCA 2200</title>
+    <link href="./src/img/title_VV2200.png" rel="shortcut icon" type="image/x-icon">
+    <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script>
+        var Test;
+        var book_name = "VV2200"
+        var part_name = "DAY";
+        for (var i = 1; i < 12; i++) {
+            var id;
+            var part;
+            if (i < 10) {
+                id = "part_0" + i;
+                part = part_name + " 0" + i;
+            }
+            else {
+                id = "part_" + i;
+                part = part_name + " " + i;
+            }
+            var file_word = document.createElement("iframe");
+            file_word.id = id;
+            file_word.src = "src/word/" + part + ".txt";
+            document.getElementsByTagName("head")[0].append(file_word);
+        }
+    </script>
+    <script type="text/javascript" src="../code/script.js"></script>
+
+    <link href="../code/style_mobile.css" rel="stylesheet">
+    <script>
+    var opened_list = '';
+    $(document).ready(function(){
+        $(".box").click(function(){
+            if (opened_list != ''){
+                opened_list.next("ul").slideUp();
+            }
+            var submenu = $(this).next("ul");
+            if( submenu.is(":visible") ){
+                submenu.slideUp();
+                opened_list = '';
+            }
+            else{
+                submenu.slideDown();
+                opened_list = $(this);
+            }
+        });
+
+        $(".partlist").click(function(){
+            var id = '#' + $(this).children("input")[0].id;
+            if ($(id).prop("checked")){
+                $(id).prop("checked", false);
+                $(this).css("background-color", '');
+                $(this).children("img").css("display", '');
+                Selected($(id).attr("id"), false);
+            }
+            else{
+                $(id).prop("checked", true);
+                $(this).css("background-color", "rgb(94, 115, 135)");
+                $(this).children("img").css("display", "block");
+                Selected($(id).attr("id"), true);
+            }
+        })
+    });
+    </script>
+    <style>
+        html, body{
+            background-color: #4868BC;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%25' height='100%25' viewBox='0 0 1600 800'%3E%3Cg stroke='%23320032' stroke-width='66.3' stroke-opacity='0.06' %3E%3Ccircle fill='%234868BC' cx='0' cy='0' r='1800'/%3E%3Ccircle fill='%234061b7' cx='0' cy='0' r='1700'/%3E%3Ccircle fill='%233b5cb0' cx='0' cy='0' r='1600'/%3E%3Ccircle fill='%233656a9' cx='0' cy='0' r='1500'/%3E%3Ccircle fill='%233251a2' cx='0' cy='0' r='1400'/%3E%3Ccircle fill='%232d4b9a' cx='0' cy='0' r='1300'/%3E%3Ccircle fill='%23294692' cx='0' cy='0' r='1200'/%3E%3Ccircle fill='%2325418a' cx='0' cy='0' r='1100'/%3E%3Ccircle fill='%23213c82' cx='0' cy='0' r='1000'/%3E%3Ccircle fill='%231d377a' cx='0' cy='0' r='900'/%3E%3Ccircle fill='%231a3271' cx='0' cy='0' r='800'/%3E%3Ccircle fill='%23172d68' cx='0' cy='0' r='700'/%3E%3Ccircle fill='%2314285f' cx='0' cy='0' r='600'/%3E%3Ccircle fill='%23112456' cx='0' cy='0' r='500'/%3E%3Ccircle fill='%230e1f4c' cx='0' cy='0' r='400'/%3E%3Ccircle fill='%230b1b43' cx='0' cy='0' r='300'/%3E%3Ccircle fill='%23091639' cx='0' cy='0' r='200'/%3E%3Ccircle fill='%2307122F' cx='0' cy='0' r='100'/%3E%3C/g%3E%3C/svg%3E");
+            background-attachment: fixed;
+            background-size: cover;
+        }
+
+        #question-box{
+            border: 1px solid white;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="theme">
+        <img src="./src/img/title_VV2200.png">
+        <div id="title">
+            <span>Vaccine VOCA 2200</span>
+        </div>
+        <div id="move">
+            <a href="/index.html">
+                <img src="../src/home.png">
+            </a>
+        </div>
+    </div>
+    <div id="LIST" style="position: absolute; top: 2vh; left: 2vh; width: 12vh; height: 8vh; cursor: pointer; z-index: 2;" onclick="List();">
+        <img src="../src/list_white.png" style=" width: 4.5vh; position: relative; top: 50%; transform: translateY(-50%);">
+        <span style="font-family: HSGaeulSenggak20; font-size: 2vh; height: 2vh; color: white; position: absolute; top: 50%; left: 6vh; transform: translateY(-50%);">LIST</span>
+    </div>
+
+    <nav>
+        <div id="list">
+            <div id="part01_10" class="box">
+                <span>Day 01~10</span>
+            </div>
+            <ul class="part_list" style="position: relative">
+                <li class="partlist">
+                    <input type="checkbox" style="display: none;" id="part01" class="part_checkbox" disabled="disabled">
+                    <label for="part01" class="part p01">Day 01</label>
+                    <img src="../src/check.png">
+                </li>
+                <li class="partlist">
+                    <input type="checkbox" style="display: none;" id="part02" class="part_checkbox" disabled="disabled">
+                    <label for="part02" class="part p02">Day 02</label>
+                    <img src="../src/check.png">
+                </li>
+                <li class="partlist">
+                    <input type="checkbox" style="display: none;" id="part03" class="part_checkbox" disabled="disabled">
+                    <label for="part03" class="part p03">Day 03</label>
+                    <img src="../src/check.png">
+                </li>
+                <li class="partlist">
+                    <input type="checkbox" style="display: none;" id="part04" class="part_checkbox" disabled="disabled">
+                    <label for="part04" class="part p04">Day 04</label>
+                    <img src="../src/check.png">
+                </li>
+                <li class="partlist">
+                    <input type="checkbox" style="display: none;" id="part05" class="part_checkbox" disabled="disabled">
+                    <label for="part05" class="part p05">Day 05</label>
+                    <img src="../src/check.png">
+                </li>
+                <li class="partlist">
+                    <input type="checkbox" style="display: none;" id="part06" class="part_checkbox" disabled="disabled">
+                    <label for="part06" class="part p06">Day 06</label>
+                    <img src="../src/check.png">
+                </li>
+                <li class="partlist">
+                    <input type="checkbox" style="display: none;" id="part07" class="part_checkbox" disabled="disabled">
+                    <label for="part07" class="part p07">Day 07</label>
+                    <img src="../src/check.png">
+                </li>
+                <li class="partlist">
+                    <input type="checkbox" style="display: none;" id="part08" class="part_checkbox" disabled="disabled">
+                    <label for="part08" class="part p08">Day 08</label>
+                    <img src="../src/check.png">
+                </li>
+                <li class="partlist">
+                    <input type="checkbox" style="display: none;" id="part09" class="part_checkbox" disabled="disabled">
+                    <label for="part09" class="part p09">Day 09</label>
+                    <img src="../src/check.png">
+                </li>
+                <li class="partlist">
+                    <input type="checkbox" style="display: none;" id="part10" class="part_checkbox" disabled="disabled">
+                    <label for="part10" class="part p10">Day 10</label>
+                    <img src="../src/check.png">
+                </li>
+            </ul>
+            <div id="part11_20" class="box">
+                <span>Day 11~20</span>
+            </div>
+            <ul class="part_list" style="position: relative">
+                <li class="partlist">
+                    <input type="checkbox" style="display: none;" id="part11" class="part_checkbox" disabled="disabled">
+                    <label for="part11" class="part p11">Day 11</label>
+                    <img src="../src/check.png">
+                </li>
+                <li class="partlist">
+                    <input type="checkbox" style="display: none;" id="part12" class="part_checkbox" disabled="disabled">
+                    <label for="part12" class="part p12">Day 12</label>
+                    <img src="../src/check.png">
+                </li>
+                <li class="partlist">
+                    <input type="checkbox" style="display: none;" id="part13" class="part_checkbox" disabled="disabled">
+                    <label for="part13" class="part p13">Day 13</label>
+                    <img src="../src/check.png">
+                </li>
+                <li class="partlist">
+                    <input type="checkbox" style="display: none;" id="part14" class="part_checkbox" disabled="disabled">
+                    <label for="part14" class="part p14">Day 14</label>
+                    <img src="../src/check.png">
+                </li>
+                <li class="partlist">
+                    <input type="checkbox" style="display: none;" id="part15" class="part_checkbox" disabled="disabled">
+                    <label for="part15" class="part p15">Day 15</label>
+                    <img src="../src/check.png">
+                </li>
+                <li class="partlist">
+                    <input type="checkbox" style="display: none;" id="part16" class="part_checkbox" disabled="disabled">
+                    <label for="part16" class="part p16">Day 16</label>
+                    <img src="../src/check.png">
+                </li>
+                <li class="partlist">
+                    <input type="checkbox" style="display: none;" id="part17" class="part_checkbox" disabled="disabled">
+                    <label for="part17" class="part p17">Day 17</label>
+                    <img src="../src/check.png">
+                </li>
+                <li class="partlist">
+                    <input type="checkbox" style="display: none;" id="part18" class="part_checkbox" disabled="disabled">
+                    <label for="part18" class="part p18">Day 18</label>
+                    <img src="../src/check.png">
+                </li>
+                <li class="partlist">
+                    <input type="checkbox" style="display: none;" id="part19" class="part_checkbox" disabled="disabled">
+                    <label for="part19" class="part p19">Day 19</label>
+                    <img src="../src/check.png">
+                </li>
+                <li class="partlist">
+                    <input type="checkbox" style="display: none;" id="part20" class="part_checkbox" disabled="disabled">
+                    <label for="part20" class="part p20">Day 20</label>
+                    <img src="../src/check.png">
+                </li>
+            </ul>
+            <div id="part21_30" class="box">
+                <span>Day 21~30</span>
+            </div>
+            <ul class="part_list" style="position: relative">
+                <li class="partlist">
+                    <input type="checkbox" style="display: none;" id="part21" class="part_checkbox" disabled="disabled">
+                    <label for="part21" class="part p21">Day 21</label>
+                    <img src="../src/check.png">
+                </li>
+                <li class="partlist">
+                    <input type="checkbox" style="display: none;" id="part22" class="part_checkbox" disabled="disabled">
+                    <label for="part22" class="part p22">Day 22</label>
+                    <img src="../src/check.png">
+                </li>
+                <li class="partlist">
+                    <input type="checkbox" style="display: none;" id="part23" class="part_checkbox" disabled="disabled">
+                    <label for="part23" class="part p23">Day 23</label>
+                    <img src="../src/check.png">
+                </li>
+                <li class="partlist">
+                    <input type="checkbox" style="display: none;" id="part24" class="part_checkbox" disabled="disabled">
+                    <label for="part24" class="part p24">Day 24</label>
+                    <img src="../src/check.png">
+                </li>
+                <li class="partlist">
+                    <input type="checkbox" style="display: none;" id="part25" class="part_checkbox" disabled="disabled">
+                    <label for="part25" class="part p25">Day 25</label>
+                    <img src="../src/check.png">
+                </li>
+                <li class="partlist">
+                    <input type="checkbox" style="display: none;" id="part26" class="part_checkbox" disabled="disabled">
+                    <label for="part26" class="part p26">Day 26</label>
+                    <img src="../src/check.png">
+                </li>
+                <li class="partlist">
+                    <input type="checkbox" style="display: none;" id="part27" class="part_checkbox" disabled="disabled">
+                    <label for="part27" class="part p27">Day 27</label>
+                    <img src="../src/check.png">
+                </li>
+                <li class="partlist">
+                    <input type="checkbox" style="display: none;" id="part28" class="part_checkbox" disabled="disabled">
+                    <label for="part28" class="part p28">Day 28</label>
+                    <img src="../src/check.png">
+                </li>
+                <li class="partlist">
+                    <input type="checkbox" style="display: none;" id="part29" class="part_checkbox" disabled="disabled">
+                    <label for="part29" class="part p29">Day 29</label>
+                    <img src="../src/check.png">
+                </li>
+                <li class="partlist">
+                    <input type="checkbox" style="display: none;" id="part30" class="part_checkbox" disabled="disabled">
+                    <label for="part30" class="part p30">Day 30</label>
+                    <img src="../src/check.png">
+                </li>
+            </ul>
+        </div>
+
+        <div id="OPTION" onclick="Option();">
+            <img id="option" src="../src/option.png">
+            <img id="close" src="../src/close.png">
+            <span>OPTION</span>
+        </div>
+        <div id="option_window">
+            <table>
+                <tr>
+                    <td>
+                        <div>
+                            <div id="level_title">난이도</div>
+                            <input id="level" type="range" max="2" step="1" onchange="level=Number(this.value);">
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div>
+                            <div id="opportunity_title">기회</div>
+                            <input id="opportunity" type="range" max="4" step="1" onchange="opportunity=Number(this.value)+1;">
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div>
+                            <input id="practice" type="checkbox" onchange="Checking(this);" disabled>
+                            <div id="practice_title">연습모드</div>
+                            <input id="practice_length" type="range" max="30" step="10" onchange="" disabled>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div>
+                            <input id="section" type="checkbox" onchange="Checking(this);">
+                            <div id="section_title">구간</div>
+                            <button id="section_start" onclick="Section_start_search();" disabled>시작</button>
+                            <input id="section_length" type="text" maxlength='3' placeholder="길이" onfocus="this.placeholder=''" onblur="if(this.value.length == 0){this.placeholder='길이'}"  oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" onchange="section_length=Number(this.value)" disabled>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div id="section_start_search_window">
+            <table>
+                <tr id="section_start_search_input">
+                    <td>
+                        <input type="text" oninput="Search(this.value)" onKeypress="javascript:if(event.keyCode==13){Search_select($('.search_result').children()[0])}">
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div id="START" onclick="START()">
+            <img src="../src/enter.png">
+            <span>START</span>
+        </div>
+    </nav>
+
+    <section>
+        <div id="question-box">
+        </div>
+        <input id="input-answer" onKeypress="javascript:if(event.keyCode==13){Input();}">
+        </input>
+    </section>
+</body>

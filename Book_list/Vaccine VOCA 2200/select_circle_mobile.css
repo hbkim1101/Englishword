@@ -1,0 +1,118 @@
+.box{
+    position: absolute;
+    width: 15vh;
+    height: 15vh;
+    border-radius: 100%;
+    z-index: 1;
+}
+.list{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+
+    width: 15vh;
+    height: 15vh;
+    border-radius: 100%;
+    z-index: 2;
+    background-color: rgb(255, 255, 255);
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+.list > div{
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    
+    width: 10vh;
+
+    text-align: center;
+    font-weight: 700;
+    font-size: 2.4vh;
+
+    transition: 0.2s;
+}
+
+.part{
+    position: absolute;
+    top: 5.5vh;
+    left: 5.5vh;
+    z-index:1;
+
+    width: 4vh;
+    height: 4vh;
+    border-radius: 100%;
+}
+
+.part > div{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    
+    width: 10vh;
+    z-index: 2;
+
+    text-align: center;
+    font-weight: 700;
+    font-size: 1.2vh;
+
+    transition: 0.2s;
+
+}
+
+div.range{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    width: 4vh;
+    height: 4vh;
+    z-index: 3;
+
+    cursor: pointer;
+}
+
+
+#part01_10{
+    position: absolute;
+    top: 20vh;
+    left: 6vh;
+}
+#part01_10 .list{
+    background: radial-gradient( rgb(62, 121, 174) 55%, rgba(255, 255, 255, 0));
+}
+
+#part11_20{
+    position: absolute;
+    top: 34vh;
+    left: 28vh;
+}
+#part11_20 .list{
+    background: radial-gradient( rgb(17, 118, 162) 55%, rgba(255, 255, 255, 0));
+}
+
+#part21_30{
+    position: absolute;
+    top: 50vh;
+    left: 10vh;
+}
+#part21_30 .list{
+    background: radial-gradient( rgb(10, 85, 160) 55%, rgba(255, 255, 255, 0));
+}
+
+
+#part01_10 .part{
+    color: rgb(206, 202, 255);
+}
+#part11_20 .part{
+    color: rgb(148, 143, 193);
+}
+#part21_30 .part{
+    color: rgb(130, 124, 174);
+}
+

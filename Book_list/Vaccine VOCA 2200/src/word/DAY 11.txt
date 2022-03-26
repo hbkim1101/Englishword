@@ -1,0 +1,110 @@
+volunteer
+[동] 자원하다, 지원하다 [명] 자원봉사(자), 지원자
+colony
+[명] 식민지, 집단, 군체
+negative
+[형] 부정적인, 반대의, 거부의
+decrease
+[동] 줄이다, 감소시키다, 축소하다 [명] 감소, 축소
+aisle
+[명] 복도, 통로
+flow
+[동] 흐르다, 흘러나오다 [명] 흐름, 유동
+positive
+[형] 긍정적인, 적극적인, 확신하는
+personality
+[명] 성격, 개성, 인격
+wildlife
+[명] 야생 동물, 야생 생물 [형] 야생 동물의
+population
+[명] 인구, 주민, 개체군, 집단
+tiny
+[형] 아주 |작은[적은], 조그마한
+strip
+[동] (옷, 껍질 등을) 벗기다, 제거하다 [명] (길고 가느다란) 조각
+hierarchical
+[형] 계층적인, 계급 조직의
+fabulous
+[형] 멋진, 굉장한, 믿어지지 않을 정도의
+disorder
+[명] 무질서, 혼란, 장애, (가벼운) 질환
+liberate
+[동] 해방시키다, 자유롭게 만들다
+cruel
+[형] 잔인한, 잔혹한
+companion
+[명] 동료, 동반자, 반려자
+gracious
+[형] 상냥한, 정중한, 우아한
+differentiate
+[동] 구별하다, 구분 짓다, 식별하다
+famine
+[명] 기근, 기아, 굶주림
+symbol
+[명] 상징, 부호, 기호
+outdated
+[형] 시대에 뒤진, 구식인
+feast
+[명] 연회, (종교적) 축제, 진수성찬
+eternally
+[부] 영원히, 영구히, 끊임없이
+precede
+[동] 앞서다, 선행하다, 우선하다
+superficial
+[형] 겉으로 드러난, 표면상의, 피상적인
+appetite
+[명] 식욕, 욕구
+density
+[명] 밀도, 농도, 밀집
+administer
+[동] 관리하다, 시행하다
+frank
+[형] 솔직한, 숨김없는
+royal
+[형] (여)왕의, 왕실의, 왕립의 [명] 왕족
+instantly
+[부] 즉시, 곧장, 즉각
+enclose
+[동] 둘러싸다, 에워싸다, 동봉하다
+spirit
+[명] 정신, 영혼, 기분, 마음
+blurred
+[형] 흐릿한, 구별이 잘 안 되는, 모호한
+confine
+[동] 한정하다, 제한하다, 가두다, 감금하다
+barren
+[형] 불모의, 메마른, 황량한, 불임인
+minimize
+[동] 최소화하다, 축소하다, 깔보다
+discouraged
+[형] 낙심한, 낙담한
+infectious
+[형] 전염성의, 전염되는, 전염병의
+drought
+[명] 가뭄, 부족
+arrogant
+[형] 거만한, 오만한
+inhabit
+[동] 거주하다, 서식하다, ~에 살다
+insult
+[동] 모욕하다 [명] 모욕(적인 말, 행동), 무례
+sensational
+[형] 선풍적인, 세상을 놀라게 하는, |지각[감각]의
+flavor
+[명] 맛, 풍미, 조미료
+burst
+[동] 터지다, 터질 듯하다, 폭발하다 [명] 파열, 폭발
+outbreak
+[명] (전쟁·사고·질병 등의) |발발[발생]
+pilot
+[형] 조종사, 안내인, 시험적으로 행하는 것 [동] 조종하다, 안내하다
+ethical justification
+[구] 윤리적 정당화
+legal justification
+[구] 법적 타당성
+procedural justification
+[구] 절차적 정당성
+ample justification
+[구] 충분히 타당한 사유
+theoretical justification
+[구] 이론적으로 타당한 이유
