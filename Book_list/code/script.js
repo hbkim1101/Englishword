@@ -92,22 +92,12 @@ function checkEnding(word) {
 
 
 window.onload = function(){
+    console.log('hi')
     level = Number($("#level").val());
     opportunity = Number($("#opportunity").val()) + 1;
+    console.log($("#body").css('width'));
+    $("#body").css('height', window.innerHeight);
 }
-function Size(){
-    console.log('hi')
-    $("#body").css("height", window.innerHeight);
-    $("#body").css("width", window.innerWidth);
-    setTimeout(() => {
-        console.log(window.innerHeight)
-        $("#body").css("height", window.innerHeight);
-        $("#body").css("width", window.innerWidth);
-    }, 100);
-}
-window.onresize = function(event){
-}
-
 function List(){
     if ($('nav').css("left") == "0px"){
         $('nav').css("left","-85.3vw");

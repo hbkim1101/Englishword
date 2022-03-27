@@ -7,9 +7,6 @@
 html, body{
     width: 100%;
     margin: 0;
-    height: 100vh;
-    height: -webkit-fill-available;
-    height: fill-available;
 
             
     -ms-user-select: none; 
@@ -22,7 +19,7 @@ html, body{
 #LIST{
     position: absolute;
     top: 3.6vw;
-    left: 3.6vw;
+    left: 4.5vw;
     width: 21.3vw;
     height: 14.2vw;
     cursor: pointer;
@@ -46,6 +43,25 @@ html, body{
     transform: translateY(-50%);
 }
 
+#theme{
+    position: relative;
+    top: 5vw;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 30vw;
+    height: 30vw;
+    z-index: 1;
+    overflow: hidden;
+}
+#theme > img{
+    width: inherit;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    display: inline-block;
+}
+
 /*=====section=====*/
 nav{
     position: absolute;
@@ -59,41 +75,10 @@ nav{
     transition: 0.2s;
 }
 
-#move{
-    position: absolute;
-    top: 7.5vw;
-    right: 10vw;
-    width: 7.1vw;
-}
-#move img{
-    width: 7.1vw;
-}
-
-
-#theme{
-    position: relative;
-    top: 3vw;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 40vw;
-    height: 15vw;
-    border: 1px solid #707070;
-    z-index: 1;
-    overflow: hidden;
-}
-#theme > img{
-    width: 15vw;
-    position: absolute;
-    top: 50%;
-    left: 4.4vw;
-    transform: translateY(-50%);
-    display: inline-block;
-}
-
 #title{
     position: absolute;
-    top: 49.5%;
-    right: 0;
+    top: 10vw;
+    right: 12vw;
     transform: translateY(-50%);
     width: 39.1vw;
     text-align: center;
@@ -101,6 +86,17 @@ nav{
 #title span{
     font: normal normal bold 3.6vw Segoe UI;
     color: rgb(142, 142, 142);
+}
+
+
+#move{
+    position: absolute;
+    top: 7.2vw;
+    right: 5vw;
+    width: 7.1vw;
+}
+#move img{
+    width: 7.1vw;
 }
 
 #list{
@@ -172,7 +168,7 @@ nav{
 
 #OPTION{
     position: absolute;
-    bottom: 12.4vw;
+    top: 85.5%;
     left: 12.4vw;
     width: 21.3vw;
     height: 14.2vw;
@@ -402,7 +398,7 @@ nav{
 
 #START{
     position: absolute;
-    bottom: 12.39vw;
+    top: 85.5%;
     left: 51.33vw;
     width: 21.24vw;
     height: 14.16vw;
@@ -431,13 +427,13 @@ nav{
 section{
     position: absolute;
     top: 0;
-    left: 84.96vw;
-    width: calc(177.7vw - 85vw);
+    left: 0;
+    width: inherit;
     height: inherit;
 }
 
 #question-box{
-    position:fixed;
+    position:absolute;
     top: 35%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -450,7 +446,7 @@ section{
 }
 
 #input-answer{
-    position:fixed;
+    position: absolute;
     top: 55%;
     left: 50%;
     transform: translate(-50%, -50%);
