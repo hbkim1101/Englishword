@@ -278,7 +278,7 @@ function Search_select(e){
 
 function START() {
     if (pf == "MOBILE"){
-        $('nav').css("left","-48vh");
+        $('nav').css("left", '');
         $('#LIST').children('img').attr("src", "../src/list_white.png");
         $('#LIST').children('span').css("color", "white");
     }
