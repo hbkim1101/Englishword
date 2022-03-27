@@ -81,6 +81,7 @@
 </head>
 
 <body id="body">
+    <div id="test"></div>
     <div id="theme">
         <img src="./src/img/title_VV2200.png">
         <div id="title">
@@ -332,3 +333,10 @@
         </input>
     </section>
 </body>
+<script>
+    $(function(){
+        console.log(window.innerHeight)
+        $("#test").css("height", window.innerHeight)
+        $("#body").css("height", window.innerHeight)
+    })
+</script>
