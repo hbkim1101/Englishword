@@ -100,7 +100,7 @@ window.onload = function(){
 }
 function List(){
     if ($('nav').css("left") == "0px"){
-        $('nav').css("left","-85.3vw");
+        $('nav').css("left",'');
         $('#LIST').children('img').attr("src", "../src/list_white.png");
         $('#LIST').children('span').css("color", "white");
     }
