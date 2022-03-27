@@ -4,12 +4,12 @@
     font-weight: normal;
     font-style: normal;
 }
-#test{
-    width: 100%;
-}
 html, body{
     width: 100%;
     margin: 0;
+    height: 100vh;
+    height: -webkit-fill-available;
+    height: fill-available;
 
             
     -ms-user-select: none; 
@@ -19,6 +19,32 @@ html, body{
     user-select: none;
 }
 
+#LIST{
+    position: absolute;
+    top: 3.6vw;
+    left: 3.6vw;
+    width: 21.3vw;
+    height: 14.2vw;
+    cursor: pointer;
+    z-index: 2;
+}
+
+#LIST img{
+    width: 8vw;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+}
+#LIST span{
+    font-family: HSGaeulSenggak20;
+    font-size: 3.6vw;
+    height: 3.6vw;
+    color: white;
+    position: absolute;
+    top: 50%;
+    left: 10.7vw;
+    transform: translateY(-50%);
+}
 
 /*=====section=====*/
 nav{
@@ -33,20 +59,30 @@ nav{
     transition: 0.2s;
 }
 
+#move{
+    position: absolute;
+    top: 7.5vw;
+    right: 10vw;
+    width: 7.1vw;
+}
+#move img{
+    width: 7.1vw;
+}
+
 
 #theme{
     position: relative;
-    top: 8.8vw;
+    top: 3vw;
     left: 50%;
     transform: translateX(-50%);
-    width: 67.6vw;
-    height: 26.7vw;
+    width: 40vw;
+    height: 15vw;
     border: 1px solid #707070;
     z-index: 1;
     overflow: hidden;
 }
 #theme > img{
-    width: 21.3vw;
+    width: 15vw;
     position: absolute;
     top: 50%;
     left: 4.4vw;
@@ -127,31 +163,7 @@ nav{
 
 
 
-#move{
 
-    position: absolute;
-    top: 0;
-    left: -100%;
-    display:block;
-
-    width: 100%;
-    height: 100%;
-    background-color: #707070;
-    z-index: 2;
-    border-top-right-radius: 3.6vw;
-    border-bottom-right-radius: 3.6vw;
-
-    transition-property: left, border-radius;
-    transition-duration: 0.5s, 0.3s;
-    transition-timing-function: cubic-bezier(0, 0, 0.09, 1.03);
-    transition-delay: 0s, 0.4s;
-}
-#move img{
-    position: absolute;
-    top: 16vw;
-    left: 56.9vw;
-    width: 7.1vw;
-}
 
 #theme:hover #move{
     left: 0;

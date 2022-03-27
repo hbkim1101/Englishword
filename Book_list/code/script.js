@@ -95,10 +95,22 @@ window.onload = function(){
     level = Number($("#level").val());
     opportunity = Number($("#opportunity").val()) + 1;
 }
+function Size(){
+    console.log('hi')
+    $("#body").css("height", window.innerHeight);
+    $("#body").css("width", window.innerWidth);
+    setTimeout(() => {
+        console.log(window.innerHeight)
+        $("#body").css("height", window.innerHeight);
+        $("#body").css("width", window.innerWidth);
+    }, 100);
+}
+window.onresize = function(event){
+}
 
 function List(){
     if ($('nav').css("left") == "0px"){
-        $('nav').css("left","-48vh");
+        $('nav').css("left","-85.3vw");
         $('#LIST').children('img').attr("src", "../src/list_white.png");
         $('#LIST').children('span').css("color", "white");
     }

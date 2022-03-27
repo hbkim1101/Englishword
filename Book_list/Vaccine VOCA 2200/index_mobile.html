@@ -80,25 +80,24 @@
     </style>
 </head>
 
-<body id="body">
-    <div id="test"></div>
-    <div id="theme">
-        <img src="./src/img/title_VV2200.png">
-        <div id="title">
-            <span>Vaccine VOCA 2200</span>
+<body id="body" onload="Size()">
+    <div id="LIST" onclick="List();">
+        <img src="../src/list_white.png">
+        <span>LIST</span>
+    </div>
+
+    <nav>
+        <div id="theme">
+            <img src="./src/img/title_VV2200.png">
+            <div id="title">
+                <span>Vaccine VOCA 2200</span>
+            </div>
         </div>
         <div id="move">
             <a href="/index.html">
                 <img src="../src/home.png">
             </a>
         </div>
-    </div>
-    <div id="LIST" style="position: absolute; top: 2vh; left: 2vh; width: 12vh; height: 8vh; cursor: pointer; z-index: 2;" onclick="List();">
-        <img src="../src/list_white.png" style=" width: 4.5vh; position: relative; top: 50%; transform: translateY(-50%);">
-        <span style="font-family: HSGaeulSenggak20; font-size: 2vh; height: 2vh; color: white; position: absolute; top: 50%; left: 6vh; transform: translateY(-50%);">LIST</span>
-    </div>
-
-    <nav>
         <div id="list">
             <div id="part01_10" class="box">
                 <span>Day 01~10</span>
@@ -333,10 +332,3 @@
         </input>
     </section>
 </body>
-<script>
-    $(function(){
-        console.log(window.innerHeight)
-        $("#test").css("height", window.innerHeight)
-        $("#body").css("height", window.innerHeight)
-    })
-</script>
