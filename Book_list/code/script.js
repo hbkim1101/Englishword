@@ -114,7 +114,7 @@ window.onload = function(){
 
 window.onresize = function(){
     if ((pf == 'MOBILE') && (window.innerHeight < height)){
-        $('nav').css("left", '');
+        List()
         $('#theme').css('display', 'none');
         $('#question-box').css('top', window.innerHeight/height*40 + '%');
         $('#input-answer').css('top', window.innerHeight/height*70 + '%');
@@ -305,9 +305,7 @@ function Search_select(e){
 
 function START() {
     if (pf == "MOBILE"){
-        $('nav').css("left", '');
-        $('#LIST').children('img').attr("src", "../src/list_white.png");
-        $('#LIST').children('span').css("color", "white");
+        List()
     }
     K=[]; E=[]; E_D=[]; E_I=[]; A=[];
     document.getElementById("question-box").innerHTML = '';
