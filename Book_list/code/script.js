@@ -114,7 +114,9 @@ window.onload = function(){
 
 window.onresize = function(){
     if ((pf == 'MOBILE') && (window.innerHeight < height)){
-        List()
+        if ($('nav').css("left") == "0px"){
+            List()
+        }
         $('#theme').css('display', 'none');
         $('#question-box').css('top', window.innerHeight/height*40 + '%');
         $('#input-answer').css('top', window.innerHeight/height*70 + '%');
