@@ -23,6 +23,8 @@ function deviceCheck() {
     }
 }
 deviceCheck();
+var height;
+
 var test;
 var Flatform;
 var Q_list;
@@ -89,7 +91,15 @@ function checkEnding(word) {
     return (uni - 44032) % 28 != 0;
   }
 
-
+function test(){
+    console.log('hi')
+    level = Number($("#level").val());
+    opportunity = Number($("#opportunity").val()) + 1;
+    console.log($("#body").css('width'));
+    console.log($("#body").css('height'));
+    console.log(window.innerHeight);
+    console.log(screen.availHeight);
+}
 
 window.onload = function(){ 
     console.log('hi')
@@ -98,8 +108,22 @@ window.onload = function(){
     console.log($("#body").css('width'));
     console.log($("#body").css('height'));
     console.log(window.innerHeight);
-    console.log(screen.availHeight);
+    height = window.innerHeight;
     $("#body").css('height', window.innerHeight);
+}
+
+window.onresize = function(){
+    if ((pf == 'MOBILE') && (window.innerHeight < height)){
+        console.log('hi')
+        $('#theme').css('display', 'none');
+        $('#question-box').css('top', window.innerHeight/height*40 + '%');
+        $('#input-answer').css('top', window.innerHeight/height*70 + '%');
+    }
+    else{
+        $('#theme').css('display', '');
+        $('#question-box').css('top', '');
+        $('#input-answer').css('top', '');
+    }
 }
 function List(){
     if ($('nav').css("left") == "0px"){
