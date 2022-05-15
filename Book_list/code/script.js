@@ -91,11 +91,14 @@ function checkEnding(word) {
 
 
 
-window.onload = function(){
+window.onload = function(){ 
     console.log('hi')
     level = Number($("#level").val());
     opportunity = Number($("#opportunity").val()) + 1;
     console.log($("#body").css('width'));
+    console.log($("#body").css('height'));
+    console.log(window.innerHeight);
+    console.log(screen.availHeight);
     $("#body").css('height', window.innerHeight);
 }
 function List(){
