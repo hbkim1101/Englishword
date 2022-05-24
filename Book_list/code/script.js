@@ -57,7 +57,15 @@ var message = '';
 
 var tst = 0;
 
-
+function Alert(text);
+    if (pf === 'MOBILE') {
+        alert(text);
+        setTimeout(function(){title.focus();}, 1);
+        return false;
+}
+    else{
+        alert(text);
+}
 
 function shuffle(array) { array.sort(() => Math.random() - 0.5); }
 function Indexof(str, searchvalue) {
@@ -629,7 +637,7 @@ function Input() {
     if (ans === '') {
         message = "총 개수: " + init_score;
         message += "\n남은 개수: " + Q.length;
-        alert(message);
+        Alert(message);
         document.getElementById("input-answer").focus();
     }
     else if (ans === "dvl") {
@@ -713,7 +721,7 @@ function Input() {
                     Success()
                 }
                 else{
-                    alert("잘못된 답안이 포함되어 있습니다.");
+                    Alert("잘못된 답안이 포함되어 있습니다.");
                     document.getElementById("input-answer").focus();
                     answer_T = U_T;
                 }
@@ -749,13 +757,13 @@ function Input() {
                     oprt += 1;
                     if (oprt >= opportunity) {
                         message += "\n\n" + opportunity + "번 모두 실패하셨습니다.";
-                        alert(message);
+                        Alert(message);
                         document.getElementById("input-answer").focus();
                         return Skip();
                     }
                     else {
                         message += "\n\n남은 기회: " + (opportunity - oprt);
-                        alert(message);
+                        Alert(message);
                         document.getElementById("input-answer").focus();
                     }
                 }
@@ -773,7 +781,7 @@ function Success() {
         message += K[E.indexOf(Q[0])];
     }
     message += "\n\n정답입니다!";
-    alert(message);
+    Alert(message);
     document.getElementById("input-answer").focus();
     oprt = 0;
     hint = 0;
@@ -795,7 +803,7 @@ function Complete() {
     message += "맞힌 개수: " + score;
     if (score === init_score) {
         message += "\n\n모두 맞혔습니다!";
-        alert(message);
+        Alert(message);
         document.getElementById("input-answer").focus();
         if ($("#section").prop("checked") == true && section_start_int+section_length < E_D.length){
             message = Part_name(E_I[E_D[section_start_int+section_length]][section_start_int+section_length]);
@@ -879,11 +887,11 @@ function Complete() {
 
 function Skip() {
     if (lng_selected === "ENGLISH") {
-        alert("정답: " + answer[0]);
+        Alert("정답: " + answer[0]);
         document.getElementById("input-answer").focus();
     }
     else if (lng_selected === "KOREAN") {
-        alert("정답: " + K[E.indexOf(question)]);
+        Alert("정답: " + K[E.indexOf(question)]);
         document.getElementById("input-answer").focus();
     }
     oprt = 0;
