@@ -56,12 +56,19 @@ var dup = -1;
 var message = '';
 
 var tst = 0;
+var validating = false;
 
 function Alert(text){
     var title = document.getElementById("input-answer");
     if (pf === 'MOBILE') {
+        if (validating === false){
+            validating = true;
+        }
         alert(text);
-        setTimeout(function(){title.focus();}, 1);
+        setTimeout(function(){
+            title.focus();
+            validating = false;
+        }, 1);
         return false;
     }
     else{
