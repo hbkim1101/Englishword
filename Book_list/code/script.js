@@ -68,7 +68,7 @@ function Alert(text){
         setTimeout(function(){
             title.focus();
             validating = false;
-        }, 1);
+        });
         return false;
     }
     else{
