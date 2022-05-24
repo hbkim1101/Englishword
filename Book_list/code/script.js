@@ -64,7 +64,7 @@ function Alert(text){
         if (validating === false){
             validating = true;
         }
-        $.messager.alert(text);
+        alert(text);
         setTimeout(function(){
             title.focus();
             validating = false;
