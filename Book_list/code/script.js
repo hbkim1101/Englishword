@@ -67,6 +67,7 @@ function Alert(text){
         alert(text);
         setTimeout(function(){
             title.focus();
+            title.value = "test";
             validating = false;
         });
         return false;
